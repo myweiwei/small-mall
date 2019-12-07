@@ -1,0 +1,28 @@
+/* pages/index/index.wxss */
+.boxContainer {
+  display: flex;
+
+}
+.nav {
+  width:180rpx;
+}
+.navList {
+  width:180rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  background:#fff;
+  border-bottom:1rpx solid #ccc;
+  text-align: center;
+}
+.content{
+  flex:1;
+  width:180rpx;
+  border:1px solid red;
+}
+.active {
+  color:red;
+  border-left: 2px solid red;
+}
+.fishList {
+  height:300rpx;
+}

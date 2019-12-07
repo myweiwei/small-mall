@@ -1,0 +1,12 @@
+<!--pages/index/index.wxml-->
+<view class='boxContainer'>
+  <scroll-view scroll-y='true' class='nav'>
+    <view wx:for='{{list}}'  wx:key='{{item.id}}'data-id='{{item.id}}'
+class='navList {{currentIndex==index?"active":""}}' bindtap="listClick" data-index='{{index}}'>{{item.name}}</view>
+  </scroll-view>
+  <scroll-view scroll-y='true' scroll-into-view='{{activeList}}' scroll-with-animation='true' bindscroll='scrollFunc' class='content' style='height:400rpx'>
+    <view class="fishList" wx:for='{{content}}' id='{{item.id}}' wx:key='{{item.id}}'>
+      <p>{{item.name}}</p>
+    </view>
+  </scroll-view>
+</view>
