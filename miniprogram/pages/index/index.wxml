@@ -1,12 +1,65 @@
 <!--pages/index/index.wxml-->
-<view class='boxContainer'>
+<view class='boxContainer' style='height:100%'>
   <scroll-view scroll-y='true' class='nav'>
-    <view wx:for='{{list}}'  wx:key='{{item.id}}'data-id='{{item.id}}'
-class='navList {{currentIndex==index?"active":""}}' bindtap="listClick" data-index='{{index}}'>{{item.name}}</view>
+    <view wx:for='{{list}}'  wx:key='{{item.id}}'data-id='{{"a"+item.id}}'
+class='navList {{currentIndex==index?"active greenColor":""}}' bindtap="listClick" data-index='{{index}}'>{{item.name}}</view>
   </scroll-view>
-  <scroll-view scroll-y='true' scroll-into-view='{{activeList}}' scroll-with-animation='true' bindscroll='scrollFunc' class='content' style='height:400rpx'>
-    <view class="fishList" wx:for='{{content}}' id='{{item.id}}' wx:key='{{item.id}}'>
-      <p>{{item.name}}</p>
+<scroll-view scroll-y='true' scroll-into-view='{{activeList}}'scroll-with-animation='true' bindscroll='scrollFunc' class='content' style='height:1250rpx;'>
+    <view class="fishList" wx:for='{{list}}' id='{{"a"+item.id}}' wx:key='{{item.id}}'>
+      <view class='titleBox greenBox'>{{item.name}}</view>
+      <view wx:for='{{item.products}}' wx:for-item="items" wx:key='{{items.id}}' class='productList'>
+        <image src='http://{{items.picture}}'></image>
+        <view class='info'>
+          <view class='name'>{{items.name}}</view>
+            <view class='flexBox stockFlex'>
+              <view class='shortInfo'>{{items.introduce}}</view>
+            <view class='stock'>{{"库存"+items.stock}}</view>
+          </view>
+          <view class='flexBox'>
+          </view>
+          <view class='flexBox'>
+            <view class='flexBox price'>
+              <view class='price_count'>{{"￥"+items.jinPrice}}</view>
+              <view class='price_info'>/斤</view>
+            </view>
+            <view class='choose greenBox' bindtap='chooseFunc' data-item='{{items}}'>选规格</view>
+          </view>
+        </view>
+      </view>
     </view>
-  </scroll-view>
+</scroll-view>
+<van-popup show="{{ show }}"
+  custom-style="height:500rpx;width:70%;padding:10rpx;" round>
+    <view class='popup_title fr' bindtap="onClose">
+      <image src='../../images/close.png'></image>
+    </view>
+    <view class='popup'>
+      <view class='name'>{{clickItem.name}}</view>
+      <view class='smallName'>计量单位:</view>
+      <view class='flexBox jlBox1'>
+        <view class='jlBox {{unit=="0"?"active1   greenBorder":""}}'data-val='0' bindtap="chooseJlFunc">箱</view>
+        <view class='jlBox {{unit=="1"?"active1  greenBorder":""}}'bindtap="chooseJlFunc" data-val='1'>斤</view>
+      </view>
+      <view class='smallName'>数量:</view>
+      <view class='goods'>
+　　　　　 <view bindtap='jian' class='jian greenBox' data-num='{{num}}'>-</view>
+　　　　　 <input name='num' bindchange='num' type='text' value='{{num}}'/>
+　　　　　 <view bindtap='jia' class='jia greenBox' data-num='{{num}}'>+</view>
+　　　 </view>
+      <view class='footer flexBox fr greenBox' data-item='{{clickItem}}' bindtap="addCar">
+          +加入购物车
+      </view>
+    </view>
+  </van-popup>
+  <van-popup show="{{ show1 }}"
+  custom-style="width:70%;border-radius:10rpx;" >
+    <view class='popup1'>
+      <view class='name'>提示</view>
+      <view class='info'>您还未登陆，请授权登陆</view>
+      <view class='footer flexBox'>
+        <button  bindtap="onClose"class='qx'>取消</button>
+        <button class='sq' open-type="getUserInfo" bindtap="bindGetUserInfo">登录</button>
+      </view>
+    </view>
+  </van-popup>
 </view>

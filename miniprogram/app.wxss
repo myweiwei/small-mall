@@ -1,4 +1,7 @@
 /**app.wxss**/
+body,html{
+  height:100%
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -153,4 +156,28 @@ page {
   font-size: 24rpx;
   line-height: 36rpx;
   word-break: break-all;
+}
+
+.flexBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fl {
+  float:left;
+}
+.fr {
+  float:right;
+}
+.greenBox {
+  background:#1aad19;
+  color:#fff;
+}
+.greenColor {
+    color:#1aad19;
+    border-left: 4rpx solid #1aad19;
+}
+.greenBorder {
+  color:#1aad19!important;
+  border:1px solid #1aad19!important;
 }
