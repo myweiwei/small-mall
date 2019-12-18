@@ -56,8 +56,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/index/index",
-					"pathName": "pages/sidebar/sidebar",
+					"name": "pages/car/car",
+					"pathName": "pages/car/car",
 					"query": "",
 					"scene": null
 				},

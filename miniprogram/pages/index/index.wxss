@@ -44,13 +44,6 @@
   margin-top:5rpx;
   color:#646464;
 }
-.productList .stock{
-  color: #d81e06;
-  padding:0 2rpx;
-  border: 1px solid #d81e06;
-  border-radius: 5rpx;
-  margin-left: 5rpx;
-}
 .productList .price{
   justify-content: flex-start;
   align-items: baseline;

@@ -36,10 +36,37 @@ Page({
   　　var num = e.detail.value;
   　　this.setData({ num: num });
 　},
+  getUser: function () {
+    var me = this;
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //通过wx.login内置函数，得到临时code码
+          wx.request({
+            url: me.data.baseUrl + '/openIdSessionKey',
+            method: "get",
+            data: {
+              code: res.code
+            },
+            success: function (data) {
+              console.log(data);
+              me.setData({
+                userId: data.data.data
+              })
+            },
+            error: function (err) {
+              console.log(err);
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
+  },
   addCar:function(e){
     let me=this;
     let item = e.currentTarget.dataset.item;
-    console.log(item);
     wx.request({
       url: this.data.baseUrl + '/shopcar/product', 
       method: 'post',
@@ -115,7 +142,6 @@ Page({
         height += (rect.height-26);
         arr.push(height);
       })
-      console.log(arr)
     }).exec();
     this.setData({
       heightList: arr
@@ -146,64 +172,22 @@ Page({
       clickItem: e.target.dataset.item
     })
   },
-  getUser:function(){
-    var that = this;
-    wx.login({
-      success(res) {
-        if (res.code) {
-          //通过wx.login内置函数，得到临时code码
-          wx.request({
-            url: that.data.baseUrl+'/openIdSessionKey',
-            data: {
-              code: res.code
-            },
-            success:function(data){
-              that.setData({
-                userId:data.data.data
-              })
-            },
-            error:function(err){
-              console.log(err);
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
-    // wx.getSetting({
-    //   success: function (res) {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       wx.getUserInfo({
-    //         success: function (res) {
-    //           console.log(res.userInfo)
-    //         }
-    //       })
-    //     }
-    //     else {
-    //       that.setData({ show1: true })
-    //     }
-    //   }
-    // })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let me=this;
+    me.setData({
+      baseUrl: app.baseUrl,
+    });
     me.getUser();
+    me.getList();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(app.globalData.baseUrl);
-    this.setData({
-      baseUrl: app.globalData.baseUrl
-    });
-    this.getList()
 
   },
 
@@ -211,7 +195,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let me=this;
+    me.getList();
   },
 
   /**

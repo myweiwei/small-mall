@@ -1,1 +1,102 @@
 /* pages/car/car.wxss */
+.boxContainer {
+  background: #fff;
+}
+.carList {
+  height: 170rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #f7f7f7;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  position:relative;
+}
+.carList image {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+/*checkbox 整体大小  */
+checkbox {
+  -webkit-tap-highlight-color:#FF525C;
+  border:none;
+}
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width:40rpx;
+  height:40rpx;
+  border-radius:50%;
+  border:1rpx solid #FF525C;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #FF525C;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.guige {
+  width:100rpx;
+  height:30rpx;
+  background: rgb(238, 233, 233);
+  color:rgb(105, 101, 101);
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5rpx;
+  margin-top:4rpx;
+}
+.guige image {
+  width:20rpx;
+  height:20rpx;
+  margin:0rpx;
+}
+.carList .price {
+  height:68rpx;
+  line-height: 68rpx;
+}
+.carList .goods {
+  position:absolute;
+  margin-top:20rpx;
+  bottom:0rpx;
+  right:4rpx;
+  width:200rpx;
+  height:20rpx;
+  line-height: 20rpx;
+}
+.goods .jian,.goods .jia{
+  padding:10rpx;
+  width:20rpx;
+  height:20rpx;
+  border-radius:50%;
+  position:absolute;
+  text-align: center;
+  line-height:20rpx;
+}
+.goods .jian{
+  left:0rpx;
+  bottom:0;
+}
+.goods .jia {
+  right:0;
+  bottom:0;
+}
+.goods input {
+  width:80rpx;
+  height:40rpx;
+  position:absolute;
+  left:50%;
+  bottom:10%;
+  transform: translateX(-50%);
+  text-align: center;
+}

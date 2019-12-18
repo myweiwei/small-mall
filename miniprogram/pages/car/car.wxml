@@ -1,32 +1,26 @@
-<view class="businessCard-bot">
-    <scroll-view class="businessCard-bot-left floarLeft" scroll-y style="height:{{viewHeg}}px" scroll-into-view="{{toIndex}}" scroll-with-animation="true" enable-back-to-top="true">
-      <view wx:for="{{cardData}}" wx:key="{{item.id}}" id="{{item.latter}}">
-        <view class="scroll-header">
-          {{item.latter}}
-        </view>
-        <navigator url="/pages/mingpianxinxi/mingpianxinxi" hover-class="none" wx:for="{{item.datas}}" wx:for-item="itemName" wx:key="{{itemName.id}}">
-          <image src="{{itemName.img}}" class="floarLeft"></image>
-          <view class="card-right floarLeft">
-            <view class="authentication overHiden">
-              <view class="authentication-left floarLeft">
-                {{itemName.name}}
-              </view>
-              <view class="authentication-right floarRight">
-                {{itemName.time}}
-              </view>
-            </view>
-            <view class="card-cent overHiden">
-              <view wx:for="{{itemName.note}}" wx:for-item="itemNamenumber">{{itemNamenumber}}</view>
-            </view>
-            <view class="card-bottom overHiden">
-              <view>{{itemName.company}}</view>
-              <view>{{itemName.catio}}</view>
-            </view>
+<view class='boxContainer'>
+  <scroll-view>
+  
+      <view class='flexBox carList'  wx:for='{{carData.cartProductVOList}}' wx:key='{{item.id}}'>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox">
+          <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
+        </label>
+      </checkbox-group>
+        <image src='http://{{item.productPicture}}'></image>
+        <view class='info'>
+          <view>{{item.productName}}</view>
+          <view class='guige'>规格:{{item.unit==0?"斤":"箱"}}
+            <image src='../../images/down.png'></image>
           </view>
-        </navigator>
+          <view class='price'>￥{{item.unit==0?item.jinPrice:item.boxPrice}}</view>
+          <view class='goods'>
+    　　　　　 <view bindtap='jian' class='jian greenBox' data-num='{{num}}'>-</view>
+    　　　　　 <input name='num' bindchange='num' type='text' value='{{num}}'/>
+    　　　　　 <view bindtap='jia' class='jia greenBox' data-num='{{num}}'>+</view>
+    　　　 </view>
+        </view>
+          
       </view>
-    </scroll-view>
-    <view class="businessCard-bot-right floarRight" style="height:{{viewHeg}}px">
-      <view wx:for="{{letter}}" wx:key="*this" data-letter="{{item}}" bindtap="clickLetter">{{item}}</view>
-    </view>
-  </view>
+  </scroll-view>
+</view>

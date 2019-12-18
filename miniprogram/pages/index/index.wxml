@@ -4,7 +4,7 @@
     <view wx:for='{{list}}'  wx:key='{{item.id}}'data-id='{{"a"+item.id}}'
 class='navList {{currentIndex==index?"active greenColor":""}}' bindtap="listClick" data-index='{{index}}'>{{item.name}}</view>
   </scroll-view>
-<scroll-view scroll-y='true' scroll-into-view='{{activeList}}'scroll-with-animation='true' bindscroll='scrollFunc' class='content' style='height:1250rpx;'>
+<scroll-view scroll-y='true' scroll-into-view='{{activeList}}'scroll-with-animation='true' bindscroll='scrollFunc' class='content' style='height:100%;'>
     <view class="fishList" wx:for='{{list}}' id='{{"a"+item.id}}' wx:key='{{item.id}}'>
       <view class='titleBox greenBox'>{{item.name}}</view>
       <view wx:for='{{item.products}}' wx:for-item="items" wx:key='{{items.id}}' class='productList'>
@@ -13,7 +13,6 @@ class='navList {{currentIndex==index?"active greenColor":""}}' bindtap="listClic
           <view class='name'>{{items.name}}</view>
             <view class='flexBox stockFlex'>
               <view class='shortInfo'>{{items.introduce}}</view>
-            <view class='stock'>{{"库存"+items.stock}}</view>
           </view>
           <view class='flexBox'>
           </view>
