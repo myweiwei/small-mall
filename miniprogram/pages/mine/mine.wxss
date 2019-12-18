@@ -1,0 +1,86 @@
+@import "../../icon/iconfont.wxss";
+
+.my-container {
+    width: 100%;
+}
+/*********************微信用户相关********************/
+.user-wechat-info {
+    width: 100%;
+    height: 200rpx;
+    display: flex;
+    background-color: #E45050;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.head-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 40rpx;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.head-name {
+  margin-left: 20rpx;
+  width: 140rpx;
+  color: #FFFFFF;
+}
+/******************************************************/
+
+/*********************订单相关*******************/
+.order-info {
+  width: 100%;
+  height: 192rpx;
+  display: flex;
+  background-color:#FFFFFF;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+}
+.order-info-item{
+  font-size:20px;
+  display: inline-block;
+}
+
+/*================================================*/
+.other-service{
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item1{
+  background-image: url("http://file02.16sucai.com/d/file/2015/0408/779334da99e40adb587d0ba715eca102.jpg");
+  padding-left: 60rpx;
+  width: 100%;
+  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #FFFFFF;
+}
+
+
+
+
+
+
+.border-top{position: relative;border-top: none !important;}
+.border-top:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}

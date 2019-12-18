@@ -14,7 +14,5 @@ App({
         traceUser: true,
       })
     }
-
-    
   }
 })
