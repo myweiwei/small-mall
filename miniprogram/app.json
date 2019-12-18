@@ -2,8 +2,7 @@
   "pages": [
     "pages/mine/mine",
     "pages/index/index",
-    "pages/car/car",
-    "pages/sidebar/sidebar"
+    "pages/car/car"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

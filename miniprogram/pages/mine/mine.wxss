@@ -34,13 +34,10 @@
   width: 100%;
   height: 192rpx;
   display: flex;
-  border-radius: 10%;
   background-color:#FFFFFF;
   justify-content: space-around;
   align-items: center;
   overflow: hidden;
-
-
 }
 .order-info-item{
   font-size:20px;
@@ -48,3 +45,42 @@
 }
 
 /*================================================*/
+.other-service{
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item1{
+  background-image: url("http://file02.16sucai.com/d/file/2015/0408/779334da99e40adb587d0ba715eca102.jpg");
+  padding-left: 60rpx;
+  width: 100%;
+  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #FFFFFF;
+}
+
+
+
+
+
+
+.border-top{position: relative;border-top: none !important;}
+.border-top:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}

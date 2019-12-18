@@ -12,4 +12,12 @@
        <view class="iconfont icon-wodedingdan"></view>
     </view>
 
+    <view class="other-service">
+      <view class="item1 border-top">地址管理</view>
+      <view class="item1 border-top">烹饪大全</view>
+      <view class="item1 border-top">意见与反馈</view>
+      <view class="item1 border-top">商家联系方式</view>
+      <view class="item1 border-top">关于FrozenFish</view>
+    </view>
+
 </view>

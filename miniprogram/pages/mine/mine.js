@@ -32,12 +32,12 @@ Page({
   onLoad: function () {
       const that = this;
       // 调用getWechatInfo获取userInfo
-      app.getWechatInfo(function (userInfo) {
-          //更新数据
-          that.setData({
-              wechatInfo: userInfo
-          });
-      });
+      // app.getWechatInfo(function (userInfo) {
+      //     //更新数据
+      //     that.setData({
+      //         wechatInfo: userInfo
+      //     });
+      // });
       // 调接口GetOrderNum
       // http({
       //     url: "GetOrderNum",
