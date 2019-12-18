@@ -1,0 +1,50 @@
+@import "../../icon/iconfont.wxss";
+
+.my-container {
+    width: 100%;
+}
+/*********************微信用户相关********************/
+.user-wechat-info {
+    width: 100%;
+    height: 200rpx;
+    display: flex;
+    background-color: #E45050;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.head-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 40rpx;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.head-name {
+  margin-left: 20rpx;
+  width: 140rpx;
+  color: #FFFFFF;
+}
+/******************************************************/
+
+/*********************订单相关*******************/
+.order-info {
+  width: 100%;
+  height: 192rpx;
+  display: flex;
+  border-radius: 10%;
+  background-color:#FFFFFF;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+
+
+}
+.order-info-item{
+  font-size:20px;
+  display: inline-block;
+}
+
+/*================================================*/

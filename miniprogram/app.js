@@ -15,7 +15,7 @@ App({
     }
 
     this.globalData = {
-      baseUrl:'http://192.168.1.9:8888'
+      baseUrl:'http://localhost:8888'
     }
   }
 })

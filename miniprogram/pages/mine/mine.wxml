@@ -1,0 +1,15 @@
+<view class="my-container">
+    <!--微信用户相关信息-->
+    <view class="user-wechat-info">
+        <open-data type="userAvatarUrl" class="head-img"></open-data>
+        <open-data type="userNickName" class="head-name">123123213</open-data> 
+    </view>
+
+    <view class="order-info">
+       <view class="iconfont icon-daifukuan"></view>
+       <view class="iconfont icon-daishouhuo"></view>
+       <view class="iconfont icon-daipingjia"></view>
+       <view class="iconfont icon-wodedingdan"></view>
+    </view>
+
+</view>
