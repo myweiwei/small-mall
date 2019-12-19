@@ -3,10 +3,10 @@
 .my-container {
     width: 100%;
 }
-/*********************微信用户相关********************/
+/*--------------------------------微信用户相关-----------------------------------*/
 .user-wechat-info {
     width: 100%;
-    height: 200rpx;
+    height: 250rpx;
     display: flex;
     background-color: #E45050;
     justify-content: flex-start;
@@ -27,9 +27,9 @@
   width: 140rpx;
   color: #FFFFFF;
 }
-/******************************************************/
 
-/*********************订单相关*******************/
+
+/*----------------------------订单相关----------------------------*/
 .order-info {
   width: 100%;
   height: 192rpx;
@@ -40,11 +40,18 @@
   overflow: hidden;
 }
 .order-info-item{
-  font-size:20px;
-  display: inline-block;
+  text-align: center;
+}
+.order-info-image
+{
+   vertical-align: middle;
+}
+.order-info-text{
+  font-size: 30rpx;
+  vertical-align: middle;
 }
 
-/*================================================*/
+/*------------------其他的选项------------------------------*/
 .other-service{
   width: 100%;
   height: 500rpx;
@@ -53,21 +60,30 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.item1{
-  background-image: url("http://file02.16sucai.com/d/file/2015/0408/779334da99e40adb587d0ba715eca102.jpg");
-  padding-left: 60rpx;
+.item{
   width: 100%;
   font-size: 30rpx;
   height: 100rpx;
   line-height: 100rpx;
   background: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+.images{
+  width: 60rpx;
+  height: 60rpx;
+  padding-left: 40rpx;
+  padding-right: 30rpx;
+  vertical-align:middle;
+}
+.text{
+  vertical-align:middle;
 }
 
 
 
-
-
-
+/* -----------------border一像素----------------- */
 .border-top{position: relative;border-top: none !important;}
 .border-top:after {
     content: " ";

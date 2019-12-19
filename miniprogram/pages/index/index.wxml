@@ -18,7 +18,7 @@ class='navList {{currentIndex==index?"active greenColor":""}}' bindtap="listClic
           </view>
           <view class='flexBox'>
             <view class='flexBox price'>
-              <view class='price_count'>{{"￥"+items.jinPrice}}</view>
+              <view class='price_count'>{{"￥"+items.price}}</view>
               <view class='price_info'>/斤</view>
             </view>
             <view class='choose greenBox' bindtap='chooseFunc' data-item='{{items}}'>选规格</view>
