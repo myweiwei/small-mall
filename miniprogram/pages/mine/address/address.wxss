@@ -1,0 +1,24 @@
+.my-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.address-item{
+  width: 100%;
+  height: 150rpx;
+  background: #FF00FF;
+  display: flex;
+  flex-flow:row;
+}
+.address-item view{
+  width:50%;
+  display:inline-block;
+}
+.add-address{
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(223, 80,80);
+  left:50%;
+  transform: translateX(-50%);
+  color:#fff;
+}

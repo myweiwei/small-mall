@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/mine/address/address",
     "pages/mine/mine",
     "pages/index/index",
     "pages/car/car"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
