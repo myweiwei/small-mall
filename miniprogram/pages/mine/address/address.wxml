@@ -1,0 +1,10 @@
+<view class="my-container">
+      <view class='flexBox'>
+        <view>李磊</view>
+        <view>16619962166</view>
+      </view>
+    
+        <view>北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区</view>
+  
+<button class="add-address">+新增收货地址</button>
+</view>

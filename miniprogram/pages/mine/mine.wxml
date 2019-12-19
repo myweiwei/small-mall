@@ -1,51 +1,51 @@
 <view class="my-container">
-    <!--微信用户-->
-    <view class="user-wechat-info">
-        <open-data type="userAvatarUrl" class="head-img"></open-data>
-        <open-data type="userNickName" class="head-name">123123213</open-data> 
-    </view>
+  <!--微信用户-->
+  <view class="user-wechat-info">
+    <open-data type="userAvatarUrl" class="head-img"></open-data>
+    <open-data type="userNickName" class="head-name">123123213</open-data>
+  </view>
 
-    <!--订单详情-->
-    <view class="order-info">
-       <view class="order-info-item">
-        <view class="iconfont icon-daifukuan"></view>
-        <text class="order-info-text">待付款</text>
-       </view>
-       <view class="order-info-item">
-       <view class="iconfont icon-daishouhuo"></view>
-        <text class="order-info-text">待收货</text>
-       </view>
-       <view class="order-info-item">
-          <view class="iconfont icon-daipingjia"></view>
-           <text class="order-info-text">待评价</text>
-       </view>
-       <view class="order-info-item">
-          <view class="iconfont icon-wodedingdan"></view>
-          <text class="order-info-text">我的订单</text>
-       </view>
+  <!--订单详情-->
+  <view class="order-info">
+    <view class="order-info-item">
+      <view class="iconfont icon-daifukuan"></view>
+      <text class="order-info-text">待付款</text>
     </view>
+    <view class="order-info-item">
+      <view class="iconfont icon-daishouhuo"></view>
+      <text class="order-info-text">待收货</text>
+    </view>
+    <view class="order-info-item">
+      <view class="iconfont icon-daipingjia"></view>
+      <text class="order-info-text">待评价</text>
+    </view>
+    <view class="order-info-item">
+      <view class="iconfont icon-wodedingdan"></view>
+      <text class="order-info-text">我的订单</text>
+    </view>
+  </view>
 
-    <!--其他乱七八糟-->
-    <view class="other-service">
-      <view class="item border-top">
-        <image class="images" src="../../images/mine/address.png"> </image>
-        <text class="text">收货地址</text>
-      </view>
-      <view class="item border-top">
-         <image class="images" src="../../images/mine/cook.png"> </image>
-        <text class="text">烹饪大全</text>
-      </view>
-      <view class="item border-top">
-         <image class="images" src="../../images/mine/say.png"> </image>
-        <text class="text">意见反馈</text>
-      </view>
-      <view class="item border-top">
-         <image class="images" src="../../images/mine/tel.png"> </image>
-        <text class="text">联系方式</text>
-      </view>
-      <view class="item border-top">
-        <image class="images" src="../../images/mine/about.png"> </image>
-        <text class="text">关于FrozenFish</text>
-      </view>
+  <!--其他乱七八糟-->
+  <view class="other-service">
+    <view class="item border-top" catchtap="addressListener">
+      <image class="images" src="../../images/mine/address.png"> </image>
+      <text class="text">收货地址</text>
     </view>
+    <view class="item border-top">
+      <image class="images" src="../../images/mine/cook.png"> </image>
+      <text class="text">烹饪大全</text>
+    </view>
+    <view class="item border-top">
+      <image class="images" src="../../images/mine/say.png"> </image>
+      <text class="text">意见反馈</text>
+    </view>
+    <view class="item border-top">
+      <image class="images" src="../../images/mine/tel.png"> </image>
+      <text class="text">联系方式</text>
+    </view>
+    <view class="item border-top">
+      <image class="images" src="../../images/mine/about.png"> </image>
+      <text class="text">关于FrozenFish</text>
+    </view>
+  </view>
 </view>
