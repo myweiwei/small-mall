@@ -11,14 +11,125 @@ Page({
     scrollTop:0,//滚上去了多少？
     heightList:[],//右侧菜单高度
     baseUrl:"",
-    show:false,
     clickItem:"",
     unit:0,
     num:1,
     totalPrice:0,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     show1:false,
-    userId:''
+    userId:'',
+    chooseSize:false,
+    chooseData:[],
+    chooseImageUrl:'',
+    choosePrice:"0",
+    chooseWeight:'0',
+    activeChoose:'',
+    chooseUnit:'',
+    chooseName:''
+  },
+  showshadow: function (e) {
+    let me=this;
+    if (me.data.chooseSize == false) {
+      me.getGuige(e.target.dataset.item.id);
+    } else {
+      me.hideModal();
+    }
+  },
+  getGuige:function(id){
+    let me = this;
+    me.setData({
+      chooseImageUrl: '',
+      choosePrice: '',
+      chooseWeight: ''
+    })
+    wx.request({
+      url: me.data.baseUrl + '/productItem/',
+      method: "get",
+      data: {
+        productId:id
+      },
+      success: function (data) {
+        me.setData({
+          chooseData:data.data.data
+        })
+        if (me.data.chooseData.length){
+          me.setData({
+            chooseImageUrl: me.data.chooseData[0].picture,
+            choosePrice: me.data.chooseData[0].price,
+            chooseWeight: me.data.chooseData[0].weight,
+            activeChoose: me.data.chooseData[0].id,
+            chooseUnit: me.data.chooseData[0].unit,
+            chooseName: me.data.chooseData[0].name
+          })
+        }
+        me.chooseSezi();
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
+  },
+  changeChoose:function(e){
+    let me=this;
+    me.setData({
+      chooseImageUrl: e.target.dataset.item.picture,
+      choosePrice: e.target.dataset.item.price,
+      chooseWeight: e.target.dataset.item.weight,
+      activeChoose: e.target.dataset.item.id,
+      chooseUnit: e.target.dataset.item.unit,
+      chooseName: e.target.dataset.item.name
+    })
+  },
+  // 动画函数
+  chooseSezi: function (e) {
+    // 用that取代this，防止不必要的情况发生
+    var that = this;
+    // 创建一个动画实例
+    var animation = wx.createAnimation({
+      // 动画持续时间
+      duration: 100,
+      // 定义动画效果，当前是匀速
+      timingFunction: 'linear'
+    })
+    // 将该变量赋值给当前动画
+    that.animation = animation
+    // 先在y轴偏移，然后用step()完成一个动画
+    animation.translateY(1000).step()
+    // 用setData改变当前动画
+    that.setData({
+      // 通过export()方法导出数据
+      animationData: animation.export(),
+      // 改变view里面的Wx：if
+      chooseSize: true
+    })
+    // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动 滑动时间
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        clearcart: false
+      })
+    }, 100)
+  },
+  // 隐藏
+  hideModal: function (e) {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(700).step()
+    that.setData({
+      animationData: animation.export()
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        chooseSize: false
+      })
+    }, 200)
   },
   jia: function (e) {
     var num = e.currentTarget.dataset.num;
@@ -49,7 +160,6 @@ Page({
               code: res.code
             },
             success: function (data) {
-              console.log(data);
               me.setData({
                 userId: data.data.data
               })
@@ -64,35 +174,34 @@ Page({
       }
     });
   },
+  // 加入购物车
   addCar:function(e){
     let me=this;
-    let item = e.currentTarget.dataset.item;
-    wx.request({
-      url: this.data.baseUrl + '/shopcar/product', 
-      method: 'post',
-      dataType:"json",
-      data: {
-        userId:me.data.userId,
-        productId:item.id,
-        number:me.data.num,
-        unit:me.data.unit
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        wx.showToast({
-          title: '加入成功',
-          icon:'success'
-        });
-        me.setData({
-          show:false
-        })
-      },
-      error:function(err){
-        console.log(err);
-      }
-    })
+    console.log("加入购物车");
+    //let item = e.currentTarget.dataset.item;
+    // wx.request({
+    //   url: this.data.baseUrl + '/shopcar/product', 
+    //   method: 'post',
+    //   dataType:"json",
+    //   data: {
+    //     userId:me.data.userId,
+    //     productId:item.id,
+    //     number:me.data.num,
+    //     unit:me.data.unit
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success(res) {
+    //     wx.showToast({
+    //       title: '加入成功',
+    //       icon:'success'
+    //     });
+    //   },
+    //   error:function(err){
+    //     console.log(err);
+    //   }
+    // })
   },
   getList:function(){
     let me=this;
@@ -117,7 +226,6 @@ Page({
   },
   onClose:function(){
     this.setData({
-      show:false,
       show1:false
     })
   },
@@ -163,13 +271,6 @@ Page({
     }
     this.setData({
       currentIndex: 0
-    })
-  },
-  chooseFunc:function(e){
-    let me=this;
-    me.setData({
-      show:true,
-      clickItem: e.target.dataset.item
     })
   },
   /**
