@@ -6,7 +6,6 @@
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
@@ -21,9 +20,10 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"preloadBackgroundData": false
 	},
-	"appid": "wx3772e147cf43961e",
+	"appid": "wxecd47a9f60c618d4",
 	"projectname": "small-mall",
 	"libVersion": "2.9.4",
 	"simulatorType": "wechat",

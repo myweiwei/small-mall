@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+        "van-field": "@vant/weapp/field/index",
+        "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+        "van-area": "@vant/weapp/area/index"
+  }
+}
