@@ -1,1 +1,17 @@
 /* pages/mine/address/addAddress/addAddress.wxss */
+.van-cell{
+  padding:32rpx!important;
+}
+.addAddress {
+  width:100%;
+}
+.setMr {
+  background: #fff;
+  padding:30rpx;
+  font-size:28rpx;
+  color:#323233;
+}
+.setMr .info {
+  font-size:25rpx;
+  margin-top:10rpx;
+}

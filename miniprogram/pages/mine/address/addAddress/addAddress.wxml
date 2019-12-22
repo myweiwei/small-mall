@@ -1,60 +1,59 @@
-<van-cell-group>
-  <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="收货人"
-    icon="question-o"
-    placeholder="请输入用户名"
-    bind:click-icon="onClickIcon"
-  />
+<view class='addAddress'>
+  <van-cell-group>
+    <van-field
+      value="{{  addAddr.name }}"
+      clearable
+      title-width='150rpx'
+      label="收货人"
+      icon="contact"
+      placeholder=""
+    />
+    <van-field
+      value="{{  addAddr.phone }}"
+      title-width='150rpx'
+      clearable
+      label="手机号码"
+      icon="phone-o"
+      placeholder=""
+    />
+    <van-field
+      value="{{ addAddr.province }}"
+      label="所在地区"
+      icon="arrow"
+      readonly
+      placeholder=""
+      bindtap='showPop'
+      title-width='150rpx'
+    />
+    <van-field
+      value="{{  addAddr.neighbourhood }}"
+      label="详细地址"
+      title-width='150rpx'
+      type="textarea"
+      icon="location-o"
+      placeholder="街道、门牌号等"
+      autosize
+    />
+  </van-cell-group>
+  <view class='flexBox setMr'>
+    <view>
+      <view class='title'>设为默认地址</view>
+      <view class='info'>提醒：每次下单会默认推荐使用该地址</view>
+    </view>
+    <view>
+        <van-switch size="48rpx" 
+      checked="{{  addAddr.defaults }}"
+      active-color="#fd2808"
+      bind:change="onChange"
+    />
+    </view>
+  </view>
 
-  <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="手机号码"
-    icon="question-o"
-    placeholder="请输入用户名"
-    bind:click-icon="onClickIcon"
-  />
-
-  <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="所在地区"
-    icon="question-o"
-    placeholder="请输入用户名"
-    bind:click-icon="onClickIcon"
-  />
-
-
-<van-area
-  area-list="{{ areaList }}"
-  columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}"
-  title="标题"
-/>
-
-  <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="详细地址"
-    icon="question-o"
-    placeholder="请输入用户名"
-    bind:click-icon="onClickIcon"
-  />
-
- <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="收货人"
-    icon="question-o"
-    placeholder="请输入用户名"
-    bind:click-icon="onClickIcon"
-  />
-
-
-</van-cell-group>
+  <van-popup show="{{show}}" position="bottom" custom-style="height: 50%;" round bind:close="onClose" >
+    <view style='margin-top:10rpx;'>
+      <van-area  bind:confirm='confirmFunc'
+      bind:cancel='onClose' area-list="{{ areaList }}"  value="110101" />
+    </view>
+  </van-popup>
+  <button class='bottom_btn' bindtap="saveAddr">保存</button>
+</view>
