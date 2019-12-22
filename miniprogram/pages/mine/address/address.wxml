@@ -1,21 +1,31 @@
 <view class="my-container">
-<view>
+<view class="nullAddress" wx:if='{{mydata.length}}'>
+  <image style="width:150rpx; height:160rpx;" src="../../../images/nullAddress.png"></image>
+  <view class='info'>您还没有收获地址哦！</view>
+  <view class='add_address'>新建地址</view>
+</view>
+<!-- 
 
-      <view class="flexBox" style="width:70%; height:145rpx;">
-        <view>李磊</view>
-        <view>16619962166
-        <text>默认</text>
+  <view class="address-item border-top" wx:for='{{mydata}}' wx:key='{{item.id}}' wx:if='{{mydata.length}}'>
+
+        <view class="name-phone">
+          <text>{{item.name}}</text>
+          <text>{{item.phone}}</text>
+          <view style="flex:0 0 27%">
+            <text class="default-icon" wx:if="{{item.defaults == 1}}">默认              </text>
+          </view>
         </view>
         
-      </view>
-       <view class="flexBox" style="font-size:31rpx; margin-top:20rpx; ">
-        <view style="width:75%; height:83rpx; text-overflow:ellipsis;">北京海淀海淀海淀海淀海淀海海淀淀海海淀海淀海海淀海淀海海淀海淀海海淀海淀海海淀海淀海海淀海淀海海淀海海淀淀海淀</view>
-        <view style="padding-right:10rpx;">笔</view>
-      </view>
-      <!-- <view>dsfd</view> -->
-<!-- 
-        <view>北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区北京海淀区</view> -->
-  
-</view>
-<button class="add-address">+新增收货地址</button>
+        <view class="address-detail">
+          <view>
+            <text style="margin-right:15rpx;">{{item.province}}</text>
+            <text>{{item.neighbourhood}}</text>
+          </view>
+          <view style="flex:0 0 13%">
+           <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png"></image>
+          </view>
+        </view>
+
+    </view>
+    <button class="add-address" catchtap="addAddressListener">+新增收货地址</button> -->
 </view>
