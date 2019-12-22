@@ -1,56 +1,31 @@
 const app = getApp();
 const tapItemArray = [];
-// const {http} = require('../../utils/util.js');
 Page({
-  /**
-   * 页面的初始数据
-   */
-  data: {
-      wechatInfo: {},       // 初始化账户信息，包括头像、昵称等
-      allOrders: "",        // 初始化订单数量
-      unpaidOrder: "",      // 初始化待付款订单数量
-      notReceivedOrder: "", // 初始化待收货订单数量
-      discountCard: ""      // 初始化优惠券数量
+  addAddressListener: function () {
+    wx.navigateTo({
+      url: '/pages/mine/address/addAddress/addAddress'
+    })
   },
-    /**
-     * 点击弹出售后订单后台设置提示
-     */
-    tapPaidOrder: () => {
-        wx.showModal({
-            title: `请至"微信-发现-购物-个人中心"进行售后订单管理`,
-            confirmText: "知道了",
-            confirmColor: "#E45050",
-            showCancel: false,
-            success: function (res) {
 
-            }
-        });
-    },
+  data: {
+    mydata:[]
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-      const that = this;
-      // 调用getWechatInfo获取userInfo
-      // app.getWechatInfo(function (userInfo) {
-      //     //更新数据
-      //     that.setData({
-      //         wechatInfo: userInfo
-      //     });
-      // });
-      // 调接口GetOrderNum
-      // http({
-      //     url: "GetOrderNum",
-      //     loading: true,
-      //     func: function(data){
-      //         that.setData({
-      //             allOrders: data["all_orders"] ? data["all_orders"]+"单" : "",
-      //             unpaidOrder: data["unpaid_order"] ? data["unpaid_order"]+"单" : "",
-      //             notReceivedOrder: data["not_received_order"] ? data["not_received_order"]+"单" : "",
-      //             discountCard: data["discount_card"] ? data["all_orders"]+"单" : ""
-      //         });
-      //     }
-      // });
+      var that = this;
+      wx.request({
+        url: app.baseUrl + '/address',
+        data: { userId: 288},
+        method: 'GET',
+        success: function (res) {
+          console.log(res.data.data);
+          that.setData({
+            mydata: res.data.data
+          });
+        }
+       });
   },
 
   /**

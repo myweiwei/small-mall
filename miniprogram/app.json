@@ -1,9 +1,12 @@
 {
   "pages": [
-    "pages/mine/address/addAddress/addAddress",
     "pages/mine/address/address",
-    "pages/index/index",
+    "pages/mine/address/addAddress/addAddress",
     "pages/mine/mine",
+   
+    
+    "pages/index/index",
+    
     "pages/car/car"
     
   ],
