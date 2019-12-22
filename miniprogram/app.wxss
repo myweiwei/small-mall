@@ -200,3 +200,15 @@ page {
     -ms-transform: scaleY(0.5);
     transform: scaleY(0.5);
 }
+.bottom_btn{
+  width:600rpx!important;
+  position:absolute;
+  bottom:20rpx;
+  left:50%;
+  transform: translateX(-50%);
+  background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
+  color:#fff;
+  font-weight:normal;
+  border-radius:50rpx;
+  font-size:30rpx;
+}
