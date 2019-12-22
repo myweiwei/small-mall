@@ -1,31 +1,26 @@
 <view class="my-container">
-<view class="nullAddress" wx:if='{{mydata.length}}'>
-  <image style="width:150rpx; height:160rpx;" src="../../../images/nullAddress.png"></image>
-  <view class='info'>您还没有收获地址哦！</view>
-  <view class='add_address'>新建地址</view>
-</view>
-<!-- 
-
+  <view class="nullAddress" wx:if='{{!mydata.length}}'>
+    <image style="width:150rpx; height:160rpx;" src="../../../images/nullAddress.png"></image>
+    <view class='info'>您还没有收获地址哦！</view>
+    <view class='add_address'>新建地址</view>
+  </view>
   <view class="address-item border-top" wx:for='{{mydata}}' wx:key='{{item.id}}' wx:if='{{mydata.length}}'>
-
-        <view class="name-phone">
-          <text>{{item.name}}</text>
-          <text>{{item.phone}}</text>
-          <view style="flex:0 0 27%">
-            <text class="default-icon" wx:if="{{item.defaults == 1}}">默认              </text>
-          </view>
+      <view class="name-phone flexBox">
+        <text class='name'>{{item.name}}</text>
+        <text>{{item.phone}}</text>
+        <view>
+          <text class="default-icon" wx:if="{{item.defaults == 1}}">默认              </text>
         </view>
-        
-        <view class="address-detail">
-          <view>
-            <text style="margin-right:15rpx;">{{item.province}}</text>
-            <text>{{item.neighbourhood}}</text>
-          </view>
-          <view style="flex:0 0 13%">
-           <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png"></image>
-          </view>
+      </view>
+      <view class="address-detail flexBox">
+        <view class='detail_top'>
+          <text style="margin-right:15rpx;">{{item.province}}</text>
+          <text>{{item.neighbourhood}}</text>
         </view>
-
-    </view>
-    <button class="add-address" catchtap="addAddressListener">+新增收货地址</button> -->
+        <view>
+          <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png"></image>
+        </view>
+      </view>
+  </view>
+  <button class="bottom_btn"  wx:if='{{mydata.length}}' catchtap="addAddressListener">+新增收货地址</button>
 </view>

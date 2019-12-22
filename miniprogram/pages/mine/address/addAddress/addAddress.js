@@ -1,4 +1,4 @@
-// pages/mine/address/addAddress/addAddress.js
+
 const app = getApp();
 Page({
   /**
@@ -4046,37 +4046,40 @@ Page({
       }
     },
     show:false,
-    addAddr:{
-      userId: '',
-      province: '',
-      neighbourhood: '',
-      phone: '',
-      name: '',
-      defaults:true
-    }
+    userId: '',
+    province: '',
+    neighbourhood: '',
+    phone: '',
+    name: '',
+    defaults:true
+  },
+  onChange(event) {
+    // event.detail 为当前输入的值
+    console.log(event);
   },
   saveAddr:function(){
     let me=this;
-    console.log(me.data.addAddr);
-    // wx.request({
-    //   url: me.data.baseUrl + '/address',
-    //   method: "get",
-    //   data: {
-    //     code: res.code
-    //   },
-    //   success: function (data) {
-    //     me.setData({
-    //       [userId]: data.data.data
-    //     })
-    //   },
-    //   error: function (err) {
-    //     console.log(err);
-    //   }
-    // })
+    wx.request({
+      url: me.data.baseUrl + '/address',
+      method: "post",
+      data: {
+        userId:me.data.userId,
+        province:me.data.province,
+        neighbourhood: me.data.neighbourhood,
+        phone: me.data.phone,
+        name: me.data.name,
+        defaults: me.data.defaults?"1":"0"
+      },
+      success: function (data) {
+        console.log(data);
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
   },
   getUser: function () {
     let me = this;
-    let userId = 'addAddr.userId';
     wx.login({
       success(res) {
         
@@ -4092,7 +4095,7 @@ Page({
             success: function (data) {
               console.log(1);
               me.setData({
-                [userId]: data.data.data
+                userId: data.data.data
               })
             },
             error: function (err) {
@@ -4108,15 +4111,14 @@ Page({
   },
   onChange:function(data){
     let me=this;
-    let defaults = 'addAddr.defaults';
     if (data.detail==false){
       me.setData({
-        [defaults]: false
+        defaults: false
       })
     }
     else if(data.detail == true) {
       me.setData({
-        [defaults]:true
+        defaults:true
       })
     }
     
@@ -4135,14 +4137,13 @@ Page({
     })
   },
   confirmFunc:function(data){
-    let province = 'addAddr.province';
     let str='';
     let me=this;
     for(let i=0;i<data.detail.values.length;i++){
       str += data.detail.values[i].name;
     }
     me.setData({
-      [province]:str,
+      province:str,
       show:false
     });
   },
