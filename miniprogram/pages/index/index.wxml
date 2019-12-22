@@ -54,7 +54,7 @@
             <view class='flexBox goodCount'><view  bindtap='jian' class='jian {{num<=1?"noCount":""}}'  data-num='{{num}}'>-</view><view><input name='num' class='choose_count' type='text' value='{{num}}'/></view><view  bindtap='jia' class='jia' data-num='{{num}}'>+</view></view>
           </view>
         </scroll-view>
-        <view class='flexBox'>
+        <view class='flexBox btnList'>
           <button bindtap='addCar' class='add_car'>加入购物车</button>
           <button bindtap='addCar' class='buy_now'>立即购买</button>
         </view>

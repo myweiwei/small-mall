@@ -175,33 +175,27 @@ Page({
     });
   },
   // 加入购物车
-  addCar:function(e){
+  addCar:function(){
     let me=this;
-    console.log("加入购物车");
-    //let item = e.currentTarget.dataset.item;
-    // wx.request({
-    //   url: this.data.baseUrl + '/shopcar/product', 
-    //   method: 'post',
-    //   dataType:"json",
-    //   data: {
-    //     userId:me.data.userId,
-    //     productId:item.id,
-    //     number:me.data.num,
-    //     unit:me.data.unit
-    //   },
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success(res) {
-    //     wx.showToast({
-    //       title: '加入成功',
-    //       icon:'success'
-    //     });
-    //   },
-    //   error:function(err){
-    //     console.log(err);
-    //   }
-    // })
+    wx.request({
+      url: me.data.baseUrl + '/shopcar/product', 
+      method: 'post',
+      dataType:"json",
+      data: {
+        userId:me.data.userId,
+        productId: me.data.activeChoose,
+        number:me.data.num
+      },
+      success(res) {
+        wx.showToast({
+          title: '加入成功',
+          icon:'success'
+        });
+      },
+      error:function(err){
+        console.log(err);
+      }
+    })
   },
   getList:function(){
     let me=this;
