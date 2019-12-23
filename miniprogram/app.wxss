@@ -171,16 +171,16 @@ page {
   float:right;
 }
 .greenBox {
-  background:#1aad19;
+  background:#E45050;
   color:#fff;
 }
 .greenColor {
-    color:#1aad19;
-    border-left: 4rpx solid #1aad19;
+    color:#E45050;
+    border-left: 4rpx solid #E45050;
 }
 .greenBorder {
-  color:#1aad19!important;
-  border:1px solid #1aad19!important;
+  color:#E45050!important;
+  border:1px solid #E45050!important;
 }
 
 /* -----------------border一像素----------------- */

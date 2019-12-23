@@ -27,39 +27,38 @@
           </view>
         </view>
     </scroll-view>
-    <!-- 遮罩层 -->
-    <view class="shadow" wx:if="{{chooseSize}}" bindtap='hideModal'></view>
-    <!-- 上滑高度 -->
-    <view class='choosen' wx:if="{{chooseSize}}" animation='{{animationData}}'>
-      <view class="container-box">
-        <view class='flexBox choose'>
-          <image src='http://{{chooseImageUrl}}' title='"http://"+{{chooseImageUrl}}' wx:if='{{chooseImageUrl.length}}' class='choose_image'></image>
-          <image src='../../images/noData.png' wx:else='!{{chooseImageUrl.length}}' class='choose_image'></image>
-          <view>
-            <view class='choose_name'>{{chooseName}}</view>
-            <view class='choose_price'><text class='fh'>￥</text>{{choosePrice?choosePrice:"0"}}
-              <text class='unit'>/  {{chooseUnit}}</text>
-            </view>
-            <view class='choose_weight'>重量:{{chooseWeight?chooseWeight:"0"}}</view>
-        </view>
-        <image src='../../images/close.png' class='close' bindtap='hideModal'></image>
-        </view>
-        <view class='title'>产品</view>
-        <scroll-view scroll-y='true' style='height:60%;'>
-          <text wx:for='{{chooseData}}' wx:key='{{item.id}}' bindtap="changeChoose" data-item='{{item}}'>
-            <text class='choose_data {{activeChoose==item.id?"activeC":""}}'>{{item.spec}}</text>
-          </text> 
-          <view class='flexBox countBox'>
-            <view class='countTitle'>数量</view>  
-            <view class='flexBox goodCount'><view  bindtap='jian' class='jian {{num<=1?"noCount":""}}'  data-num='{{num}}'>-</view><view><input name='num' class='choose_count' type='text' value='{{num}}'/></view><view  bindtap='jia' class='jia' data-num='{{num}}'>+</view></view>
+    <van-popup show="{{chooseSize}}" position="bottom" custom-style="height: 70%;" round bind:close="hideModal" >
+      <view  class='choosen'>
+        <view class="container-box">
+          <view class='flexBox choose'>
+            <image src='http://{{chooseImageUrl}}' title='"http://"+{{chooseImageUrl}}' wx:if='{{chooseImageUrl.length}}' class='choose_image'></image>
+            <image src='../../images/noData.png' wx:else='!{{chooseImageUrl.length}}' class='choose_image'></image>
+            <view>
+              <view class='choose_name'>{{chooseName}}</view>
+              <view class='choose_price'><text class='fh'>￥</text>{{choosePrice?choosePrice:"0"}}
+                <text class='unit'>/  {{chooseUnit}}</text>
+              </view>
+              <view class='choose_weight'>重量:{{chooseWeight?chooseWeight:"0"}}</view>
           </view>
-        </scroll-view>
-        <view class='flexBox btnList'>
-          <button bindtap='addCar' class='add_car'>加入购物车</button>
-          <button bindtap='addCar' class='buy_now'>立即购买</button>
+          <image src='../../images/close.png' class='close' bindtap='hideModal'></image>
+          </view>
+          <view class='title'>产品</view>
+          <scroll-view scroll-y='true' style='height:60%;'>
+            <text wx:for='{{chooseData}}' wx:key='{{item.id}}' bindtap="changeChoose" data-item='{{item}}'>
+              <text class='choose_data {{activeChoose==item.id?"activeC":""}}'>{{item.spec}}</text>
+            </text> 
+            <view class='flexBox countBox'>
+              <view class='countTitle'>数量</view>  
+              <view class='flexBox goodCount'><view  bindtap='jian' class='jian {{num<=1?"noCount":""}}'  data-num='{{num}}'>-</view><view><input name='num' class='choose_count' type='text' value='{{num}}'/></view><view  bindtap='jia' class='jia' data-num='{{num}}'>+</view></view>
+            </view>
+          </scroll-view>
+          <view class='flexBox btnList'>
+            <button bindtap='addCar' class='add_car'>加入购物车</button>
+            <button bindtap='addCar' class='buy_now'>立即购买</button>
+          </view>
         </view>
       </view>
-    </view>
+    </van-popup>
     <van-popup show="{{ show1 }}"
     custom-style="width:70%;border-radius:10rpx;" >
       <view class='popup1'>

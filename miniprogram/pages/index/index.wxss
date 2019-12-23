@@ -105,28 +105,7 @@
   color:#07c160;
 }
 
-/* 选规格弹框 */
-.shadow{
-  width: 100%;
-  height: 100%;
-  z-index: 80;
-  position: absolute;
-  top: 0;
-  background-color: #000;
-  opacity: 0.5;
-}
-/* 上滑高度 */
-.choosen{
-  width: 100%;
-  height: 80%; 
-  position: fixed;
-  bottom: 0;
-  background-color: #fff;
-  border-top-left-radius: 20rpx;
-  border-top-right-radius: 20rpx;
-  z-index: 98;
-}
-/* 内容 */
+/* 选规格弹框内容 */
 .container-box {
   display: flex;
   height: 100%;
@@ -196,6 +175,11 @@
   right: 40rpx;
   top: 40rpx;
 }
+.choosen .btnList {
+  position: absolute;
+  bottom:0;
+  width:90%;
+}
 .choosen .add_car,.choosen .buy_now {
   font-weight: 200;
   margin:0;
@@ -208,9 +192,12 @@
   background: #d81e06;
   color:#fff;
   box-sizing: border-box;
+  bottom:0;
+  left:0rpx;
 }
 .choosen .buy_now {
   background: orange;
+  right:0rpx;
 }
 .countBox .tit {
   width:90%;
