@@ -1,0 +1,33 @@
+<view class="boxContainer">
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="全部订单">
+     
+    </van-tab>
+
+
+
+    <van-tab title="待付款">
+     <view class="order-item">
+        <view class="top">
+          <image class="top-icon" src="../../../images/mine/cook.png"></image>
+          <text class="wait-pay-text">等待付款</text>
+        </view>
+        <view class="middle">
+          <view class="middle-image">
+            <image class="middle-image-size" src="../../../images/mine/tel.png"></image>
+            <image class="middle-image-size" src="../../../images/mine/tel.png"></image>
+            <image class="middle-image-size" src="../../../images/mine/tel.png"></image>
+          </view>
+          <view>
+            <view>￥3299.80</view>
+            <view>共3件</view>
+          </view>
+        </view>
+        <view class="pay-button">去支付</view>
+      </view>
+    </van-tab>
+
+    <van-tab title="待收货">待收货</van-tab>
+    <van-tab title="待评价">已完成</van-tab>
+  </van-tabs>
+</view>

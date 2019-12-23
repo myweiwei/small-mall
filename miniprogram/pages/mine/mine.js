@@ -7,7 +7,13 @@ Page({
   data: {
      
   },
-
+  orderClick:function(e){
+    var enterMethod = e.currentTarget.id;
+    wx.navigateTo({
+      url: '/pages/mine/order/order?id=' + enterMethod
+    });
+  },
+  
   addressListener: function () {
     wx.navigateTo({
       url: '/pages/mine/address/address'

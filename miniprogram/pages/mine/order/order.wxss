@@ -1,0 +1,47 @@
+.boxContainer {
+  width: 100%;
+  height: 100%;
+}
+.order-item {
+  width: 100%;
+  height: 370rpx;
+  background-color: #FFF;
+  border-radius: 50rpx;
+  margin-top: 20rpx;
+}
+.top{
+  display: flex;
+  justify-content:space-between;
+}
+.top-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+.wait-pay-text {
+  font-size: 32rpx;
+  color: red;
+  margin-right: 10rpx;
+}
+.middle{
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+}
+.middle-image{
+  flex: 0 0 70%;
+}
+.middle-image-size{
+  width:170rpx;
+  height:170rpx;
+}
+
+.pay-button{
+  width: 100rpx;
+  padding:15rpx 50rpx;
+  border:0.1rpx solid red;
+  border-radius:50rpx;
+  font-size:30rpx;
+  margin-left:auto;
+  margin-right: 20rpx;
+  color: red;
+}
