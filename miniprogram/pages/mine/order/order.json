@@ -1,10 +1,10 @@
 {
   "usingComponents": {
-    "van-button": "@vant/weapp/button",
-    "van-popup": "@vant/weapp/popup"
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "navigationBarBackgroundColor": "#FFFFFF",
-  "navigationBarTitleText": "收货地址",
+  "navigationBarTitleText": "订单详情",
   "navigationBarTextStyle": "black",
   "backgroundColor": "#000000",
   "backgroundTextStyle": "dark"

@@ -26,8 +26,7 @@ Page({
             success: function (data) {
               console.log(data);
               me.setData({
-               // userId:data.data.data
-               userId:108
+               userId:data.data.data
               },()=>{
                 me.getCarData()
               })

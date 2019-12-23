@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/mine/mine",
-    "pages/mine/address/address",
+    "pages/mine/order/order",
     "pages/index/index",
+    "pages/mine/address/address",
+    "pages/mine/address/addAddress/addAddress",
     "pages/car/car"
     
   ],
@@ -33,8 +35,8 @@
       },
       {
         "pagePath": "pages/mine/mine",
-        "iconPath": "images/nav/cart-off.png",
-        "selectedIconPath": "images/nav/cart-on.png",
+        "iconPath": "images/nav/my-off.png",
+        "selectedIconPath": "images/nav/my-on.png",
         "text": "我的"
       }
     ]

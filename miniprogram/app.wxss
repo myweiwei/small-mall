@@ -182,3 +182,33 @@ page {
   color:#1aad19!important;
   border:1px solid #1aad19!important;
 }
+
+/* -----------------border一像素----------------- */
+.border-top{position: relative;border-top: none !important;}
+.border-top:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.bottom_btn{
+  width:600rpx!important;
+  position:absolute;
+  bottom:20rpx;
+  left:50%;
+  transform: translateX(-50%);
+  background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
+  color:#fff;
+  font-weight:normal;
+  border-radius:50rpx;
+  font-size:30rpx;
+}

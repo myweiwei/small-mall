@@ -33,7 +33,7 @@
   border-bottom: 1px solid #f7f7f7;
   box-sizing: border-box;
 }
-.productList .name {
+.productList .name,.choose .choose_name {
   font-size: 30rpx;
 }
 .productList .stockFlex {
@@ -59,7 +59,7 @@
   font-size: 20rpx;
   color:#646464;
 }
-.productList image{
+.productList image,.choose .choose_image{
   width: 140rpx;
   height: 140rpx;
   margin-right: 20rpx;
@@ -78,77 +78,6 @@
   padding: 10rpx 30rpx;
   font-size: 22rpx;
   line-height: 30rpx;
-}
-.popup_title {
-  padding:10rpx;
-}
-.popup_title image {
-  width:30rpx;
-  height:30rpx;
-}
-.popup .name{
-    text-align: center;
-    font-weight:bold;
-    font-size:30rpx;
-    margin-top:10rpx;
-}
-.popup .smallName {
-  font-size:28rpx;
-  margin-top:20rpx;
-}
-.popup .jlBox1{
-  justify-content: center;
-
-}
-.popup .jlBox1 .jlBox {
-  padding:5rpx 40rpx;
-  margin-left:25rpx;
-  margin-top:25rpx;
-  font-size:25rpx;
-  color:#000;
-  border:1px solid #a09c9c;
-}
-.popup .footer {
-  margin-top:120rpx;
-  font-size:27rpx;
-  font-family: "MicroSoft YaHei";
-  padding:5rpx 10rpx;
-  border-radius:20rpx;
-}
-.goods {
-  position:relative;
-  margin-top:20rpx;
-  left:50%;
-  transform: translateX(-50%);
-  width:40%;
-  height:60rpx;
-  line-height: 60rpx;
-}
-.goods .jian,.goods .jia{
-  padding:10rpx;
-  width:40rpx;
-  height:40rpx;
-  border-radius:50%;
-  position:absolute;
-  text-align: center;
-  line-height:40rpx;
-}
-.goods .jian{
-  left:0rpx;
-  bottom:0;
-}
-.goods .jia {
-  right:0;
-  bottom:0;
-}
-.goods input {
-  width:80rpx;
-  height:40rpx;
-  position:absolute;
-  left:50%;
-  bottom:10%;
-  transform: translateX(-50%);
-  text-align: center;
 }
 .popup1 .name,.popup1 .info{
   text-align: center;
@@ -174,4 +103,142 @@
   border-left:1px solid #ccc;
   border-radius:0px;
   color:#07c160;
+}
+
+/* 选规格弹框 */
+.shadow{
+  width: 100%;
+  height: 100%;
+  z-index: 80;
+  position: absolute;
+  top: 0;
+  background-color: #000;
+  opacity: 0.5;
+}
+/* 上滑高度 */
+.choosen{
+  width: 100%;
+  height: 80%; 
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  z-index: 98;
+  box-sizing: border-box;
+}
+/* 内容 */
+.container-box {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 15rpx;
+  margin: 0 auto;
+  z-index: 98;
+  box-sizing: border-box;
+}
+.choosen .container-box {
+  padding:35rpx;
+}
+.choose{
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.choose .choose_image {
+  width:150rpx;
+  height:150rpx;
+}
+.choose .choose_price {
+  font-size: 35rpx;
+  color:#d81e06;
+  font-weight:700;
+}
+.choose .choose_name {
+  margin-bottom:35rpx;
+}
+.choose .choose_price .fh,.choose .choose_price .unit {
+  font-size:25rpx;
+}
+.choose .choose_price .unit {
+  color:#646464;
+  font-weight:500;
+}
+.choose .choose_weight{
+  font-size:25rpx;
+  color: #646464;
+}
+.choosen .title {
+  height:80rpx;
+  line-height: 80rpx;
+  font-size:25rpx;
+  color:#515151;
+}
+.choosen .choose_data {
+  display: inline-block;
+  padding:0rpx 30rpx;
+  background:#f7f4f4;
+  color:#515151;
+  font-size:25rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  border-radius:60rpx;
+  margin:15rpx;
+}
+.choosen .activeC {
+  color:rgb(218, 30, 5);
+  border:1px solid #d81e06;
+  background: rgba(218, 30, 5,0.1);
+}
+.choosen .close {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 40rpx;
+}
+.choosen .btnList {
+  position: absolute;
+  bottom:0;
+  width:90%;
+}
+.choosen .add_car,.choosen .buy_now {
+  font-weight: 200;
+  margin:0 10rpx;
+  border-radius: 50rpx;
+  margin-bottom:20rpx;
+  width:48%;
+  height:50rpx;
+  line-height: 50rpx;
+  background: #d81e06;
+  color:#fff;
+  box-sizing: border-box;
+  font-size:30rpx;
+}
+.choosen .buy_now {
+  background: orange;
+}
+.countBox .tit {
+  width:90%;
+}
+.goodCount{
+  flex:1;
+  justify-content: flex-end!important;
+}
+.goodCount .jian,.goodCount .jia{
+  width:60rpx;
+  text-align: center;
+  font-weight:700;
+}
+.goodCount .noCount{
+  color:#ccc;
+}
+.goodCount .choose_count {
+  width:50rpx;
+  height:40rpx;
+  text-align: center;
+}
+.countBox .countTitle {
+  font-size:25rpx;
+  color:#515151;
 }

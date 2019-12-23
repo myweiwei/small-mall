@@ -7,19 +7,19 @@
 
   <!--订单详情-->
   <view class="order-info">
-    <view class="order-info-item">
+    <view class="order-info-item"  id="unPayClick" bindtap="orderClick">
       <view class="iconfont icon-daifukuan"></view>
       <text class="order-info-text">待付款</text>
     </view>
-    <view class="order-info-item">
+    <view class="order-info-item"  id="send" bindtap="orderClick">
       <view class="iconfont icon-daishouhuo"></view>
       <text class="order-info-text">待收货</text>
     </view>
-    <view class="order-info-item">
+    <view class="order-info-item"  id="say" bindtap="orderClick">
       <view class="iconfont icon-daipingjia"></view>
       <text class="order-info-text">待评价</text>
     </view>
-    <view class="order-info-item">
+    <view class="order-info-item"  id="myOrder" bindtap="orderClick">
       <view class="iconfont icon-wodedingdan"></view>
       <text class="order-info-text">我的订单</text>
     </view>
@@ -45,7 +45,7 @@
     </view>
     <view class="item border-top">
       <image class="images" src="../../images/mine/about.png"> </image>
-      <text class="text">关于FrozenFish</text>
+      <text class="text">关于我们</text>
     </view>
   </view>
 </view>
