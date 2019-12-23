@@ -8,7 +8,7 @@
       icon="contact"
       placeholder=""
       data-label='name'
-      bind:input="onChange"
+     bind:change="onChangeIpt"
     />
     <van-field
       value="{{  phone }}"
@@ -17,6 +17,8 @@
       label="手机号码"
       icon="phone-o"
       placeholder=""
+      data-label='phone'
+      bind:change="onChangeIpt"
     />
     <van-field
       value="{{ province }}"
@@ -24,8 +26,8 @@
       icon="arrow"
       readonly
       placeholder=""
-      bindtap='showPop'
       title-width='150rpx'
+      bindtap='showPop'
     />
     <van-field
       value="{{  neighbourhood }}"
@@ -35,6 +37,8 @@
       icon="location-o"
       placeholder="街道、门牌号等"
       autosize
+      data-label='neighbourhood'
+      bind:change="onChangeIpt"
     />
   </van-cell-group>
   <view class='flexBox setMr'>

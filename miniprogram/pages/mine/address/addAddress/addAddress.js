@@ -4053,12 +4053,50 @@ Page({
     name: '',
     defaults:true
   },
-  onChange(event) {
-    // event.detail 为当前输入的值
-    console.log(event);
+  onChangeIpt(event) {
+    let me=this;
+    let label = event.target.dataset.label;
+    me.setData({
+      [label]:event.detail
+    })
   },
   saveAddr:function(){
     let me=this;
+    if (!me.data.name){
+      wx.showToast({
+        title: '请输入收货人',
+        icon:'none',
+        duration: 2000
+      })
+      return ;
+    }
+    if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(me.data.phone))) {
+      wx.showToast({
+        title: '手机号码有误',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!me.data.province) {
+      wx.showToast({
+        title: '请选择所在地区',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!me.data.neighbourhood) {
+      wx.showToast({
+        title: '请输入详细地址',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: me.data.baseUrl + '/address',
       method: "post",
@@ -4071,7 +4109,14 @@ Page({
         defaults: me.data.defaults?"1":"0"
       },
       success: function (data) {
-        console.log(data);
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success'
+        });
+        wx.hideLoading();
+        wx.navigateTo({
+          url: '/pages/mine/address/address'
+        })
       },
       error: function (err) {
         console.log(err);
@@ -4082,9 +4127,7 @@ Page({
     let me = this;
     wx.login({
       success(res) {
-        
         if (res.code) {
-          console.log(res.code);
           //通过wx.login内置函数，得到临时code码
           wx.request({
             url: me.data.baseUrl + '/openIdSessionKey',
@@ -4093,13 +4136,11 @@ Page({
               code: res.code
             },
             success: function (data) {
-              console.log(1);
               me.setData({
                 userId: data.data.data
               })
             },
             error: function (err) {
-              console.log(2);
               console.log(err);
             }
           })
@@ -4121,10 +4162,8 @@ Page({
         defaults:true
       })
     }
-    
   },
   showPop:function(){
-    console.log(1);
     let me=this;
     me.setData({
       show:true
@@ -4151,25 +4190,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let me=this;
-    me.setData({
-      baseUrl: app.baseUrl,
-    });
-    me.getUser();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let me = this;
+    me.setData({
+      baseUrl: app.baseUrl,
+    });
+    me.getUser();
   },
 
   /**

@@ -125,7 +125,6 @@
   border-top-left-radius: 20rpx;
   border-top-right-radius: 20rpx;
   z-index: 98;
-  box-sizing: border-box;
 }
 /* 内容 */
 .container-box {
@@ -197,23 +196,18 @@
   right: 40rpx;
   top: 40rpx;
 }
-.choosen .btnList {
-  position: absolute;
-  bottom:0;
-  width:90%;
-}
 .choosen .add_car,.choosen .buy_now {
   font-weight: 200;
-  margin:0 10rpx;
-  border-radius: 50rpx;
-  margin-bottom:20rpx;
-  width:48%;
+  margin:0;
+  border-radius: 0rpx;
+  font-size:30rpx;
+  font-family: 'Microsoft YaHei';
+  width:50%;
   height:50rpx;
   line-height: 50rpx;
   background: #d81e06;
   color:#fff;
   box-sizing: border-box;
-  font-size:30rpx;
 }
 .choosen .buy_now {
   background: orange;
