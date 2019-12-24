@@ -38,7 +38,9 @@
   display: flex;
   align-items: center;     /* 垂直居中 */
   flex: 0 0 67%;
-  overflow: hidden;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  /* overflow: hidden; */
 }
 .middle-image-size{
   background: red;

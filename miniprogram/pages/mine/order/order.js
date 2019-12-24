@@ -17,7 +17,7 @@ Page({
           break;
         case 'send':
           this.setData({active:2});
-          payStatus = 2;//2已发货,等同于待收货
+          payStatus = 1;//1已付款的，等待发货和收货
           break;
         case 'say':
           this.setData({active:3});
