@@ -1,33 +1,65 @@
 const app = getApp();
 const tapItemArray = [];
 Page({
+  data: {
+    mydata:[],
+    userId:'',
+  },
   addAddressListener: function () {
     wx.navigateTo({
       url: '/pages/mine/address/addAddress/addAddress'
     })
   },
-
-  data: {
-    mydata:[]
+  getUser: function () {
+    let me = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //通过wx.login内置函数，得到临时code码
+          wx.request({
+            url: app.baseUrl + '/openIdSessionKey',
+            method: "get",
+            data: {
+              code: res.code
+            },
+            success: function (data) {
+              me.setData({
+                userId: data.data.data
+              })
+              me.getData();
+              wx.hideLoading();
+            },
+            error: function (err) {
+              console.log(err);
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-      var that = this;
-      wx.request({
-        url: app.baseUrl + '/address',
-        data: { userId: 288},
-        method: 'GET',
-        success: function (res) {
-          console.log(res.data.data);
-          that.setData({
-            mydata: res.data.data
-          });
-        }
-       });
   },
-
+  getData:function(){
+    let me=this;
+    wx.request({
+      url: app.baseUrl + '/address',
+      data: { userId:me.data.userId },
+      method: 'GET',
+      success: function (res) {
+        me.setData({
+          mydata: res.data.data
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -39,6 +71,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let me=this;
+    me.getUser();
   },
 
   /**

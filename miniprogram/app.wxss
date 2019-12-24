@@ -171,16 +171,16 @@ page {
   float:right;
 }
 .greenBox {
-  background:#1aad19;
+  background:#E45050;
   color:#fff;
 }
 .greenColor {
-    color:#1aad19;
-    border-left: 4rpx solid #1aad19;
+    color:#E45050;
+    border-left: 4rpx solid #E45050;
 }
 .greenBorder {
-  color:#1aad19!important;
-  border:1px solid #1aad19!important;
+  color:#E45050!important;
+  border:1px solid #E45050!important;
 }
 
 /* -----------------border一像素----------------- */
@@ -199,4 +199,16 @@ page {
     -webkit-transform: scaleY(0.5);
     -ms-transform: scaleY(0.5);
     transform: scaleY(0.5);
+}
+.bottom_btn{
+  width:600rpx!important;
+  position:absolute;
+  bottom:20rpx;
+  left:50%;
+  transform: translateX(-50%);
+  background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
+  color:#fff;
+  font-weight:normal;
+  border-radius:50rpx;
+  font-size:30rpx;
 }

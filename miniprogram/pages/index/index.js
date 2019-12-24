@@ -14,8 +14,6 @@ Page({
     clickItem:"",
     unit:0,
     num:1,
-    totalPrice:0,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     show1:false,
     userId:'',
     chooseSize:false,
@@ -27,20 +25,24 @@ Page({
     chooseUnit:'',
     chooseName:''
   },
+  // 展示选规格弹框
   showshadow: function (e) {
     let me=this;
-    if (me.data.chooseSize == false) {
-      me.getGuige(e.target.dataset.item.id);
-    } else {
-      me.hideModal();
-    }
+    me.getGuige(e.target.dataset.item.id);
+    me.setData({
+      chooseSize:true
+    })
   },
+  //选规格弹框内容
   getGuige:function(id){
     let me = this;
     me.setData({
       chooseImageUrl: '',
       choosePrice: '',
       chooseWeight: ''
+    })
+    wx.showLoading({
+      title: '加载中',
     })
     wx.request({
       url: me.data.baseUrl + '/productItem/',
@@ -62,13 +64,17 @@ Page({
             chooseName: me.data.chooseData[0].name
           })
         }
-        me.chooseSezi();
+        me.setData({
+          chooseSize:true
+        })
+        wx.hideLoading();
       },
       error: function (err) {
         console.log(err);
       }
     })
   },
+  //选规则弹框内容切换
   changeChoose:function(e){
     let me=this;
     me.setData({
@@ -80,57 +86,14 @@ Page({
       chooseName: e.target.dataset.item.name
     })
   },
-  // 动画函数
-  chooseSezi: function (e) {
-    // 用that取代this，防止不必要的情况发生
-    var that = this;
-    // 创建一个动画实例
-    var animation = wx.createAnimation({
-      // 动画持续时间
-      duration: 100,
-      // 定义动画效果，当前是匀速
-      timingFunction: 'linear'
-    })
-    // 将该变量赋值给当前动画
-    that.animation = animation
-    // 先在y轴偏移，然后用step()完成一个动画
-    animation.translateY(1000).step()
-    // 用setData改变当前动画
-    that.setData({
-      // 通过export()方法导出数据
-      animationData: animation.export(),
-      // 改变view里面的Wx：if
-      chooseSize: true
-    })
-    // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动 滑动时间
-    setTimeout(function () {
-      animation.translateY(0).step()
-      that.setData({
-        animationData: animation.export(),
-        clearcart: false
-      })
-    }, 100)
-  },
-  // 隐藏
+  // 隐藏选规格弹框
   hideModal: function (e) {
-    var that = this;
-    var animation = wx.createAnimation({
-      duration: 100,
-      timingFunction: 'linear'
+    let me = this;
+    me.setData({
+      chooseSize: false
     })
-    that.animation = animation
-    animation.translateY(700).step()
-    that.setData({
-      animationData: animation.export()
-    })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      that.setData({
-        animationData: animation.export(),
-        chooseSize: false
-      })
-    }, 200)
   },
+  //选规格弹框数量操作
   jia: function (e) {
     var num = e.currentTarget.dataset.num;
     num++;
@@ -175,33 +138,27 @@ Page({
     });
   },
   // 加入购物车
-  addCar:function(e){
+  addCar:function(){
     let me=this;
-    console.log("加入购物车");
-    //let item = e.currentTarget.dataset.item;
-    // wx.request({
-    //   url: this.data.baseUrl + '/shopcar/product', 
-    //   method: 'post',
-    //   dataType:"json",
-    //   data: {
-    //     userId:me.data.userId,
-    //     productId:item.id,
-    //     number:me.data.num,
-    //     unit:me.data.unit
-    //   },
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success(res) {
-    //     wx.showToast({
-    //       title: '加入成功',
-    //       icon:'success'
-    //     });
-    //   },
-    //   error:function(err){
-    //     console.log(err);
-    //   }
-    // })
+    wx.request({
+      url: me.data.baseUrl + '/shopcar/product', 
+      method: 'post',
+      dataType:"json",
+      data: {
+        userId:me.data.userId,
+        productId: me.data.activeChoose,
+        number:me.data.num
+      },
+      success(res) {
+        wx.showToast({
+          title: '加入成功',
+          icon:'success'
+        });
+      },
+      error:function(err){
+        console.log(err);
+      }
+    })
   },
   getList:function(){
     let me=this;
@@ -224,11 +181,7 @@ Page({
       }
     })
   },
-  onClose:function(){
-    this.setData({
-      show1:false
-    })
-  },
+  //左侧导航栏点击
   listClick:function(e){
     let me=this;
     me.setData({
@@ -236,11 +189,7 @@ Page({
       currentIndex:e.target.dataset.index
     })
   }, 
-  chooseJlFunc:function(e){
-    this.setData({
-      unit:e.target.dataset.val
-    })
-  },
+  //计算高度，为滚动准备
   _calculateHeight() {
     let height = 0;
     var arr=[];
@@ -255,6 +204,7 @@ Page({
       heightList: arr
     })
   },
+  //右侧滚动
   scrollFunc:function(e){
     this.setData({
       scrollTop: e.detail.scrollTop
@@ -273,16 +223,16 @@ Page({
       currentIndex: 0
     })
   },
+  //关闭授权弹框
+  onClose: function () {
+    this.setData({
+      show1: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let me=this;
-    me.setData({
-      baseUrl: app.baseUrl,
-    });
-    me.getUser();
-    me.getList();
   },
 
   /**
@@ -296,7 +246,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let me=this;
+    let me = this;
+    me.setData({
+      baseUrl: app.baseUrl,
+    });
+    me.getUser();
     me.getList();
   },
 
