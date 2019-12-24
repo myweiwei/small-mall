@@ -26,13 +26,67 @@
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
         </view>
-
-
         <view class="pay-button">立即支付</view>
       </view>
     </van-tab>
 
-    <van-tab title="待收货">待收货</van-tab>
-    <van-tab title="已完成">已完成</van-tab>
+    <van-tab title="待收货">
+      <view class="order-item" wx:for="{{list}}">
+        <view class="top">
+          <image class="top-icon" src="../../../images/logo.png"></image>
+          <text class="wait-pay-text">等待收货</text>
+        </view>
+
+        <view class="middle">
+          <view class="middle-image">
+            <view wx:if='{{item.totalNumber >= 2}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+              <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+            </view>
+
+            <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+                <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+                <text class="product-name">{{images.productItemName}}</text>
+            </block>
+          </view> 
+        
+          <view class="money-count">
+            <view class="money">￥{{item.price}}</view>
+            <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
+          </view>
+        </view>
+        <view class="pay-button" style="color:#000; border:0.1rpx solid rgb(146,126,128);">查看物流</view>
+      </view>
+    </van-tab>
+
+    <van-tab title="已完成">
+      <view class="order-item" wx:for="{{list}}">
+        <view class="top">
+          <image class="top-icon" src="../../../images/logo.png"></image>
+          <text class="wait-pay-text" style="color:#000;">已完成</text>
+        </view>
+
+        <view class="middle">
+          <view class="middle-image">
+            <view wx:if='{{item.totalNumber >= 2}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+              <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+            </view>
+
+            <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+                <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+                <text class="product-name">{{images.productItemName}}</text>
+            </block>
+          </view> 
+        
+          <view class="money-count">
+            <view class="money">￥{{item.price}}</view>
+            <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
+          </view>
+        </view>
+        <view style="display:flex; flex-direction:row;">
+          <view class="pay-button" style="color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>
+          <view class="pay-button" style="margin-left:0px;">再次购买</view>
+        </view>
+      </view>
+    </van-tab>
   </van-tabs>
 </view>
