@@ -1,6 +1,58 @@
 <view class="boxContainer">
-  <van-tabs active="{{ active }}" bind:change="onChange">
-    <van-tab title="全部订单"></van-tab>
+  <van-tabs active="{{ active }}" bind:change="onChange" 
+  swipeable='true' swipe-threshold='5'>
+    <van-tab title="全部订单" class="auto-min-height">
+      <view class="order-item" wx:for="{{list}}" >
+        <view class="top">
+          <image class="top-icon" src="../../../images/logo.png"></image>
+         
+            <text class="wait-pay-text" wx:if="{{item.orderStatus == 0}}">等待付款</text>
+            <text class="wait-pay-text" wx:if="{{item.orderStatus == 1}}">等待收货</text>
+
+            <view wx:if="{{item.orderStatus == 3}}" style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
+              <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已完成</text>
+              <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+            </view>
+            <view wx:if="{{item.orderStatus == -4}}" style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
+            <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已取消</text>
+            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+          </view>
+
+          
+        </view>
+
+        <view class="middle">
+          <view class="middle-image">
+            <view wx:if='{{item.totalNumber >= 2}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+              <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+            </view>
+
+            <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+                <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+                <text class="product-name">{{images.productItemName}}</text>
+            </block>
+          </view> 
+        
+          <view class="money-count">
+            <view class="money">￥({{item.price / 100}}).toFixed(2)</view>
+            <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
+          </view>
+        </view>
+
+
+        <view class="pay-button"  wx:if="{{item.orderStatus == 0}}">立即支付</view>
+        <view class="pay-button"  wx:if="{{item.orderStatus == 1}}" style="color:#000; border:0.1rpx solid rgb(146,126,128);" >查看物流</view>
+
+         <view wx:if="{{item.orderStatus == 3}}" style="display:flex; flex-direction:row;">
+          <view class="pay-button" style=" margin-right:30rpx; color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>
+          <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
+        </view>
+
+         <view  wx:if="{{item.orderStatus == -4}}" style="display:flex; flex-direction:row-reverse;">
+          <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
+        </view>
+      </view>
+    </van-tab>
 
     <van-tab title="待付款">
      <view class="order-item" wx:for="{{list}}">
@@ -27,7 +79,8 @@
           </view>
         </view>
         <view class="pay-button">立即支付</view>
-      </view>
+      </view> 
+  
     </van-tab>
 
     <van-tab title="待收货">
@@ -62,7 +115,10 @@
       <view class="order-item" wx:for="{{list}}">
         <view class="top">
           <image class="top-icon" src="../../../images/logo.png"></image>
-          <text class="wait-pay-text" style="color:#000;">已完成</text>
+          <view style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
+            <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已完成</text>
+            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+          </view>
         </view>
 
         <view class="middle">
@@ -83,8 +139,41 @@
           </view>
         </view>
         <view style="display:flex; flex-direction:row;">
-          <view class="pay-button" style="color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>
-          <view class="pay-button" style="margin-left:0px;">再次购买</view>
+          <view class="pay-button" style=" margin-right:30rpx; color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>
+          <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
+        </view>
+      </view>
+    </van-tab>
+
+    <van-tab title="已取消">
+      <view class="order-item" wx:for="{{list}}">
+        <view class="top">
+          <image class="top-icon" src="../../../images/logo.png"></image>
+          <view style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
+            <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已取消</text>
+            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+          </view>
+        </view>
+
+        <view class="middle">
+          <view class="middle-image">
+            <view wx:if='{{item.totalNumber >= 2}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+              <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+            </view>
+
+            <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images">
+                <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
+                <text class="product-name">{{images.productItemName}}</text>
+            </block>
+          </view> 
+        
+          <view class="money-count">
+            <view class="money">￥{{item.price}}</view>
+            <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
+          </view>
+        </view>
+        <view style="display:flex; flex-direction:row-reverse;">
+          <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
         </view>
       </view>
     </van-tab>
