@@ -1,0 +1,47 @@
+.boxContainer {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  /* background: green; */
+}
+.head{
+  width: 100%;
+  height: 300rpx;
+  background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
+  color:#fff;
+  font-size:30rpx;
+}
+.order-status{
+  width: 100%;
+  height: 200rpx;
+}
+.address{
+  width: 100%;
+  height: 200rpx;
+  background: #FFF;
+  border-radius: 19rpx;
+}
+.product-detail {
+  margin-top: 120rpx;
+  width: 100%;
+  border-radius: 19rpx;
+  min-height: 400rpx;
+  background: #FFF;
+}
+.order-detail{
+  margin-top: 20rpx;
+  width: 100%;
+  border-radius: 19rpx;
+  min-height: 600rpx;
+  background: #FFF;
+}
+
+.buttons {
+  width: 100%;
+  height: 90rpx;
+  background: black;
+  position: fixed;
+  bottom: 0;
+}
+
+
