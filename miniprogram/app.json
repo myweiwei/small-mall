@@ -1,12 +1,10 @@
 {
   "pages": [
-    "pages/mine/order/orderdetail/orderdetail",
-    "pages/mine/address/address",
-    
-    "pages/mine/mine",
     "pages/mine/order/order",
+    "pages/mine/order/orderdetail/orderdetail",
+    "pages/mine/mine",
+    "pages/mine/address/address",
     "pages/index/index",
-    
     "pages/mine/address/addAddress/addAddress",
     "pages/car/car"
     

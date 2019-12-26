@@ -2,6 +2,7 @@
 .boxContainer {
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 }
 .auto-min-height {
   min-height: calc(90vh);

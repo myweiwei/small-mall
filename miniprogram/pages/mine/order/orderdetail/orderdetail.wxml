@@ -1,11 +1,36 @@
 <view class="boxContainer">
   <view class="head">
    <view class="order-status"></view>
-    <view class="address"></view>
+    <view class="address">
+      <text decode="{{true}}">{{obj.address.name}} &ensp; {{obj.address.phone}}</text> 
+      <text class="address-detail">地址：{{obj.address.province}}{{obj.address.neighbourhood}}</text>
+    </view>
   </view>
   
-  <view class="product-detail"></view>
-  <view class="order-detail"></view>
+  <view class="product-detail">
+    <block wx:for="{{obj.orderItem}}" wx:key="key">
+      <view class="product-item">
+        <image class="product-item-left" src="http://{{item.productImage}}"></image>
+        <view class="product-item-right">
+          <view>{{item.productName}}</view>
+          <view>数量：{{item.number}} 规格：{{item.productSpec}}</view>
+          <view>¥{{item.zs}} .{{item.xs}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="order-detail">
+    <view>订单编号：{{obj.orderNo}}</view>
+    <view>下单时间：{{obj.createTime}}</view>
+    <view>支付方式：微信支付</view>
+    <view>期望配送日期：{{obj.hopeReceiveTime}}</view>
 
-  <view class="buttons">123</view>
+    <view>商品总额：{{obj.price}}</view>
+    <view>运费：免运费</view>
+    <view>需付款：{{obj.price}}</view>
+  </view>
+
+  <view class="buttons">
+    
+  </view>
 </view>

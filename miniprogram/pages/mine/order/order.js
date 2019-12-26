@@ -5,6 +5,15 @@ Page({
     list:[]
   },
 
+  goOrderDetail:function(event)
+  {
+      console.log(event.currentTarget.dataset.id);
+      var orderNo = event.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '/pages/mine/order/orderdetail/orderdetail?orderNo=' + orderNo
+      })
+  },
+
   onChange(event)
   {
     var that = this;
