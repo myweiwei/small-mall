@@ -1,0 +1,11 @@
+<view class="boxContainer">
+  <view class="head">
+   <view class="order-status"></view>
+    <view class="address"></view>
+  </view>
+  
+  <view class="product-detail"></view>
+  <view class="order-detail"></view>
+
+  <view class="buttons">123</view>
+</view>

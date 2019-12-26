@@ -34,7 +34,7 @@
           </view> 
         
           <view class="money-count">
-            <view class="money">￥({{item.price / 100}}).toFixed(2)</view>
+            <view class="money">￥{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
         </view>

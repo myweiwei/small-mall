@@ -71,9 +71,12 @@
 }
 .count{
   font-size: 29rpx;
+  color: rgb(133, 133, 133);
   margin-left: auto;
 }
-
+.xs{
+  font-size: 30rpx;
+}
 .deleteOrder-icon
 {
   width: 40rpx;
