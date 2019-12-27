@@ -1,0 +1,3 @@
+<view class="my-container">
+    <button bindtap="onClick">哈哈</button>
+</view>
