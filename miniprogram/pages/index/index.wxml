@@ -19,7 +19,7 @@
               <view class='flexBox'>
                 <view class='flexBox price'>
                   <view class='price_count'>{{"￥"+items.price}}</view>
-                  <view class='price_info'>/个</view>
+                  <view class='price_info'>/{{items.unit}}</view>
                 </view>
                 <view class='choose greenBox' bindtap='showshadow' data-item='{{items}}'>选规格</view>
               </view>
@@ -49,7 +49,7 @@
             </text> 
             <view class='flexBox countBox'>
               <view class='countTitle'>数量</view>  
-              <view class='flexBox goodCount'><view  bindtap='jian' class='jian {{num<=1?"noCount":""}}'  data-num='{{num}}'>-</view><view><input name='num' class='choose_count' type='text' value='{{num}}'/></view><view  bindtap='jia' class='jia' data-num='{{num}}'>+</view></view>
+              <view class='flexBox goodCount'><view  bindtap='jian' class='jian {{num<=1?"noCount":""}}'  data-num='{{num}}'>-</view><view><input name='num' class='choose_count' type='text' bindinput='iptChange' value='{{num}}'/></view><view  bindtap='jia' class='jia' data-num='{{num}}'>+</view></view>
             </view>
           </scroll-view>
           <view class='flexBox btnList'>

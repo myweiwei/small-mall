@@ -1,26 +1,79 @@
-<view class='boxContainer'>
+<view  class='spinner' wx:if='{{show1}}'>
+  <van-loading type="spinner"/>
+</view>
+<view class='boxContainer' wx:if='{{carData.cartProductVOList.length}}'>
+  <view class='head flexBox'>
+  <text></text>
+    <text bindtap='editFunc' wx:if='{{!editFlag}}'>编辑</text>
+    <text wx:if='{{editFlag}}' bindtap='saveFunc'>完成</text>
+  </view>
   <scroll-view>
-  
       <view class='flexBox carList'  wx:for='{{carData.cartProductVOList}}' wx:key='{{item.id}}'>
-      <checkbox-group bindchange="checkboxChange">
+      <checkbox-group bindchange="checkboxChange" data-id='{{item.productId}}' wx:if='{{!editFlag}}'>
         <label class="checkbox">
-          <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
+          <checkbox value="{{item.productId}}" checked="{{item.productChecked}}" data-id='{{item.productId}}'/>
+        </label>
+      </checkbox-group>
+      <checkbox-group bindchange="checkboxChange1" data-id='{{item.productId}}' wx:if='{{editFlag}}'>
+        <label class="checkbox">
+          <checkbox checked="{{item.checkFlag}}" data-id='{{item.productId}}' value="{{item.productId}}" />
         </label>
       </checkbox-group>
         <image src='http://{{item.productPicture}}'></image>
         <view class='info'>
-          <view>{{item.productName}}</view>
-          <view class='guige'>规格:{{item.unit==0?"斤":"箱"}}
-            <image src='../../images/down.png'></image>
-          </view>
-          <view class='price'>￥{{item.unit==0?item.jinPrice:item.boxPrice}}</view>
+          <view class='name'>{{item.productName}}</view>
+          <view class='guige'>{{item.spec}}</view>
+          <view class='price'><text>￥</text>{{item.price}}</view>
           <view class='goods'>
-    　　　　　 <view bindtap='jian' class='jian greenBox' data-num='{{num}}'>-</view>
-    　　　　　 <input name='num' bindchange='num' type='text' value='{{num}}'/>
-    　　　　　 <view bindtap='jia' class='jia greenBox' data-num='{{num}}'>+</view>
+    　　　　　 <view bindtap='jia' class='jian' data-id='{{item.productId}}' data-operate='-1'>-</view>
+    　　　　　 <input name='num' data-item='{{item}}' bindtap="showPopup" type='text' disabled="true" value='{{item.number}}'/>
+    　　　　　 <view bindtap='jia' class='jia'  data-id='{{item.productId}}' data-operate='1'>+</view>
     　　　 </view>
         </view>
-          
       </view>
   </scroll-view>
+  <view class='footFix flexBox' wx:if='{{!editFlag}}'>
+    <view class='flexBox'>
+      <view>
+        <checkbox-group bindchange="allcheckboxChange">
+          <checkbox id='allChecked' value='{{carData.allChecked}}' checked="{{carData.allChecked}}"/>
+          <label for='allChecked'>全选</label>
+        </checkbox-group>
+      </view>
+      <text class='checkPrice'>合计:<text>￥{{carData.cartTotalPrice}}</text></text>
+    </view>
+    <view class='footBtn'>
+      <button class='footBtn_btn' bindtap="saveAddr">去结算<text>({{carData.productTotalNum>99?"99+":carData.productTotalNum}})</text></button>
+    </view>
+  </view>
+  <view class='footFix flexBox' wx:if='{{editFlag}}'>
+    <view class='flexBox'>
+      <view>
+        <checkbox-group bindchange="allcheckboxChange1">
+          <checkbox id='allChecked1'checked="{{allChecked}}"  value='{{allChecked}}'/>
+          <label for='allChecked1'>全选</label>
+        </checkbox-group>
+      </view>
+    </view>
+    <view>
+      <view class='footBtn_btn1' bindtap="delFunc">删除</view>
+    </view>
+  </view>
+ <van-popup show="{{ show }}" class='pop' custom-style="height: 28%;width:90%;text-align:center" round bind:close="onClose">
+  <view class='container_pop'>
+    <view class='pop_title'>修改购买数量</view>
+    <view class='pop_step'>
+        <van-stepper value="{{ number }}" bind:change="onChange"  input-width="250rpx" button-size="60rpx"/>
+    </view>
+  </view>
+  <view class='footer flexBox'>
+    <view  bindtap="onClose"class='qx'>取消</view>
+    <view class='sq' bindtap="addCar" data-id='{{id}}' >确定</view>
+  </view>
+ </van-popup>
+</view>
+<view class='boxContainer1' wx:if='{{!carData.cartProductVOList.length}}'>
+<image src='../../images/gouwuchekong.png'></image>
+  <text class='info'>购物车内容为空</text>
+  <view class='btn' bindtap='toIndex'>去逛逛</view>
 </view>
