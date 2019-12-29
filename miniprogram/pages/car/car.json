@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-loading": "@vant/weapp/loading/index"
+  },
   "navigationBarTitleText": "购物车"
 }

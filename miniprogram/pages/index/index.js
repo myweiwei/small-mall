@@ -137,6 +137,15 @@ Page({
       }
     });
   },
+  iptChange:function(e){
+    console.log(e.detail.value);
+    let me=this;
+    if (e.detail.value){
+      me.setData({
+        num: e.detail.value
+      })
+    }
+  },
   // 加入购物车
   addCar:function(){
     let me=this;
@@ -154,6 +163,9 @@ Page({
           title: '加入成功',
           icon:'success'
         });
+        me.setData({
+          chooseSize:false
+        })
       },
       error:function(err){
         console.log(err);
