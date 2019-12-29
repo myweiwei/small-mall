@@ -190,7 +190,17 @@ page {
   border:1px solid #E45050!important;
 }
 
+/* 金额整数小数样式 */
+.zs {
+  font-size: 35rpx;
+}
+.xs{
+  font-size: 25rpx;
+}
+
+
 /* -----------------border一像素----------------- */
+.border{position: relative;border-bottom: none !important;}
 .border-top{position: relative;border-top: none !important;}
 .border-top:after {
     content: " ";
@@ -207,6 +217,24 @@ page {
     -ms-transform: scaleY(0.5);
     transform: scaleY(0.5);
 }
+.border:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border: 1rpx solid #222;  
+    background-color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+
 .bottom_btn{
   width:600rpx!important;
   position:absolute;

@@ -19,9 +19,9 @@
               <view class='flexBox'>
                 <view class='flexBox price'>
                   <view class='price_count'>{{"￥"+items.price}}</view>
-                  <view class='price_info'>/个</view>
+                  <view class='price_info'>/{{items.unit}}</view>
                 </view>
-                <view class='choose greenBox' bindtap='showshadow' data-item='{{items}}'>选规格</view>
+                <view class='choose greenBox' bindtap='showshadow' data-item='{{items}}'>买点尝尝</view>
               </view>
             </view>
           </view>

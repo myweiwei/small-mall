@@ -15,6 +15,12 @@ Page({
         },
         method:'GET',
         success(res) {
+          var order = res.data.data;
+          var a = (order.price / 100).toFixed(2).split('.');
+          order.zs = a[0];
+          order.xs = a[1];
+
+
           var orderDetail = res.data.data.orderItem;
           for(let i = 0; i < orderDetail.length; i++)
           {

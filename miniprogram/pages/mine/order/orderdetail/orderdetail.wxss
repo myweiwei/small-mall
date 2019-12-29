@@ -1,22 +1,44 @@
 .boxContainer {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  /* background: green; */
 }
 .head{
   width: 100%;
-  height: 300rpx;
+  height: 350rpx;
   background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
   color:#fff;
   font-size:30rpx;
 }
+.buy-status {
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .order-status{
   width: 100%;
   height: 200rpx;
 }
+.wait-pay{
+  display:flex;
+  align-items:center;
+  margin-top:25rpx; 
+  margin-bottom:25rpx;
+}
+
+.wait-pay-icon{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+}
+
+/*---------------地址--------------------------*/
 .address{
   width: 100%;
   height: 200rpx;
@@ -24,55 +46,160 @@
   border-radius: 19rpx;
   color:#000;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+.address-image{
+  width: 40rpx;
+  height: 40rpx;
+  padding-right: 30rpx;
+  padding-left: 30rpx;
+}
+.address-name{
+
 }
 .address-detail {
   color: #696969;
   font-size: 23rpx;
+  margin-top: 10rpx;
 }
+
+
+
 .product-detail {
   margin-top: 120rpx;
+  padding-bottom: 30rpx;
   width: 100%;
   border-radius: 19rpx;
   background: #FFF;
 }
 .product-item{
   width: 100%;
-  height: 200rpx;
+  height: 170rpx;
   display: flex;
-  align-items: center;
+  align-items:flex-start;
+  padding-top: 30rpx;
+  padding-left: 30rpx;
+  box-sizing: border-box;
 }
 .product-item-left {
-  background-color: green;
+  background-color:#FFF;
   width: 130rpx;
   height: 130rpx;
-  margin-left:50rpx;
-  margin-right:50rpx;
+  padding-right: 30rpx;
 }
 .product-item-right {
   flex:0 0 66%;
-  margin-right: 30rpx;
+  padding-right: 30rpx;
   display: flex;
   flex-direction: column;
 }
 
+.product-name{
+  color: #000;
+  font-size: 28rpx;
+}
+.product-number {
+  color: #696969;
+  font-size: 23rpx;
+  padding-top: 8rpx;
+}
+.product-money {
+  color: #000;
+  font-weight: bold;
+  font-size: 23rpx;
+  padding-top: 20rpx;
+}
 
-
-
+/*order相关*/
 .order-detail{
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding-top: 10rpx;
   width: 100%;
   border-radius: 19rpx;
-  min-height: 600rpx;
+  min-height: 270rpx;
   background: #FFF;
+  display: flex;
+  flex-direction: column;
 }
+.order-detail view{
+  font-size: 26rpx;
+  padding-left: 25rpx;
+  padding-top: 20rpx;
+}
+.order-detail-left-color{
+  color: #696969;
+}
+
+
+.money-detail {
+  width: 100%;
+  min-height: 200rpx;
+  border-radius: 19rpx;
+  padding-top: 20rpx;
+  flex-direction: column;
+  display: flex;
+  background: #FFF;
+  font-size: 26rpx;
+}
+.money-detail-item {
+  justify-content: space-between;
+  display: flex;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  padding-top: 20rpx;
+}
+
 
 .buttons {
   width: 100%;
-  height: 90rpx;
-  background: black;
+  height: 100rpx;
+  background: #FFF;
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.pay-button{
+  width: 100rpx;
+  padding:15rpx 25rpx;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  border:0.1rpx solid red;
+  background: red;
+  border-radius:50rpx;
+  font-size:25rpx;
+  color: #FFF;
+}
+.pay-button-top{
+  width: 100rpx;
+  padding:12rpx 40rpx;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  background: #FFF;
+  border-radius:50rpx;
+  font-size:25rpx;
+  color: red;
+  margin-top: 25rpx;
+}
+.cancel-button {
+  width: 100rpx;
+  
+  padding:15rpx 25rpx;
+  margin-left: 15rpx;
+  background: #FFF;
+  border-radius:50rpx;
+  font-size:25rpx;
+  color: #000;
+  
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
 }
 
 

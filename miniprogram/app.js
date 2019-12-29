@@ -1,6 +1,6 @@
 //app.js
 App({
-  baseUrl: 'http://192.168.1.116:8888',
+  baseUrl: 'http://192.168.1.5:8888',
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
