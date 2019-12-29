@@ -3,6 +3,7 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 .auto-min-height {
   min-height: calc(90vh);
@@ -16,6 +17,7 @@
   background-color: #FFF;
   border-radius: 50rpx;
   margin-top: 20rpx;
+  box-sizing: border-box;
 }
 .top{
   display: flex;
@@ -30,7 +32,7 @@
 }
 .wait-pay-text {
   margin-top: 30rpx;
-  margin-right: 50rpx;
+  margin-right: 20rpx;
   font-size: 32rpx;
   color: red;
 }
@@ -39,33 +41,53 @@
   display: flex;
   justify-content: space-between; 
   align-items: center;     /* 垂直居中 */
+  position:relative;
+  box-sizing: border-box;
 }
 .middle-image{
   margin-left: 50rpx;
   height:150rpx;
-  display: flex;
-  align-items: center;     /* 垂直居中 */
-  flex: 0 0 67%;
-  overflow-x:scroll;
-  overflow-y:hidden;
-  /* overflow: hidden; */
+  box-sizing: border-box;
 }
 .middle-image-size{
   width:150rpx;
   height:150rpx;
-  margin-right: 20rpx;
+  padding-right: 20rpx;
 }
 .product-name {
-  flex: 0 0 60%;
-  font-size: 26rpx;
-  margin-left: 10rpx;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  width:250rpx;
+  box-sizing: border-box;
+}
+.imageList {
+  padding-left: 50rpx;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
 }
 
-
-.money-count{
-  display:flex;
-  flex-direction: column;
-  margin-right: 50rpx;
+.money-count,.money-count1{
+  background: rgb(255,255,255,0.7);
+  text-align: right;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.scroll {
+  width:100%;
+  height:150rpx;
+  white-space:nowrap;
+  padding-left:50rpx;
+  padding-right:150rpx;
+  box-sizing:border-box;
+}
+.money-count1{
+  position:absolute;
+  top:0;
+  right:0rpx;
+  z-index:3;
+  box-shadow: -4px 0 2px 0px rgba(133, 133, 133,0.2);
+  height: 150rpx;
 }
 .money{
   font-size: 39rpx;
@@ -75,6 +97,14 @@
   color: rgb(133, 133, 133);
   margin-left: auto;
 }
+
+.xs{
+  font-size: 30rpx;
+}
+.fh{
+  font-size:25rpx;
+}
+
 .deleteOrder-icon
 {
   width: 40rpx;
@@ -83,12 +113,12 @@
 
 .pay-button{
   width: 100rpx;
-  padding:15rpx 25rpx;
+  padding:10rpx 20rpx;
   border:0.1rpx solid red;
   border-radius:50rpx;
   font-size:25rpx;
   margin-left:auto;
-  margin-right: 50rpx;
+  margin-right: 20rpx;
   margin-top: 30rpx;
   color: red;
 }

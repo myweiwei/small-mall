@@ -2,6 +2,36 @@
 .boxContainer {
   background: #fff;
 }
+.boxContainer1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+.boxContainer1 image {
+  width:200rpx;
+  height:200rpx;
+}
+.boxContainer1 .info {
+  color: #8d8b8b;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.boxContainer1 .btn {
+  padding: 15rpx 50rpx;
+  border: 1rpx solid #bcbcbc;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+}
+.head {
+  background: rgb(255, 254, 254);
+  color:#9e9e9e;
+  font-size:25rpx;
+  padding:0 20rpx;
+}
 .carList {
   height: 170rpx;
   padding: 20rpx 30rpx;
@@ -23,37 +53,43 @@ checkbox {
 }
 /*checkbox 选项框大小  */
 checkbox .wx-checkbox-input {
-  width:40rpx;
-  height:40rpx;
+  width:30rpx;
+  height:30rpx;
   border-radius:50%;
-  border:1rpx solid #FF525C;
+  border:3rpx solid #6e7070;
 }
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   background: #FF525C;
+  border:3rpx solid #FF525C;
 }
 /*checkbox选中后图标样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
-  width: 28rpx;
-  height: 28rpx;
-  line-height: 28rpx;
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
   text-align: center;
-  font-size: 22rpx;
+  font-size: 23rpx;
   color: #fff;
   background: transparent;
   transform: translate(-50%, -50%) scale(1);
   -webkit-transform: translate(-50%, -50%) scale(1);
 }
+.info .name  {
+  color:#4b4b4b;
+  font-size: 30rpx;
+}
+.info .price {
+  font-size:28rpx;
+  color:#d34248;
+  font-weight:700;
+}
+.info .price text{
+  font-size: 25rpx;
+}
 .guige {
-  width:100rpx;
-  height:30rpx;
-  background: rgb(238, 233, 233);
-  color:rgb(105, 101, 101);
-  font-size: 20rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5rpx;
+  color:#9e9e9e;
+  font-size: 25rpx;
   margin-top:4rpx;
 }
 .guige image {
@@ -61,14 +97,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   height:20rpx;
   margin:0rpx;
 }
-.carList .price {
-  height:68rpx;
-  line-height: 68rpx;
-}
 .carList .goods {
   position:absolute;
   margin-top:20rpx;
-  bottom:0rpx;
+  bottom:20rpx;
   right:4rpx;
   width:200rpx;
   height:20rpx;
@@ -76,7 +108,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 .goods .jian,.goods .jia{
   padding:10rpx;
-  width:20rpx;
+  width:30rpx;
   height:20rpx;
   border-radius:50%;
   position:absolute;
@@ -84,11 +116,11 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   line-height:20rpx;
 }
 .goods .jian{
-  left:0rpx;
+  left:10rpx;
   bottom:0;
 }
 .goods .jia {
-  right:0;
+  right:10rpx;
   bottom:0;
 }
 .goods input {
@@ -96,7 +128,99 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   height:40rpx;
   position:absolute;
   left:50%;
-  bottom:10%;
+  bottom:0%;
   transform: translateX(-50%);
   text-align: center;
+  background: #f7f7f7;
+}
+.container_pop {
+  padding:30rpx;
+  height:70%;
+  box-sizing: border-box;
+}
+.pop_title {
+  font-weight:700;
+  font-size:30rpx;
+}
+.pop_step{
+  height:100rpx;
+  line-height: 100rpx;
+}
+.footer{
+  height: 30%;
+  box-sizing:border-box;
+}
+.footer view {
+  border-top:1px solid #ccc;
+  font-size:28rpx;
+  font-weight: 200;
+  height: 100rpx;
+  line-height: 100rpx;
+  width:50%;
+}
+.sq {
+  border-left:1px solid #ccc;
+  border-radius:0px;
+  color:#fff;
+  background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
+}
+.footFix {
+  position: fixed;
+  bottom:0;
+  height:80rpx;
+  background: rgb(255, 254, 254);
+  width:100%;
+  box-sizing: border-box;
+}
+.footFix checkbox {
+  margin:0 15rpx;
+  
+}
+.footFix checkbox .wx-checkbox-input {
+  width:40rpx;
+  height:40rpx;
+}
+.footFix label{
+  font-size:25rpx;
+  color: #9e9e9e;
+}
+.footFix .checkPrice {
+  font-size: 30rpx;
+  color:#000;
+  margin-left:30rpx;
+  font-family: '宋体';
+}
+.footFix text text {
+  font-weight: 700;
+}
+.footBtn_btn {
+  font-size: 30rpx;
+  width:300rpx!important;
+  color:#fff;
+  font-weight:200;
+  height:80rpx;
+  line-height: 80rpx;
+  border-radius:0px;
+  padding:0rpx 20rpx!important;
+  background:linear-gradient(to right, #f50704 25%, #fd2808 50%,#ff3b11 75%,#fd4c16 100% );
+}
+.footBtn_btn1 {
+  font-weight:200;
+  border-radius:50rpx;
+  width:150rpx;
+  border:1px solid #6e7070;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+.footBtn_btn text {
+  font-weight:700;
+  font-family: '宋体'
+}
+.spinner {
+  width:100rpx;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }
