@@ -52,6 +52,7 @@ Page({
           var b = res.data.data[i].price.split(".");
           res.data.data[i].zs = b[0];
           res.data.data[i].xs = b[1];
+          res.data
         }
         that.setData({ list: res.data.data });
       }
