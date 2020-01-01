@@ -37,6 +37,11 @@
   height: 36rpx;
   margin-right: 20rpx;
 }
+.item {
+  margin-top: 15rpx;
+  color: #FFF;
+  font-size: 24rpx;
+}
 
 /*---------------地址--------------------------*/
 .address{

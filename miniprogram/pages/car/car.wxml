@@ -72,7 +72,7 @@
   </view>
  </van-popup>
 </view>
-<view class='boxContainer1' wx:if='{{!carData.cartProductVOList.length}}'>
+<view class='boxContainer1' wx:if='{{carData.cartProductVOList.length==0&&show1==false}}'>
 <image src='../../images/gouwuchekong.png'></image>
   <text class='info'>购物车内容为空</text>
   <view class='btn' bindtap='toIndex'>去逛逛</view>
