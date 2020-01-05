@@ -1,16 +1,11 @@
 <view class="boxContainer">
    
     <view class="address">
-      <text>北京海淀区四环到五环之间</text> 
-      <text>和泓四季4-3-701</text>
-      <text>李磊 16619962166</text>
+      <text>{{chooseAddress.province}}</text> 
+      <text>{{chooseAddress.neighbourhood}}</text>
+      <text>{{chooseAddress.name}} 16619962166</text>
     </view>
 
-    <view>
-      
-    </view>
-  
- 
   <view class="money-detail">
     <view class="money-detail-item">
       <text class="order-detail-left-color">商品总额：</text>
@@ -31,13 +26,5 @@
 
    </view>
    <view style="margin-bottom:90rpx;"></view>
-  <view class="buttons border-top" wx:if="{{obj.orderStatus == 0}}">
-    <view class="border cancel-button" bindtap="cancelOrder">取消订单</view>
-    <view class="pay-button">立即支付</view>
-  </view> 
-
-  <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
-    <view class="border cancel-button" bindtap="cancelOrder">删除订单</view>
-    <view class="pay-button">再次购买</view>
-  </view> 
+  <view>立即支付</view>
 </view>

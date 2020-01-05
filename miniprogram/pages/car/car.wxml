@@ -25,7 +25,7 @@
           <view class='guige'>{{item.spec}}</view>
           <view class='price'><text>￥</text>{{item.price}}</view>
           <view class='goods'>
-    　　　　　 <view bindtap='jia' class='jian' data-id='{{item.productId}}' data-operate='-1'>-</view>
+    　　　　　 <view bindtap='jia' class='{{item.number==1?"gray jian":"jian"}}' data-id='{{item.productId}}' data-operate='-1'>-</view>
     　　　　　 <input name='num' data-item='{{item}}' bindtap="showPopup" type='text' disabled="true" value='{{item.number}}'/>
     　　　　　 <view bindtap='jia' class='jia'  data-id='{{item.productId}}' data-operate='1'>+</view>
     　　　 </view>
