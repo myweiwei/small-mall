@@ -1,0 +1,37 @@
+<!--pages/comment/comment.wxml-->
+<view>
+  <view class='comment-top' style='background:url({{dataList.images.large}}) top/cover no-repeat'>
+  </view>
+  <view class='comment-mask'></view>
+  <view class='common-info'>
+    <image src='{{dataList.images.small}}'></image>
+    <view class='common-content'>
+      <view>
+          <text class='original_title'>{{dataList.original_title}}</text>
+      </view> 
+      <view>
+        <text class='title'>{{dataList.title}}</text>
+      </view>
+      <view>
+        <text class='average' wx:html='{{dataList.rating.average}}分'></text>
+      </view>
+      <view>
+        <text class='country' wx:for='{{dataList.countries}}' wx:key='index'>{{item}}/</text>
+      </view>
+      <view>
+        <text class='writers' wx:for='{{dataList.writers}}' wx:key='index'>导演：{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='summary'>
+    <text>{{dataList.summary}}</text>
+  </view>
+  <van-field value="{{ value }}" placeholder="写一些评价吧" bind:change="onChange"/>
+  <van-rate value="{{ score }}" bind:change="onScoreChange" />
+  <van-button type='warning' size='small' bindtap="upload">上传文件</van-button>
+  <view>
+  <image src='{{item}}' wx:for='{{images}}' wx:key='{{index}}' class='common-img'></image>
+  </view>
+  <van-button type='danger' size='large' bindtap="submit">提交评价</van-button>
+</view>
+

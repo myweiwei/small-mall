@@ -1,10 +1,10 @@
 <view class="my-container">
-  <view class="nullAddress" wx:if='{{!mydata.length}}'>
+  <view class="nullAddress" wx:if='{{mydata.length==0&&show==false}}'>
     <image style="width:150rpx; height:160rpx;" src="../../../images/nullAddress.png"></image>
     <view class='info'>您还没有收获地址哦！</view>
     <view class='add_address' bindtap="addAddressListener">新建地址</view>
   </view>
-  <scroll-view wx:if='{{mydata.length}}' scroll-y='true' style='height:90%'>
+  <scroll-view wx:if='{{mydata.length>0&&show==false}}' scroll-y='true' style='height:90%'>
     <view class="address-item border-top" wx:for='{{mydata}}' wx:key='{{item.id}}'>
         <view class="name-phone flexBox">
           <text class='name'>{{item.name}}</text>

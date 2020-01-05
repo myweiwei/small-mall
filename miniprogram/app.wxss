@@ -247,3 +247,6 @@ page {
   border-radius:50rpx;
   font-size:30rpx;
 }
+.gray {
+  color:#aaa;
+}

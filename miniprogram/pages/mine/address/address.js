@@ -4,6 +4,7 @@ Page({
   data: {
     mydata:[],
     userId:'',
+    show:true
   },
   addAddressListener: function () {
     wx.navigateTo({
@@ -49,13 +50,17 @@ Page({
   },
   getData:function(){
     let me=this;
+    me.setData({
+      show: true
+    })
     wx.request({
       url: app.baseUrl + '/address',
       data: { userId:me.data.userId },
       method: 'GET',
       success: function (res) {
         me.setData({
-          mydata: res.data.data
+          mydata: res.data.data,
+          show:false
         });
       }
     });

@@ -1,11 +1,10 @@
 {
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index",
-    "van-count-down": "@vant/weapp/count-down/index"
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "navigationBarBackgroundColor": "#FFFFFF",
-  "navigationBarTitleText": "订单详情",
+  "navigationBarTitleText": "填写订单",
   "navigationBarTextStyle": "black",
   "backgroundColor": "#000000",
   "backgroundTextStyle": "dark"

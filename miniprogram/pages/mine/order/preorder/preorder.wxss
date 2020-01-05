@@ -1,0 +1,23 @@
+.boxContainer {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/*---------------地址--------------------------*/
+.address{
+  width: 100%;
+  height: 200rpx;
+  background: #FFF;
+  border-radius: 19rpx;
+  color:#000;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+

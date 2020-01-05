@@ -1,0 +1,30 @@
+<view class="boxContainer">
+   
+    <view class="address">
+      <text>{{chooseAddress.province}}</text> 
+      <text>{{chooseAddress.neighbourhood}}</text>
+      <text>{{chooseAddress.name}} 16619962166</text>
+    </view>
+
+  <view class="money-detail">
+    <view class="money-detail-item">
+      <text class="order-detail-left-color">商品总额：</text>
+      <text>￥{{obj.price / 100}}</text>
+    </view>
+     <view class="money-detail-item">
+      <text class="order-detail-left-color">运费：</text>
+      <text>+￥0.00</text>
+    </view>
+     <view class="money-detail-item">
+      <text></text>
+      <view style="margin-right:15rpx;">需付款：
+        <text style="color:red; font-size:30rpx; font-weight:bold;">￥{{obj.zs}}.</text>
+        <text class="xs" style="color:red; font-weight:bold;">{{obj.xs}}</text>
+        
+      </view>
+    </view>
+
+   </view>
+   <view style="margin-bottom:90rpx;"></view>
+  <view>立即支付</view>
+</view>

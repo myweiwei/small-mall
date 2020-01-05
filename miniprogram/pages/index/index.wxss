@@ -1,3 +1,6 @@
+
+/*-----------------------------*/
+
 /* pages/index/index.wxss */
 .boxContainer {
   display: flex;
@@ -223,3 +226,32 @@
   font-size:25rpx;
   color:#515151;
 }
+
+/*----------------------*/
+/* pages/movie/movie.wxss */
+.movie {
+  min-height:300rpx;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+.movie-img {
+  width:200rpx;
+  height:100%;
+}
+.movie-info {
+  flex:1;
+  margin-left:20rpx;
+}
+.movie-title {
+  color:#666;
+  font-size: 40rpx;
+  font-weight: bolder;
+}
+.movie-average {
+  color:#faaf00;
+}
+.van-button {
+  font-size:20rpx;
+  margin-top:100rpx;
+} 
