@@ -14,6 +14,26 @@ Page({
         url: '/pages/mine/order/orderdetail/orderdetail?orderNo=' + orderNo
       })
   },
+  deleteOrder: function(event){
+    console.log("123");
+    var me = this;
+    var orderNo = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.baseUrl + '/order',
+      data: {
+        userId: 288,
+        orderNo: orderNo
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'DELETE',
+      success(res) {
+        wx.hideLoading();
+       
+      }
+    })
+  },
 
   onChange(event)
   {
@@ -92,7 +112,7 @@ Page({
         break;
     }
     console.log(me.data.payStatus);
-    me.getData(me.data.payStatus)
+    me.getData(me.data.payStatus);
   },
   getData: function (payStatus){
     let that=this;
@@ -115,6 +135,7 @@ Page({
           res.data.data[i].xs = b[1];
         }
         that.setData({ list: res.data.data });
+        console.log(res.data.data);
       }
     })
   },

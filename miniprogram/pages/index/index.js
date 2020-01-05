@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    status:0,
+    movieList: [],
+
     list:[],
     currentIndex:0,
     activeList:'',
@@ -245,6 +248,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var me = this;
+    if(1)
+    {
+      // wx.hideTabBar(); 
+      this.setData({status:0});
+      me.getTableData();
+    }
+    else{
+      this.setData({status:1});
+    }
   },
 
   /**
@@ -291,7 +304,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let me = this;
+    me.getMovieList();
   },
 
   /**
@@ -299,5 +313,44 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  getTableData: function (address) {//定义函数名称
+    var that = this;
+    // 这个地方非常重要，重置data{}里数据时候setData方法的this应为以及函数的this, 如果在下方的sucess直接写this就变成了wx.request()的this了
+    wx.request({
+      //请求地址
+      url: "https://api.douban.com/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a",
+      data: {
+        count: 10,
+        start: that.data.movieList.length
+      },
+      header: {//请求头
+        //"Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      dataType: 'json',
+      success: function (res) {
+        that.setData({movieList:res.data.subjects});
+        console.log(res.data);
+      },
+      fail: function (err) { },//请求失败
+      complete: function () { }//请求完成后执行的函数
+    })
+  },
+
+  toComment: function (event) {
+    console.log(event);
+    if (event.target.dataset.movieid) {
+      wx.navigateTo({
+        url: `../../pages/comment/comment?movieid=${event.target.dataset.movieid}`
+      })
+    }
+    else {
+      wx.navigateTo({
+        url: `../comment/comment?movieid=${event.currentTarget.dataset.movieid}`
+      })
+    }
+
+  },
 })

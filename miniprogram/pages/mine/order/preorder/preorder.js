@@ -1,16 +1,16 @@
 const app = getApp();
 var orderNo;
-Page({ 
+Page({
   data: {
     active: 0,
-    obj:{},
-    time:0, //倒计时剩余时间
+    obj: {},
+    time: 0, //倒计时剩余时间
     timeData: {}//onChange方法取time的时间，给timeData用
   },
 
   onChange(e) {
     var that = this;
-    if(e.detail.hours == 0 && e.detail.minutes == 0 && e.detail.seconds == 0){
+    if (e.detail.hours == 0 && e.detail.minutes == 0 && e.detail.seconds == 0) {
       //重新加载该订单状态
       wx.request({
         url: app.baseUrl + '/order',
@@ -23,7 +23,7 @@ Page({
           getData(res, that);
         }
       })
-      
+
     }
     this.setData({
       timeData: e.detail
@@ -32,21 +32,21 @@ Page({
   },
 
   onLoad: function (options) {
-      var that = this;
-      orderNo = options.orderNo;
-      wx.request({
-        url: app.baseUrl + '/order',
-        data:{
-          orderNo:orderNo
-        },
-        method:'GET',
-        success(res) {
-          getData(res,that);
-          console.log(res.data.data + "----------------------");
-        }
-      })
+    var that = this;
+    orderNo = options.orderNo;
+    wx.request({
+      url: app.baseUrl + '/order',
+      data: {
+        orderNo: orderNo
+      },
+      method: 'GET',
+      success(res) {
+        getData(res, that);
+        console.log(res.data.data + "----------------------");
+      }
+    })
   },
-  cancelOrder: function(){
+  cancelOrder: function () {
     var that = this;
     wx.request({
       url: app.baseUrl + '/cancelOrder',
@@ -74,7 +74,7 @@ Page({
   }
 })
 
-function getData(res,that) {
+function getData(res, that) {
   var order = res.data.data;
   that.setData({ time: order.waitPayTime });
 

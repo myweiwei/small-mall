@@ -71,3 +71,18 @@
       </view>
     </van-popup>
 </view>
+<!-- 
+<view wx:for='{{movieList}}' wx:key='{{index}}' class='movie' bindtap="toComment" data-movieid='{{item.id}}'>
+  <image class='movie-img' src='{{item.images.small}}'></image>
+  <view class='movie-info'>
+    <view class='movie-title'>{{item.title}}</view>
+    <view>观众评分：
+      <text class='movie-average'>{{item.rating.average}}</text>
+    </view>
+    <view>
+      <text wx:for='{{item.casts}}' wx:key='{{item.id}}'>{{item.name}} </text>
+    </view>
+    <view>年份：{{item.year}}</view>
+  </view>
+  <van-button type="warning" bindtap="toComment" data-movieid='{{item.id}}'>评价</van-button>
+</view> -->

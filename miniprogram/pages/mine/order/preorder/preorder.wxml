@@ -1,0 +1,43 @@
+<view class="boxContainer">
+   
+    <view class="address">
+      <text>北京海淀区四环到五环之间</text> 
+      <text>和泓四季4-3-701</text>
+      <text>李磊 16619962166</text>
+    </view>
+
+    <view>
+      
+    </view>
+  
+ 
+  <view class="money-detail">
+    <view class="money-detail-item">
+      <text class="order-detail-left-color">商品总额：</text>
+      <text>￥{{obj.price / 100}}</text>
+    </view>
+     <view class="money-detail-item">
+      <text class="order-detail-left-color">运费：</text>
+      <text>+￥0.00</text>
+    </view>
+     <view class="money-detail-item">
+      <text></text>
+      <view style="margin-right:15rpx;">需付款：
+        <text style="color:red; font-size:30rpx; font-weight:bold;">￥{{obj.zs}}.</text>
+        <text class="xs" style="color:red; font-weight:bold;">{{obj.xs}}</text>
+        
+      </view>
+    </view>
+
+   </view>
+   <view style="margin-bottom:90rpx;"></view>
+  <view class="buttons border-top" wx:if="{{obj.orderStatus == 0}}">
+    <view class="border cancel-button" bindtap="cancelOrder">取消订单</view>
+    <view class="pay-button">立即支付</view>
+  </view> 
+
+  <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
+    <view class="border cancel-button" bindtap="cancelOrder">删除订单</view>
+    <view class="pay-button">再次购买</view>
+  </view> 
+</view>

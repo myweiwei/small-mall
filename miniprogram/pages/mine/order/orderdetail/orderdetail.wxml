@@ -86,8 +86,13 @@
 
    </view>
    <view style="margin-bottom:90rpx;"></view>
-  <view class="buttons border-top">
-    <view class="border cancel-button ">取消订单</view>
+  <view class="buttons border-top" wx:if="{{obj.orderStatus == 0}}">
+    <view class="border cancel-button" bindtap="cancelOrder">取消订单</view>
     <view class="pay-button">立即支付</view>
+  </view> 
+
+  <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
+    <view class="border cancel-button" bindtap="cancelOrder">删除订单</view>
+    <view class="pay-button">再次购买</view>
   </view> 
 </view>

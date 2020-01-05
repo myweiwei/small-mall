@@ -344,6 +344,24 @@ Page({
       }
     })
   },
+  preOrder: function(){
+    var me = this;
+    wx.request({
+      url: me.data.baseUrl + "/preOrder",
+      method: "POST",
+      data: {
+        userId: me.data.userId,
+      },
+      success: function (data) {
+        wx.navigateTo({
+          url: '/pages/mine/order/preorder/preorder'
+        });
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
