@@ -57,11 +57,10 @@ Page({
   onLoad: function (options) {
     let me = this;
     me.getUser();
-    
   },
   payFunc:function(){
     wx.request({
-      url:'http://192.168.1.5:8888/order',
+      url:'http://192.168.1.132:8888/order',
       data: {
         userId:288,
         addressId:102

@@ -1,12 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-<<<<<<< HEAD
-    "pages/mine/order/order",
-=======
     "pages/comment/comment",
     "pages/mine/mine",
->>>>>>> 8bc41f693786483aa051c1203d21f70a82aaffe5
     "pages/mine/message/message",
     "pages/mine/order/order",
     "pages/mine/order/preorder/preorder",
