@@ -77,6 +77,12 @@
 					"pathName": "pages/mine/order/order",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/order/preorder/preorder",
+					"pathName": "pages/mine/order/preorder/preorder",
+					"scene": null
 				}
 			]
 		}
