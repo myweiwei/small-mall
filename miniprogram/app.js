@@ -1,6 +1,6 @@
 //app.js
 App({
-  baseUrl: 'http://192.168.1.5:8888',
+  baseUrl: 'http://5dfc2c594e951.freetunnel.cc',
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -14,6 +14,14 @@ App({
         traceUser: true,
       })
     }
+  },
+  getPrice:function(data){
+    data = (data / 100).toFixed(2);
+    var b = data.split(".");
+    let arr={};
+    arr.zs = b[0];
+    arr.xs = b[1];
+    return arr;
   },
   onLoad: function () {
    

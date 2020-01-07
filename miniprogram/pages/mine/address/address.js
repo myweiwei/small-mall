@@ -11,6 +11,12 @@ Page({
       url: '/pages/mine/address/addAddress/addAddress'
     })
   },
+  toEdit: function (e) {
+    console.log(e.target.dataset.item);
+    wx.navigateTo({
+      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item)
+    })
+  },
   getUser: function () {
     let me = this;
     wx.showLoading({

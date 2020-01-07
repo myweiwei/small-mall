@@ -129,13 +129,11 @@ Page({
       success(res) {
         wx.hideLoading();
         for (let i = 0; i < res.data.data.length;i++){
-          res.data.data[i].price =( res.data.data[i].price/100).toFixed(2);
-          var b = res.data.data[i].price.split(".");
-          res.data.data[i].zs = b[0];
-          res.data.data[i].xs = b[1];
+          console.log(app.getPrice(res.data.data[i].price).zs)
+          res.data.data[i].zs = app.getPrice(res.data.data[i].price).zs;
+          res.data.data[i].xs = app.getPrice(res.data.data[i].price).xs;
         }
         that.setData({ list: res.data.data });
-        console.log(res.data.data);
       }
     })
   },

@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+        "van-field": "@vant/weapp/field/index",
+        "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+        "van-area": "@vant/weapp/area/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-switch": "@vant/weapp/switch/index"
+  },
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "编辑收货地址",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#000000",
+  "backgroundTextStyle": "dark"
+}
