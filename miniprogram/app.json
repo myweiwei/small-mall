@@ -7,8 +7,10 @@
     "pages/mine/order/order",
     "pages/mine/order/preorder/preorder",
     "pages/mine/order/orderdetail/orderdetail",
+    "pages/mine/order/preorder/chooseAdd/chooseAdd",
     "pages/mine/address/address",
     "pages/mine/address/addAddress/addAddress",
+    "pages/mine/address/editAddress/editAddress",
     "pages/car/car"
     
   ],
