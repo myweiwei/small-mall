@@ -65,8 +65,8 @@
 .money-count,.money-count1{
   background: rgb(255,255,255,0.7);
   text-align: right;
+  padding: 15rpx;
   box-sizing: border-box;
-  padding: 20rpx;
 }
 .money-count1{
   position:absolute;
