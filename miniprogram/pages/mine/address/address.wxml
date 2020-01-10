@@ -19,7 +19,7 @@
             <text>{{item.neighbourhood}}</text>
           </view>
           <view>
-            <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png"></image>
+            <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png" bindtap='toEdit' data-item='{{item}}'></image>
           </view>
         </view>
     </view>

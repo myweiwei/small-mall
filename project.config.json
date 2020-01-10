@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "pages/mine/order/preorder/preorder",
 					"pathName": "pages/mine/order/preorder/preorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/address/address",
+					"pathName": "pages/mine/address/address",
 					"scene": null
 				}
 			]

@@ -30,7 +30,7 @@
     </view>
 
 
-   </view>
+ 
    <view style="margin-bottom:90rpx;"></view>
   <view bindtap="payFunc">立即支付</view>
 

@@ -66,6 +66,34 @@ Page({
           },
           method: 'GET',
           success(res) {
+            wx.navigateTo({
+              url: '/pages/mine/order/order'
+            })
+          }
+        })
+      }
+    })
+  },
+  deleteOrder: function(){
+    var that = this;
+    wx.request({
+      url: app.baseUrl + '/order',
+      data: {
+        userId: 288,
+        orderNo: orderNo
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'DELETE',
+      success(res) {
+        wx.request({
+          url: app.baseUrl + '/order',
+          data: {
+            orderNo: orderNo
+          },
+          method: 'GET',
+          success(res) {
             getData(res, that);
           }
         })
