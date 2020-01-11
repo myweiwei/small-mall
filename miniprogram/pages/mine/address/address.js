@@ -4,7 +4,9 @@ Page({
   data: {
     mydata:[],
     userId:'',
-    show:true
+    show:true,
+    chooseId:'',
+    showLoad:false
   },
   addAddressListener: function () {
     wx.navigateTo({
@@ -12,15 +14,15 @@ Page({
     })
   },
   toEdit: function (e) {
-    console.log(e.target.dataset.item);
+    let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item)
+      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId
     })
   },
   getUser: function () {
     let me = this;
-    wx.showLoading({
-      title: '加载中',
+    me.setData({
+      showLoad:true
     })
     wx.login({
       success(res) {
@@ -34,10 +36,10 @@ Page({
             },
             success: function (data) {
               me.setData({
-                userId: data.data.data
+                userId: data.data.data,
+                showLoad: false
               })
               me.getData();
-              wx.hideLoading();
             },
             error: function (err) {
               console.log(err);
@@ -52,7 +54,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    let me=this;
+    me.setData({
+      chooseId: options.id
+    })
   },
   getData:function(){
     let me=this;
@@ -70,6 +76,14 @@ Page({
         });
       }
     });
+  },
+  toOrder:function(e){
+    let me=this;
+    if (me.data.chooseId != undefined){
+      wx.redirectTo({
+        url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -97,7 +111,18 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    let me=this;
+    if(me.data.chooseId==undefined){
+      wx.reLaunch({
+        url: '/pages/mine/mine'
+      })
+    }
+    else {
+      wx.reLaunch({
+        url: '/pages/mine/order/preorder/preorder'
+      })
+    }
+    
   },
 
   /**

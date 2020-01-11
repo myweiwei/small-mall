@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-button": "@vant/weapp/button",
-    "van-popup": "@vant/weapp/popup"
+    "van-popup": "@vant/weapp/popup",
+    "van-loading": "@vant/weapp/loading/index"
   },
   "navigationBarBackgroundColor": "#E45050",
   "navigationBarTitleText": "收货地址",

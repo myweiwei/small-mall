@@ -4,12 +4,19 @@ Page({
   data: {
     addressDate:[],
     chooseAddress:{},
-    order:{}
+    order:{},
+    chooseId:'',
+    showLoad:false
+  },
+  toAddress:function(e){
+    wx.navigateTo({
+      url: '/pages/mine/address/address?id=' + e.target.dataset.id
+    });
   },
   getUser: function () {
     let me = this;
-    wx.showLoading({
-      title: '加载中',
+    me.setData({
+      showLoad:true
     })
     wx.login({
       success(res) {
@@ -23,10 +30,10 @@ Page({
             },
             success: function (data) {
               me.setData({
-                userId: data.data.data
+                userId: data.data.data,
+                showLoad: false
               })
               me.getAddress();
-              me.getData();
               wx.hideLoading();
             },
             error: function (err) {
@@ -39,6 +46,11 @@ Page({
       }
     });
   },
+  onUnload: function () {
+    // wx.reLaunch({
+    //   url: '/pages/car/car'
+    // })
+  },
   getAddress: function () {
     let me = this;
     wx.request({
@@ -46,26 +58,31 @@ Page({
       data: { userId: me.data.userId },
       method: 'GET',
       success: function (res) {
-        let v = res.data.data.find((value) => value.defaults == 1); 
+        let v='';
+        if (!me.data.chooseId||me.data.chooseId==undefined){
+          v = res.data.data.find((value) => value.defaults == 1);
+        } 
+        else {
+          v = res.data.data.find((value) => value.id == me.data.chooseId);
+        }
         me.setData({
           addressDate: res.data.data,
-          chooseAddress: v!='undefined' ? v : res.data.data[0]
+          chooseAddress: v!=undefined ? v : res.data.data[0]
         })
-        console.log(v);
+        me.getData();
       }
     });
   },
   getData:function(){
     let me = this;
     wx.request({
-      url: app.baseUrl + '/preOrder',
-      data: { userId: me.data.userId, province: me.data.chooseAddress.province },
+      url: app.baseUrl + '/order',
+      data: { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
-        console.log(res.data);
         me.setData({
           order:res.data.data
         })
@@ -74,6 +91,9 @@ Page({
   },
   onLoad: function (options) {
     let me = this;
+    me.setData({
+      chooseId: options.chooseId
+    })
     me.getUser();
   },
   payFunc:function(){
@@ -88,7 +108,6 @@ Page({
       },
       method: 'POST',
       success(res) {
-       console.log(res.data);
         wx.requestPayment(
           {
             timeStamp: res.data.data.payParam.timeStamp,
@@ -97,7 +116,6 @@ Page({
             signType: res.data.data.payParam.signType,
             paySign: res.data.data.payParam.paySign,
             success: function (res) {
-              console.log(res.data);
             },
             fail: function (res) {
               console.log(res);
