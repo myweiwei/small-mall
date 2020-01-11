@@ -63,8 +63,8 @@ Page({
     wx.request({
       url:'http://192.168.1.5:8888/order',
       data: {
-        userId:288,
-        addressId:102
+        userId:941,
+        addressId:129
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',

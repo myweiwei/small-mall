@@ -307,6 +307,7 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success(res) {
+          console.log(res.data);
           for (var i = 0; i < res.data.data.cartProductVOList.length;i++){
             res.data.data.cartProductVOList[i].checkFlag=false;
           }
