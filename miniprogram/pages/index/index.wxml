@@ -1,4 +1,7 @@
 <!--pages/index/index.wxml-->
+<view  class='spinner' wx:if='{{showLoad}}'>
+  <van-loading type="spinner"/>
+</view>
 <view class='boxContainer' style='height:100%'>
     <scroll-view scroll-y='true' class='nav'>
       <view wx:for='{{list}}'  wx:key='{{item.id}}'data-id='{{"a"+item.id}}'

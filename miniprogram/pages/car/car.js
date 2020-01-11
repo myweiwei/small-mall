@@ -344,23 +344,20 @@ Page({
       }
     })
   },
-  preOrder: function(){
-    var me = this;
-    wx.request({
-      url: me.data.baseUrl + "/preOrder",
-      method: "POST",
-      data: {
-        userId: me.data.userId,
-      },
-      success: function (data) {
-        wx.navigateTo({
-          url: '/pages/mine/order/preorder/preorder'
-        });
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    })
+  preOrder: function(e){
+    if(e.currentTarget.dataset.total>=30){
+      wx.navigateTo({
+        url: '/pages/mine/order/preorder/preorder'
+      });
+    }
+    else {
+      wx.showToast({
+        title: '再买点别的吧，30元起送哦！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
