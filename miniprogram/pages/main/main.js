@@ -1,9 +1,11 @@
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    products:[],
     // Banner数据
     images: [
       "http://shop.lileiit.com/banner5.png",
@@ -32,4 +34,20 @@ Page({
     // 后边距，可用于露出后一项的一小部分，接受 px 和 rpx 值
     nextMargin: 0
   },
+  onShow:function(){
+    var me = this;
+    wx.request({
+      url: app.baseUrl + '/recommendProduct',
+      method: "GET",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (data) {
+        console.log(data.data.data);
+        me.setData({
+          products: data.data.data
+        })
+      }
+    });
+  }
 });

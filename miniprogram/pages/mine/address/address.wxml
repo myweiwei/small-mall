@@ -1,3 +1,6 @@
+<view  class='spinner' wx:if='{{showLoad}}'>
+  <van-loading type="spinner"/>
+</view>
 <view class="my-container">
   <view class="nullAddress" wx:if='{{mydata.length==0&&show==false}}'>
     <image style="width:150rpx; height:160rpx;" src="../../../images/nullAddress.png"></image>
@@ -5,9 +8,13 @@
     <view class='add_address' bindtap="addAddressListener">新建地址</view>
   </view>
   <scroll-view wx:if='{{mydata.length>0&&show==false}}' scroll-y='true' style='height:90%'>
-    <view class="address-item border-top" wx:for='{{mydata}}' wx:key='{{item.id}}'>
-        <view class="name-phone flexBox">
-          <text class='name'>{{item.name}}</text>
+    <view class="address-item border-top flexBox" wx:for='{{mydata}}' wx:key='{{item.id}}'>
+      <view wx:if='{{chooseId==item.id}}'>
+        <image src='../../../images/right.png' class='chooseImg'></image>
+      </view>
+      <view style='flex:1' id='aaa' catchtap='toOrder' data-id='{{item.id}}'>
+        <view class="name-phone flexBox" >
+          <text class='name' >{{item.name}}</text>
           <text>{{item.phone}}</text>
           <view>
             <text class="default-icon" wx:if="{{item.defaults == 1}}">默认              </text>
@@ -19,9 +26,10 @@
             <text>{{item.neighbourhood}}</text>
           </view>
           <view>
-            <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png" bindtap='toEdit' data-item='{{item}}'></image>
+            <image style="width:40rpx; height:40rpx;" src="../../../images/updateAddress.png" catchtap='toEdit' data-item='{{item}}'></image>
           </view>
         </view>
+      </view>
     </view>
   </scroll-view>
   <button class="bottom_btn"  wx:if='{{mydata.length}}' catchtap="addAddressListener">+新增收货地址</button>

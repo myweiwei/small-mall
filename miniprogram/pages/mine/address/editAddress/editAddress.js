@@ -4049,6 +4049,7 @@ Page({
     editList:{},
     showPop:false,
     phone:'',
+    chooseId:'',
   },
   onChangeIpt(event) {
     let me=this;
@@ -4087,7 +4088,6 @@ Page({
       })
       return;
     }
-
     if (!me.data.editList.neighbourhood) {
       wx.showToast({
         title: '请输入详细地址',
@@ -4122,6 +4122,76 @@ Page({
         wx.hideLoading();
         wx.navigateTo({
           url: '/pages/mine/address/address'
+        })
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
+  },
+  saveAddr1:function(){
+    let me = this;
+    if (!me.data.editList.name) {
+      wx.showToast({
+        title: '请输入收货人',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!me.data.editList.province) {
+      wx.showToast({
+        title: '请选择所在地区',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (me.data.phone == me.data.editList.phone) {
+      delete me.data.editList.phone;
+    }
+    else if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(me.data.editList.phone))) {
+      wx.showToast({
+        title: '手机号码有误',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!me.data.editList.neighbourhood) {
+      wx.showToast({
+        title: '请输入详细地址',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '加载中',
+    })
+    let def = 'editList.defaults';
+    if (me.data.editList.defaults) {
+      me.setData({
+        [def]: 1
+      })
+    }
+    else {
+      me.setData({
+        [def]: 0
+      })
+    }
+    wx.request({
+      url: me.data.baseUrl + '/updateAddress',
+      method: "put",
+      data: me.data.editList,
+      success: function (data) {
+        wx.showToast({
+          title: '修改成功',
+          icon: 'success'
+        });
+        wx.hideLoading();
+        wx.navigateTo({
+          url: '/pages/mine/order/preorder/preorder?chooseId=' + me.data.editList.id
         })
       },
       error: function (err) {
@@ -4208,6 +4278,7 @@ Page({
   onLoad: function (options) {
     let me=this;
     me.setData({
+      chooseId: options.chooseId,
       editList: JSON.parse(options.item),
       phone: JSON.parse(options.item).phone
     })

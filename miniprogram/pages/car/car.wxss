@@ -1,6 +1,8 @@
 /* pages/car/car.wxss */
 .boxContainer {
   background: #fff;
+  box-sizing: border-box;
+  overflow-y:hidden;
 }
 .boxContainer1 {
   width: 100%;
@@ -31,6 +33,8 @@
   color:#9e9e9e;
   font-size:25rpx;
   padding:0 20rpx;
+  height:5%;
+  box-sizing: border-box;
 }
 .carList {
   height: 170rpx;
@@ -149,6 +153,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .footer{
   height: 30%;
   box-sizing:border-box;
+  padding:0;
 }
 .footer view {
   border-top:1px solid #ccc;

@@ -1,6 +1,7 @@
 .my-container{
   width: 100%;
   height: 100%;
+  background: #FFF;
 }
 .swiper{
   height: 350rpx;
@@ -23,22 +24,40 @@
 .line{
   width: 40%;
   height: 2rpx;
-  background-color: red;
+  background-color:rgb(187, 187, 187);
 }
 .products-parent{
   width: 100%;
   height: 120%;
   display: flex;
   flex-wrap: wrap;
-
 }
 .products-child{
   width: calc(calc(100% / 2) - 30rpx);
-  height:350rpx;
+  height:370rpx;
   margin-left: 20rpx;
   margin-top: 20rpx;
-
+  padding-left: 22rpx;
   box-sizing: border-box;
-  border:1rpx  solid #000;
-  background: red;
+  border:1rpx  solid rgb(187, 187, 187);
+  background: #FFF;
+  display: flex;
+  flex-direction: column;
+}
+.product-image{
+  width: 94%;
+  height: 220rpx;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
+}
+.product-name{
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+.product-keywords{
+  font-size: 22rpx;
+  line-height: 32rpx;
+}
+.yuan{
+  font-size: 20rpx;
 }

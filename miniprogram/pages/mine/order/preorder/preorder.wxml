@@ -1,7 +1,10 @@
+<view  class='spinner' wx:if='{{showLoad}}'>
+  <van-loading type="spinner"/>
+</view>
 <view class="boxContainer">
-    <view class='top flexBox'>
+    <view class='top flexBox' data-id='{{chooseAddress.id}}' bindtap='toAddress'>
       <view class="address">
-        <view class='province'>{{chooseAddress.province}}</view> 
+        <view class='province'><text class='default-icon' wx:if='{{chooseAddress.defaults==1}}'>默认</text>{{chooseAddress.province}}</view> 
         <view class='neighbourhood'>{{chooseAddress.neighbourhood}}</view>
         <view class='name'>{{chooseAddress.name}} {{chooseAddress.phone}}</view>
       </view>
@@ -33,4 +36,5 @@
  
    <view style="margin-bottom:90rpx;"></view>
   <view bindtap="payFunc">立即支付</view>
+
 </view>

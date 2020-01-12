@@ -26,7 +26,8 @@ Page({
     chooseWeight:'0',
     activeChoose:'',
     chooseUnit:'',
-    chooseName:''
+    chooseName:'',
+    showLoad:false
   },
   // 展示选规格弹框
   showshadow: function (e) {
@@ -42,10 +43,8 @@ Page({
     me.setData({
       chooseImageUrl: '',
       choosePrice: '',
-      chooseWeight: ''
-    })
-    wx.showLoading({
-      title: '加载中',
+      chooseWeight: '',
+      showLoad:true
     })
     wx.request({
       url: me.data.baseUrl + '/productItem/',
@@ -68,9 +67,9 @@ Page({
           })
         }
         me.setData({
-          chooseSize:true
+          chooseSize:true,
+          showLoad:false
         })
-        wx.hideLoading();
       },
       error: function (err) {
         console.log(err);
@@ -177,8 +176,8 @@ Page({
   },
   getList:function(){
     let me=this;
-    wx.showLoading({
-      title: '加载中',
+    me.setData({
+      showLoad:true
     })
     wx.request({
       url: this.data.baseUrl+'/products', //仅为示例，并非真实的接口地址
@@ -189,10 +188,10 @@ Page({
       },
       success(res) {
         me.setData({
-          list: res.data.data
+          list: res.data.data,
+          showLoad:false
         })
         me._calculateHeight();
-        wx.hideLoading();
       }
     })
   },

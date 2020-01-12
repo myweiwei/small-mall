@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-loading": "@vant/weapp/loading/index"
   },
   "navigationBarBackgroundColor": "#E45050",
   "navigationBarTitleText": "填写订单",

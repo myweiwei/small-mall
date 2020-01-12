@@ -27,12 +27,15 @@
    
    <scroll-view style='height:700rpx;' scroll-y='true'>
       <view class="products-parent">
-          <view class="products-child">1</view>
-          <view class="products-child">2</view>
-          <view class="products-child">3</view>
-          <view class="products-child">4</view>
-          <view class="products-child">5</view>
-          <view class="products-child">6</view>
+
+        <block wx:for="{{products}}" wx:key="key" data-id="{{item.id}}"> 
+          <view class="products-child">
+            <image class="product-image" src="http://{{item.picture}}"></image>
+            <view class="product-name">{{item.name}} <text class="yuan">￥</text>{{item.price}}<text class="yuan">/{{item.unit}}</text></view>
+            <view class="product-keywords">{{item.searchKey}}</view>
+          </view>
+         
+          </block>
         </view>
         
     </scroll-view>
