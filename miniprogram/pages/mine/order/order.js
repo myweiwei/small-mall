@@ -30,7 +30,7 @@ Page({
       method: 'DELETE',
       success(res) {
         wx.hideLoading();
-       
+        me.getData();
       }
     })
   },

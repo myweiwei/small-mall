@@ -13,7 +13,7 @@
               </view>
                 <view wx:if="{{item.orderStatus == -4}}" style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
                 <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已取消</text>
-                <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png" data-id="{{item.orderNo}}" bindtap="deleteOrder"></image>
+                <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png" data-id="{{item.orderNo}}" catchtap="deleteOrder"></image>
               </view>
             </view>
             <view class="middle">

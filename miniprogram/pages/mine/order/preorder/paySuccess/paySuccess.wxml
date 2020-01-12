@@ -1,0 +1,15 @@
+<view class='contentBox'>
+  <view class='pay'>
+    <view class='flexBox payBox'>
+      <image src='../../../../../images/ziyuan.png'></image>
+      <view>
+          <view class='line'>支付方式:<text class='red'>微信支付</text></view>
+          <view class='line'>订单金额:<text class='red'>￥82</text></view>
+      </view>
+    </view>
+    <view class='btn flexBox'>
+      <text bindtap="toOrder">查看订单</text>
+      <text bindtap='tell'>发货时通知我</text>
+    </view>
+  </view>
+</view>

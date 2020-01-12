@@ -22,7 +22,8 @@ Page({
     chooseSize:false,
     chooseData:[],
     chooseImageUrl:'',
-    choosePrice:"0",
+    chooseZs:"0",
+    chooseXs:'0',
     chooseWeight:'0',
     activeChoose:'',
     chooseUnit:'',
@@ -34,7 +35,8 @@ Page({
     let me=this;
     me.getGuige(e.target.dataset.item.id);
     me.setData({
-      chooseSize:true
+      chooseSize:true,
+      num:1
     })
   },
   //选规格弹框内容
@@ -42,9 +44,9 @@ Page({
     let me = this;
     me.setData({
       chooseImageUrl: '',
-      choosePrice: '',
-      chooseWeight: '',
-      showLoad:true
+      chooseZs: '',
+      chooseXs:'',
+      chooseWeight: ''
     })
     wx.request({
       url: me.data.baseUrl + '/productItem/',
@@ -59,7 +61,8 @@ Page({
         if (me.data.chooseData.length){
           me.setData({
             chooseImageUrl: me.data.chooseData[0].picture,
-            choosePrice: me.data.chooseData[0].price,
+            chooseZs: app.getPrice(me.data.chooseData[0].price).zs,
+            chooseXs: app.getPrice(me.data.chooseData[0].price).xs,
             chooseWeight: me.data.chooseData[0].weight,
             activeChoose: me.data.chooseData[0].id,
             chooseUnit: me.data.chooseData[0].unit,
@@ -67,8 +70,7 @@ Page({
           })
         }
         me.setData({
-          chooseSize:true,
-          showLoad:false
+          chooseSize:true
         })
       },
       error: function (err) {
@@ -81,7 +83,8 @@ Page({
     let me=this;
     me.setData({
       chooseImageUrl: e.target.dataset.item.picture,
-      choosePrice: e.target.dataset.item.price,
+      chooseZs: app.getPrice(e.target.dataset.item.price).zs,
+      chooseXs: app.getPrice(e.target.dataset.item.price).xs,
       chooseWeight: e.target.dataset.item.weight,
       activeChoose: e.target.dataset.item.id,
       chooseUnit: e.target.dataset.item.unit,
@@ -140,7 +143,6 @@ Page({
     });
   },
   iptChange:function(e){
-    console.log(e.detail.value);
     let me=this;
     if (e.detail.value){
       me.setData({
@@ -187,6 +189,12 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
+        for (let i = 0; i < res.data.data.length; i++) {
+          for (var j = 0; j < res.data.data[i].products.length;j++){
+            res.data.data[i].products[j].zs = app.getPrice(res.data.data[i].products[j].price).zs;
+            res.data.data[i].products[j].xs = app.getPrice(res.data.data[i].products[j].price).xs;
+          }
+        }
         me.setData({
           list: res.data.data,
           showLoad:false
@@ -331,7 +339,6 @@ Page({
       dataType: 'json',
       success: function (res) {
         that.setData({movieList:res.data.subjects});
-        console.log(res.data);
       },
       fail: function (err) { },//请求失败
       complete: function () { }//请求完成后执行的函数
@@ -339,7 +346,6 @@ Page({
   },
 
   toComment: function (event) {
-    console.log(event);
     if (event.target.dataset.movieid) {
       wx.navigateTo({
         url: `../../pages/comment/comment?movieid=${event.target.dataset.movieid}`
