@@ -90,6 +90,13 @@
 					"id": -1,
 					"name": "pages/mine/address/address",
 					"pathName": "pages/mine/address/address",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/order/preorder/paySuccess/paySuccess",
+					"pathName": "pages/mine/order/preorder/paySuccess/paySuccess",
 					"scene": null
 				}
 			]

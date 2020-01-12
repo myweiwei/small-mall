@@ -9,14 +9,17 @@
   <view class="order-info">
     <view class="order-info-item"  id="unPayClick" bindtap="orderClick">
       <view class="iconfont icon-daifukuan"></view>
+      <text class='num'>9</text>
       <text class="order-info-text">待付款</text>
     </view>
     <view class="order-info-item"  id="send" bindtap="orderClick">
       <view class="iconfont icon-daishouhuo"></view>
+      <text class='num'>4</text>
       <text class="order-info-text">待收货</text>
     </view>
     <view class="order-info-item"  id="say" bindtap="orderClick">
       <view class="iconfont icon-daipingjia"></view>
+      <text class='num'>19</text>
       <text class="order-info-text">待评价</text>
     </view>
     <view class="order-info-item"  id="myOrder" bindtap="orderClick">

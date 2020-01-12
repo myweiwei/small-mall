@@ -91,19 +91,21 @@ Page({
   },
   onLoad: function (options) {
     let me = this;
+    console.log(options.chooseId);
     me.setData({
       chooseId: options.chooseId
     })
     me.getUser();
   },
   payFunc:function(){
+    let me=this;
     wx.request({
-      url:'http://192.168.1.10:8888/order',
+      url:app.baseUrl+'/order',
       data: {
-        userId:288,
-        addressId:129,
-        isPreOrder:0,
-        province:'hahah '
+        userId: me.data.userId, 
+        province: me.data.chooseAddress.province, 
+        isPreOrder: 0, 
+        addressId: me.data.chooseAddress.id
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -118,9 +120,15 @@ Page({
             signType: res.data.data.payParam.signType,
             paySign: res.data.data.payParam.paySign,
             success: function (res) {
+              wx.redirectTo({
+                url: '/pages/mine/order/preorder/paySuccess/paySuccess'
+              })
             },
             fail: function (res) {
               console.log(res);
+              wx.navigateTo({
+                url: '/pages/mine/order/order'
+              });
              },
             complete: function (res) { }
           })

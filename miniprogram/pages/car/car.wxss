@@ -194,6 +194,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   color:#000;
   margin-left:30rpx;
   font-family: '宋体';
+  font-weight: 700;
 }
 .footFix text text {
   font-weight: 700;

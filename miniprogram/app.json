@@ -9,6 +9,7 @@
     "pages/mine/order/preorder/preorder",
     "pages/mine/order/orderdetail/orderdetail",
     "pages/mine/order/preorder/chooseAdd/chooseAdd",
+    "pages/mine/order/preorder/paySuccess/paySuccess",
     "pages/mine/address/address",
     "pages/mine/address/addAddress/addAddress",
     "pages/mine/address/editAddress/editAddress",

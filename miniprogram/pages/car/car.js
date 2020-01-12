@@ -19,7 +19,6 @@ Page({
     checkArr:[],
   },
   toIndex:function(){
-    console.log(1);
     wx.reLaunch({
       url: '/pages/index/index'
     });
@@ -56,8 +55,11 @@ Page({
       show1:true
     })
     wx.request({
-      url: me.data.baseUrl + '/shopcar/product',
+      url: me.data.baseUrl + '/shopcar/updateProduct/',
       method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
       data: {
         userId:me.data.userId,
         productId: e.target.dataset.id,
@@ -237,6 +239,8 @@ Page({
       for (var i = 0; i < list.cartProductVOList.length;i++)      {
         list.cartProductVOList[i].checkFlag=true;
         arr1.push(list.cartProductVOList[i].productId);
+        list.cartProductVOList[i].zs = app.getPrice(list.cartProductVOList[i].price).zs;
+        list.cartProductVOList[i].xs = app.getPrice(list.cartProductVOList[i].price).xs;
       }
       me.setData({
         carData:list,
@@ -247,6 +251,8 @@ Page({
       let list = me.data.carData;
       for (var i = 0; i < list.cartProductVOList.length; i++)     {
         list.cartProductVOList[i].checkFlag = false;
+        list.cartProductVOList[i].zs = app.getPrice(list.cartProductVOList[i].price).zs;
+        list.cartProductVOList[i].xs = app.getPrice(list.cartProductVOList[i].price).xs;
       }
       me.setData({
         carData: list,
@@ -310,7 +316,12 @@ Page({
           console.log(res.data);
           for (var i = 0; i < res.data.data.cartProductVOList.length;i++){
             res.data.data.cartProductVOList[i].checkFlag=false;
+            res.data.data.cartProductVOList[i].zs = app.getPrice(res.data.data.cartProductVOList[i].price).zs;
+            res.data.data.cartProductVOList[i].xs = app.getPrice(res.data.data.cartProductVOList[i].price).xs;
+            
           }
+          res.data.data.cartTotalPriceZs = app.getPrice(res.data.data.cartTotalPrice).zs;
+          res.data.data.cartTotalPriceXs = app.getPrice(res.data.data.cartTotalPrice).xs;
           me.setData({
             carData: res.data.data,
             show1:false
@@ -327,23 +338,36 @@ Page({
     me.setData({
       show1: true
     })
-    wx.request({
-      url: me.data.baseUrl + '/shopcar/updateProduct/' + parseInt(e.target.dataset.operate),
-      method: "POST",
-      data: {
-        userId: me.data.userId,
-        productId: e.target.dataset.id,
-      },
-      success: function (data) {
-        me.getCarData();
-        me.setData({
-          show1: false
-        })
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    })
+    let number = e.target.dataset.item.number;
+    if (e.target.dataset.operate==1){
+      number++;
+    }
+    else if(number>1){
+      number--;
+    }
+    if(number>=1){
+      wx.request({
+        url: me.data.baseUrl + '/shopcar/updateProduct/',
+        method: "POST",
+        data: {
+          userId: me.data.userId,
+          productId: e.target.dataset.item.productId,
+          number: number
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (data) {
+          me.getCarData();
+          me.setData({
+            show1: false
+          })
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      })
+    }
   },
   preOrder: function(e){
     if(e.currentTarget.dataset.total>=30){
