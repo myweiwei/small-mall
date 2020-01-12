@@ -11,7 +11,7 @@
       <view class='icon'><van-icon name="arrow" /></view>
     </view>
     <view class='cen'>
-      <scroll-view scroll-y='true' scroll-with-animation='true'  style='height:470rpx;'>
+      <scroll-view scroll-y='true' scroll-with-animation='true'  style='height:550rpx;'>
         <view wx:for='{{order.orderItem}}' wx:key='{{item.productId}}' class='orderBox flexBox'>
           <view class='img'><image src='http://{{item.productImage}}'/></view>
           <view class='info'>
@@ -26,6 +26,16 @@
           </view>
         </view>
       </scroll-view>
+    </view>
+    <view class='orderInfo'>
+      <view class='flexBox'>
+        <text>商品金额</text>
+        <text>￥{{order.price}}</text>
+      </view>
+      <view class='flexBox'>
+        <text>运费（总重:{{order.totalWeight}}kg）</text>
+        <text class='yunfei'>+￥{{order.expressPrice}}</text>
+      </view>
     </view>
     <view class='footer flexBox'>
       <view class='price'><text>￥</text>{{order.price}}</view>

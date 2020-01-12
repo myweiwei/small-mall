@@ -8,15 +8,14 @@
 }
 
 /*---------------地址--------------------------*/
-.top{
+.top,.orderInfo{
   width:100%;
   background: #FFF;
   border-radius: 19rpx;
   color:#000;
   padding:40rpx;
-  font-size: 25rpx;
+  font-size: 30rpx;
   box-sizing: border-box;
-  border-bottom:2rpx solid #E45050;
   margin-bottom:10rpx;
 
 }
@@ -108,7 +107,21 @@
   border-radius: 5px;
   margin-right: 6rpx;
 }
-
+.cen {
+  margin-top:20rpx;
+  border-radius: 19rpx;
+  overflow: hidden;
+}
+.orderInfo {
+  margin-top: 20rpx;
+}
+.orderInfo view {
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.yunfei {
+  color:#f50704;
+}
 
 
 

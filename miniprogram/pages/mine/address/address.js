@@ -80,7 +80,7 @@ Page({
   toOrder:function(e){
     let me=this;
     if (me.data.chooseId != undefined){
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id
       })
     }
