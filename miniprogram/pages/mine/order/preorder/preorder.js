@@ -3,9 +3,9 @@ var orderNo;
 Page({
   data: {
     addressDate:[],
-    chooseAddress:{}
+    chooseAddress:{},
+    order:{}
   },
-
   getUser: function () {
     let me = this;
     wx.showLoading({
@@ -26,6 +26,7 @@ Page({
                 userId: data.data.data
               })
               me.getAddress();
+              me.getData();
               wx.hideLoading();
             },
             error: function (err) {
@@ -54,24 +55,42 @@ Page({
       }
     });
   },
+  getData:function(){
+    let me = this;
+    wx.request({
+      url: app.baseUrl + '/preOrder',
+      data: { userId: me.data.userId, province: me.data.chooseAddress.province },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        console.log(res.data);
+        me.setData({
+          order:res.data.data
+        })
+      }
+    });
+  },
   onLoad: function (options) {
     let me = this;
     me.getUser();
-    
   },
   payFunc:function(){
     wx.request({
-      url:'http://192.168.1.5:8888/order',
+      url:'http://192.168.1.10:8888/order',
       data: {
-        userId:941,
-        addressId:129
+        userId:288,
+        addressId:129,
+        isPreOrder:0,
+        province:'hahah '
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       method: 'POST',
       success(res) {
-       console.log(res.data);
+       console.log("-----------------"+res.data.data);
         wx.requestPayment(
           {
             timeStamp: res.data.data.payParam.timeStamp,

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/index/index",
     "pages/comment/comment",
     "pages/mine/mine",
@@ -7,8 +8,10 @@
     "pages/mine/order/order",
     "pages/mine/order/preorder/preorder",
     "pages/mine/order/orderdetail/orderdetail",
+    "pages/mine/order/preorder/chooseAdd/chooseAdd",
     "pages/mine/address/address",
     "pages/mine/address/addAddress/addAddress",
+    "pages/mine/address/editAddress/editAddress",
     "pages/car/car"
     
   ],
@@ -25,6 +28,12 @@
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
+      {
+        "pagePath": "pages/main/main",
+        "iconPath": "images/nav/my-off.png",
+        "selectedIconPath": "images/nav/my-on.png",
+        "text": "我的"
+      },
       {
         "pagePath": "pages/index/index",
         "text": "首页",

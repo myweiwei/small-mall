@@ -1,5 +1,6 @@
 <view class="boxContainer">
   <view class="head">
+
     <view class="buy-status" wx:if="{{obj.orderStatus == 0}}">
       <view class="wait-pay">
         <image class="wait-pay-icon" src="../../../../images/waitPay.png"></image>
@@ -26,6 +27,12 @@
     </view>
      <view class="buy-status" wx:if="{{obj.orderStatus == -4}}">
       订单已取消
+     </view>
+      <view class="buy-status" wx:if="{{obj.orderStatus == 1}}">
+      商家正在配货
+     </view>
+      <view class="buy-status" wx:if="{{obj.orderStatus == 2}}">
+      商家已发货
      </view>
 
 
@@ -88,11 +95,16 @@
    <view style="margin-bottom:90rpx;"></view>
   <view class="buttons border-top" wx:if="{{obj.orderStatus == 0}}">
     <view class="border cancel-button" bindtap="cancelOrder">取消订单</view>
-    <view class="pay-button">立即支付</view>
+    <view class="pay-button" bindtap="payOrder">立即支付</view>
   </view> 
 
   <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
-    <view class="border cancel-button" bindtap="cancelOrder">删除订单</view>
+    <view class="border cancel-button" bindtap="deleteOrder">删除订单</view>
+    <view class="pay-button">再次购买</view>
+  </view> 
+
+    <view class="buttons border-top" wx:if="{{obj.orderStatus == 1}}">
+    <view class="border cancel-button" bindtap="cancelOrder">查看物流</view>
     <view class="pay-button">再次购买</view>
   </view> 
 </view>

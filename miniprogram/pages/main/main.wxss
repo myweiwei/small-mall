@@ -1,0 +1,44 @@
+.my-container{
+  width: 100%;
+  height: 100%;
+}
+.swiper{
+  height: 350rpx;
+}
+.swiper-item-images{
+  width: 100%;
+}
+.products{
+  width: 100%;
+  min-height: 170rpx;
+  margin-top: 30rpx;
+  align-items: center;
+}
+.recommend{
+  width: 100%;
+  justify-content:space-between;
+  display: flex;
+  align-items: center;
+}
+.line{
+  width: 40%;
+  height: 2rpx;
+  background-color: red;
+}
+.products-parent{
+  width: 100%;
+  height: 120%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.products-child{
+  width: calc(calc(100% / 2) - 30rpx);
+  height:350rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+
+  box-sizing: border-box;
+  border:1rpx  solid #000;
+  background: red;
+}

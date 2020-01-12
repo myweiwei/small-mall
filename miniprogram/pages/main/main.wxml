@@ -1,0 +1,42 @@
+<view class="my-container">
+  <swiper indicator-dots="{{indicatorDots}}" 
+          autoplay="{{autoplay}}" 
+          circular="{{circular}}" 
+          vertical="{{vertical}}" 
+          interval="{{interval}}" 
+          duration="{{duration}}" 
+          previous-margin="{{previousMargin}}rpx" 
+          next-margin="{{nextMargin}}rpx"
+          class="swiper">
+      
+      <block wx:for='{{images}}' wx:key='index'>
+        <swiper-item>
+          <image src='{{item}}' mode="widthFix" class='swiper-item-images'  />
+        </swiper-item>
+      </block>
+
+  </swiper>
+
+  <view class="products">
+   
+    <view class="recommend">
+      <view class="line"></view>
+      <view>店长推荐</view>
+      <view class="line"></view>
+    </view>
+   
+   <scroll-view style='height:700rpx;' scroll-y='true'>
+      <view class="products-parent">
+          <view class="products-child">1</view>
+          <view class="products-child">2</view>
+          <view class="products-child">3</view>
+          <view class="products-child">4</view>
+          <view class="products-child">5</view>
+          <view class="products-child">6</view>
+        </view>
+        
+    </scroll-view>
+  </view>
+
+
+</view>

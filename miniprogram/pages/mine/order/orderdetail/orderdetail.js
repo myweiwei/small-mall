@@ -66,9 +66,69 @@ Page({
           },
           method: 'GET',
           success(res) {
+            wx.navigateTo({
+              url: '/pages/mine/order/order'
+            })
+          }
+        })
+      }
+    })
+  },
+  deleteOrder: function(){
+    var that = this;
+    wx.request({
+      url: app.baseUrl + '/order',
+      data: {
+        userId: 288,
+        orderNo: orderNo
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'DELETE',
+      success(res) {
+        wx.request({
+          url: app.baseUrl + '/order',
+          data: {
+            orderNo: orderNo
+          },
+          method: 'GET',
+          success(res) {
             getData(res, that);
           }
         })
+      }
+    })
+  },
+  payOrder:function(){
+    var that = this;
+    wx.request({
+      url: app.baseUrl + '/payOrder',
+      data: {
+        userId: 288,
+        orderNo: orderNo
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'POST',
+      success(res) {
+        var obj = JSON.parse(res.data.data);
+        wx.requestPayment(
+          {
+            timeStamp: obj.timeStamp,
+            nonceStr: obj.nonceStr,
+            package: obj.package,
+            signType: obj.signType,
+            paySign: obj.paySign,
+            success: function (res) {
+              console.log(res.data);
+            },
+            fail: function (res) {
+              console.log(res);
+            },
+            complete: function (res) { }
+          })
       }
     })
   }

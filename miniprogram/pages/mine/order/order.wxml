@@ -28,7 +28,7 @@
                   <view class="product-name">{{images.productItemName}}</view>
                 </view>  
               </block>
-              <view class="{{item.totalNumber >= 4?'money-count1':'money-count'}}">
+              <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
                 <view class="money"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
                 <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
               </view>
@@ -62,7 +62,7 @@
               <view class="product-name">{{images.productItemName}}</view>
             </view>  
           </block>
-          <view class="{{item.totalNumber >= 4?'money-count1':'money-count'}}">
+          <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
             <view class="money"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
@@ -88,7 +88,7 @@
               <view class="product-name">{{images.productItemName}}</view>
             </view>  
           </block>
-          <view class="{{item.totalNumber >= 4?'money-count1':'money-count'}}">
+          <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
             <view class="money"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
@@ -118,7 +118,7 @@
               <view class="product-name">{{images.productItemName}}</view>
             </view>  
           </block>
-          <view class="{{item.totalNumber >= 4?'money-count1':'money-count'}}">
+          <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
             <view class="money"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
@@ -151,7 +151,7 @@
               <view class="product-name">{{images.productItemName}}</view>
             </view>  
           </block>
-          <view class="{{item.totalNumber >= 4?'money-count1':'money-count'}}">
+          <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
             <view class="money"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
