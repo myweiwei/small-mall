@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-     
+    unPay:"",
+    pay:"",
+    receive:""
   },
   orderClick:function(e){
     var enterMethod = e.currentTarget.id;
@@ -37,6 +39,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var me = this;
+    wx.request({
+      url: app.baseUrl + '/statisticQuantity',
+      data: { userId:288 },
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data.data);
+        me.setData({
+          unPay: res.data.data.unPay,
+          pay: res.data.data.pay,
+          receive: res.data.data.receive
+        });
+      }
+    });
+    
   },
 
   /**
