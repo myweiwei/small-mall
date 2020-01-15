@@ -89,5 +89,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  goCook:function(){
+    console.log("go cook page");
+    wx.navigateTo({
+      url:'/pages/cook/cook'
+    })
   }
 })

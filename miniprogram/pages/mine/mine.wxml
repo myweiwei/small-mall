@@ -34,7 +34,7 @@
       <image class="images" src="../../images/mine/address.png"> </image>
       <text class="text">收货地址</text>
     </view>
-    <view class="item border-top">
+    <view class="item border-top" bindtap="goCook">
       <image class="images" src="../../images/mine/cook.png"> </image>
       <text class="text">烹饪大全</text>
     </view>

@@ -1,0 +1,16 @@
+<view class="myContiner">
+  <view class="catalog-name">带鱼</view>
+  <view class="product">
+    <view class="product-child">
+      <image src="../../images/logo.png" class="product-image"></image>
+    </view>
+    <view class="product-child"></view>
+    <view class="product-child"></view>
+    <view class="product-child"></view>
+    <view class="product-child"></view>
+    <view class="product-child"></view>
+    <view class="product-child"></view>
+    <view class="product-child"></view>
+     <view class="product-child"></view>
+  </view>
+</view>

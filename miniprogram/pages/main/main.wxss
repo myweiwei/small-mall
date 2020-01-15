@@ -25,7 +25,7 @@
   height: 50rpx;
 }
 .line{
-  width: 38%;
+  width: 35%;
   height: 2rpx;
   background-color:rgb(187, 187, 187);
 }
