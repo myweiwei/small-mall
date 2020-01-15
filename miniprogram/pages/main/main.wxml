@@ -1,3 +1,4 @@
+
 <view class="my-container">
   <swiper indicator-dots="{{indicatorDots}}" 
           autoplay="{{autoplay}}" 
@@ -21,25 +22,25 @@
    
     <view class="recommend">
       <view class="line"></view>
+      <image src="../../images/hot_title.png" class="recommend-image"></image>
       <view>店长推荐</view>
       <view class="line"></view>
     </view>
    
-   <scroll-view style='height:700rpx;' scroll-y='true'>
+ 
       <view class="products-parent">
 
         <block wx:for="{{products}}" wx:key="key" data-id="{{item.id}}"> 
           <view class="products-child">
             <image class="product-image" src="http://{{item.picture}}"></image>
-            <view class="product-name">{{item.name}} <text class="yuan">￥</text>{{item.price}}<text class="yuan">/{{item.unit}}</text></view>
+            <view class="product-name">{{item.name}} <text class="yuan yuan-color">￥</text>
+            <text class="yuan-color">{{item.price}}</text><text class="yuan">/{{item.unit}}</text></view>
             <view class="product-keywords">{{item.searchKey}}</view>
           </view>
          
           </block>
         </view>
         
-    </scroll-view>
+   
   </view>
-
-
 </view>
