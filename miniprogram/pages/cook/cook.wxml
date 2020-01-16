@@ -1,9 +1,19 @@
 <view class="myContiner">
-  <view class="catalog-name">带鱼</view>
+
+ <block wx:for="{{products}}" data-id="{{item.id}}" wx:key="key">
+  <view class="catalog-name">{{item.name}}</view>
   <view class="product">
-    <view class="product-child">
-      <image src="../../images/logo.png" class="product-image"></image>
+
+<block wx:for="{{item.products}}" data-id="{{item.id}}" wx:key="key"  wx:for-item="product">
+    <view class="product-child" >
+      <image src="http://{{product.picture}}" class="product-image"></image>
+       <text class="product-name">{{product.name}}</text>
     </view>
+</block>
+
+
+
+
     <view class="product-child"></view>
     <view class="product-child"></view>
     <view class="product-child"></view>
@@ -13,4 +23,6 @@
     <view class="product-child"></view>
      <view class="product-child"></view>
   </view>
+
+   </block>
 </view>

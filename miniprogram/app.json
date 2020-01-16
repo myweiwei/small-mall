@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/cook/cook",
     "pages/mine/mine",
     "pages/main/main",
-    "pages/cook/cook",
+   
     "pages/index/index",
     "pages/comment/comment",
    
