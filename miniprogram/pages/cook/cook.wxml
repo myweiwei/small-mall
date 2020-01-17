@@ -1,27 +1,15 @@
 <view class="myContiner">
-
  <block wx:for="{{products}}" data-id="{{item.id}}" wx:key="key">
   <view class="catalog-name">{{item.name}}</view>
   <view class="product">
 
 <block wx:for="{{item.products}}" data-id="{{item.id}}" wx:key="key"  wx:for-item="product">
-    <view class="product-child" >
+    <view class="product-child" data-id="{{product.id}}" bindtap="goCookDetail">
       <image src="http://{{product.picture}}" class="product-image"></image>
        <text class="product-name">{{product.name}}</text>
     </view>
 </block>
 
-
-
-
-    <view class="product-child"></view>
-    <view class="product-child"></view>
-    <view class="product-child"></view>
-    <view class="product-child"></view>
-    <view class="product-child"></view>
-    <view class="product-child"></view>
-    <view class="product-child"></view>
-     <view class="product-child"></view>
   </view>
 
    </block>

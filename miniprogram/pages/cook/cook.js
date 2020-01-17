@@ -4,6 +4,14 @@ Page({
   data: {
    products:[]
   },
+  goCookDetail:function(event){
+   
+    var productId = event.currentTarget.dataset.id;
+    console.log(productId);
+        wx.navigateTo({
+            url: '/pages/cook/cookdetail/cookdetail?productId=' + productId
+        })
+  },
   onLoad:function(){
     var me = this;
     wx.request({
