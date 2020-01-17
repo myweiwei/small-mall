@@ -1,0 +1,30 @@
+.myContiner{
+  background: #FFF;
+  height: 100%;
+}
+.cook-item{
+  width: 100%;
+  height: 240rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.cook-image{
+  width: 300rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.cook-name{
+  height: 200rpx;
+  display: flex;
+  flex-direction:column;
+  margin-left: 20rpx;
+}
+.material{
+  width: 400rpx;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: green;
+  line-height: 36rpx;
+}

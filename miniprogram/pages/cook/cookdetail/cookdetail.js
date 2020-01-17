@@ -2,34 +2,36 @@ const app = getApp();
 Page({
 
   data: {
-   cook:[]
+   cook:{},
+   materialFormat:[]
   },
-  onLoad:function(options){
-    console.log(options.productId);
-    var me = this;
-    wx.request({
-      url: app.baseUrl + '/manager/cook',
-      method: "GET",
-      data:{productId:21},
-      success: function (res) {
-       
-        //遍历所有material的key
-        var key = "";
-        for(var i = 0; i < res.data.data.length; i++){
-          // console.log(res.data.data[i].material);
-          var obj = JSON.parse(res.data.data[i].material);
-          key = "";
-          for(var k in obj){
-            key += (k + "  ，");
+    onLoad: function(options) {
+      console.log(options.cookId);
+      var me = this;
+      wx.request({
+        url: app.baseUrl + '/manager/cookDetail',
+        method: "GET",
+        data: { cookId: options.cookId},
+        success: function (res) {
+          console.log(res.data.data);
+          //遍历原料，存储成键值对形式，保存到数据中
+          var materailArr = new Array();
+          var obj = JSON.parse(res.data.data.material);
+          for (var k in obj) {
+            var value = obj[k];
+            materailArr.push({ k, value});
           }
-          key = key.substr(0,key.length - 1);
-          console.log(key);
-          res.data.data[i].materialKey = key;
+          
+          console.log(materailArr + ".............");
+          res.data.data.materialFormat = materailArr;
+        
+          
+          me.setData({
+            cook:res.data.data
+
+
+          });
         }
-        me.setData({
-          cook: res.data.data
-        })
-      }
-    });
-  }
+      });
+    }
 })

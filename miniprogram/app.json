@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/cook/cookdetail/cookdetail",
+    "pages/cook/cooklist/cooklist",
     "pages/cook/cook",
    
     "pages/mine/mine",

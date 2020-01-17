@@ -4,7 +4,7 @@
   <view class="product">
 
 <block wx:for="{{item.products}}" data-id="{{item.id}}" wx:key="key"  wx:for-item="product">
-    <view class="product-child" data-id="{{product.id}}" bindtap="goCookDetail">
+    <view class="product-child" data-id="{{product.id}}" bindtap="goCookList">
       <image src="http://{{product.picture}}" class="product-image"></image>
        <text class="product-name">{{product.name}}</text>
     </view>

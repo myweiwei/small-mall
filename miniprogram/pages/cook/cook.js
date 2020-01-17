@@ -4,12 +4,12 @@ Page({
   data: {
    products:[]
   },
-  goCookDetail:function(event){
+  goCookList:function(event){
    
     var productId = event.currentTarget.dataset.id;
     console.log(productId);
         wx.navigateTo({
-            url: '/pages/cook/cookdetail/cookdetail?productId=' + productId
+            url: '/pages/cook/cooklist/cooklist?productId=' + productId
         })
   },
   onLoad:function(){

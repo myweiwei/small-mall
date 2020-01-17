@@ -1,12 +1,12 @@
 <view class="myContiner">
- <block wx:for="{{cook}}" data-id="{{item.id}}" wx:key="key">
-  <view class="cook-item">
-    <image class="cook-image" src="http://{{item.headPicture}}"></image>
-    <view class="cook-name">
-      <view>{{item.title}}</view>
-      <view class="material">{{item.materialKey}}</view>
-    </view>
-  </view>
+ 
+    <image class="headPicture" src="http://{{cook.headPicture}}"></image>
+  <view class="title">{{cook.title}}</view>
+  <view class="introduce">{{cook.introduce}}</view>
+  用料
+  <view class="material border-top">
+  <block wx:for="{{cook.materialFormat}}" wx:key="key">
+    <view class="material-item"><text>{{item.k}}</text><text>{{item.value}}</text></view>
   </block>
-
+  </view>
 </view>
