@@ -1,12 +1,27 @@
 <view class="myContiner">
  
-    <image class="headPicture" src="http://{{cook.headPicture}}"></image>
+  <image class="headPicture" src="http://{{cook.headPicture}}"></image>
   <view class="title">{{cook.title}}</view>
   <view class="introduce">{{cook.introduce}}</view>
-  用料
-  <view class="material border-top">
-  <block wx:for="{{cook.materialFormat}}" wx:key="key">
-    <view class="material-item"><text>{{item.k}}</text><text>{{item.value}}</text></view>
-  </block>
+   
+  <view class="material">
+    <text class="myTtitle">用料</text>
+      <view class="material-item border-top" wx:for="{{cook.materialFormat}}" wx:key="key">
+        <view>{{item.k}}</view>
+        <view>{{item.value}}</view>
+      </view>
+    
   </view>
+  
+  <view class="step">
+      <view wx:for="{{cook.stepFormat}}" wx:key="key">
+        <view class="myTtitle">步骤{{index + 1}}</view>
+         <image class="step-image" src="http://{{item.value}}"></image>
+        <view>{{item.k}}</view>
+       
+      </view>
+
+  </view>
+
+
 </view>

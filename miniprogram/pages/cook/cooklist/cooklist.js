@@ -17,7 +17,7 @@ Page({
     wx.request({
       url: app.baseUrl + '/manager/cook',
       method: "GET",
-      data:{productId:21},
+      data:{productId:options.productId},
       success: function (res) {
        
         //遍历所有material的key

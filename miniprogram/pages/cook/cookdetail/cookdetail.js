@@ -6,32 +6,29 @@ Page({
    materialFormat:[]
   },
     onLoad: function(options) {
-      console.log(options.cookId);
       var me = this;
       wx.request({
         url: app.baseUrl + '/manager/cookDetail',
         method: "GET",
         data: { cookId: options.cookId},
-        success: function (res) {
-          console.log(res.data.data);
-          //遍历原料，存储成键值对形式，保存到数据中
-          var materailArr = new Array();
-          var obj = JSON.parse(res.data.data.material);
-          for (var k in obj) {
-            var value = obj[k];
-            materailArr.push({ k, value});
-          }
-          
-          console.log(materailArr + ".............");
-          res.data.data.materialFormat = materailArr;
-        
-          
+        success: function (res) {    
+          res.data.data.materialFormat = me.jsonFormat(res.data.data.material);
+          res.data.data.stepFormat = me.jsonFormat(res.data.data.step);
           me.setData({
             cook:res.data.data
-
-
           });
         }
       });
+    },
+
+    //json字符串转键值对数组
+    jsonFormat:function (jsonStr){
+      var materailArr = new Array();
+      var obj = JSON.parse(jsonStr);
+      for (var k in obj) {
+        var value = obj[k];
+        materailArr.push({ k, value});
+      }
+      return materailArr;
     }
 })
