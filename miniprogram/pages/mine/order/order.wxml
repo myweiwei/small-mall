@@ -33,7 +33,7 @@
                 <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
               </view>
             </view>
-            <view class="pay-button"  wx:if="{{item.orderStatus == 0}}">立即支付</view>
+            <view class="pay-button"  wx:if="{{item.orderStatus == 0}}" catchtap="payOrder" data-id="{{item.orderNo}}">立即支付</view>
             <view class="pay-button"  wx:if="{{item.orderStatus == 1}}" style="color:#000; border:0.1rpx solid rgb(146,126,128);" >查看物流</view>
             <view wx:if="{{item.orderStatus == 3}}" style="display:flex; flex-direction:row;">
               <view class="pay-button" style=" margin-right:30rpx; color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>

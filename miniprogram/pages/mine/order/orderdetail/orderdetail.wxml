@@ -68,7 +68,6 @@
     <view><text class="order-detail-left-color">订单编号：</text><text>{{obj.orderNo}}</text></view>
     <view><text class="order-detail-left-color">下单时间：</text><text>{{obj.orderDate}}</text></view>
     <view><text class="order-detail-left-color">支付方式：</text><text>微信支付</text></view>
-    <view><text class="order-detail-left-color">期望配送日期：</text><text>{{obj.hopeReceiveTime}}</text></view>
   </view>
 
 
@@ -94,17 +93,17 @@
    </view>
    <view style="margin-bottom:90rpx;"></view>
   <view class="buttons border-top" wx:if="{{obj.orderStatus == 0}}">
-    <view class="border cancel-button" bindtap="cancelOrder">取消订单</view>
+    <view class="cancel-button" bindtap="cancelOrder">取消订单</view>
     <view class="pay-button" bindtap="payOrder">立即支付</view>
   </view> 
 
   <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
-    <view class="border cancel-button" bindtap="deleteOrder">删除订单</view>
+    <view class="cancel-button" bindtap="deleteOrder">删除订单</view>
     <view class="pay-button">再次购买</view>
   </view> 
 
     <view class="buttons border-top" wx:if="{{obj.orderStatus == 1}}">
-    <view class="border cancel-button" bindtap="cancelOrder">查看物流</view>
+    <view class="cancel-button" bindtap="cancelOrder">查看物流</view>
     <view class="pay-button">再次购买</view>
   </view> 
 </view>

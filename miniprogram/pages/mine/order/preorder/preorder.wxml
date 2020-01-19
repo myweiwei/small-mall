@@ -38,7 +38,7 @@
       </view>
     </view>
     <view class='footer flexBox'>
-      <view class='price'><text>￥</text>{{order.price}}</view>
+      <view class='price'><text>￥</text>{{order.totalPrice}}</view>
       <view class='btn' bindtap="payFunc">提交订单</view>
     </view>
 
