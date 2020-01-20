@@ -82,7 +82,13 @@ Page({
     var requestParam;
     console.log(me.data.buyMethod);
     if(me.data.buyMethod != "" && me.data.buyMethod == 1){
-      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id,productId:me.data.productId,number:me.data.number}
+      requestParam = {
+        userId: me.data.userId, 
+        province: me.data.chooseAddress.province, 
+        isPreOrder: 1,
+        addressId: me.data.chooseAddress.id,
+        productId:me.data.productId,
+        number:me.data.number}
     }
     else{
       requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id}
