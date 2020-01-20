@@ -31,8 +31,8 @@
         </view>
     </scroll-view>
     <van-popup show="{{chooseSize}}" position="bottom" custom-style="height: 70%;" round bind:close="hideModal" >
-      <view  class='choosen'>
-        <view class="container-box">
+      <view  class='choosen' style='height:100%'>
+        <view class="container-box" style='height:80%'>
           <view class='flexBox choose'>
             <image src='http://{{chooseImageUrl}}' title='"http://"+{{chooseImageUrl}}' wx:if='{{chooseImageUrl.length}}' class='choose_image'></image>
             <image src='../../images/noData.png' wx:else='!{{chooseImageUrl.length}}' class='choose_image'></image>

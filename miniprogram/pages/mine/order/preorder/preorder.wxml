@@ -11,7 +11,7 @@
       <view class='icon'><van-icon name="arrow" /></view>
     </view>
     <view class='cen'>
-      <scroll-view scroll-y='true' scroll-with-animation='true'  style='height:550rpx;'>
+      <scroll-view scroll-y='true' scroll-with-animation='true'  style='max-height:550rpx;'>
         <view wx:for='{{order.orderItem}}' wx:key='{{item.productId}}' class='orderBox flexBox'>
           <view class='img'><image src='http://{{item.productImage}}'/></view>
           <view class='info'>
@@ -19,7 +19,7 @@
             <view class='productSpec'>{{item.productSpec}}</view>
             <view class='flexBox'>
               <view class='currentUnitPrice'>
-                <text>￥</text>{{item.currentUnitPrice}}
+                <text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text>
               </view>
               <view class='number'>件数：<text>{{item.number}}</text></view>
             </view>
@@ -30,21 +30,15 @@
     <view class='orderInfo'>
       <view class='flexBox'>
         <text>商品金额</text>
-        <text>￥{{order.price}}</text>
+        <view class='yunfei'><text class='fh'>￥</text>{{order.zs}}<text class="xs">.{{order.xs}}</text></view>
       </view>
       <view class='flexBox'>
         <text>运费（总重:{{order.totalWeight}}kg）</text>
-        <text class='yunfei'>+￥{{order.expressPrice}}</text>
+        <view class='yunfei'><text class='fh'>-￥</text>{{order.zs1}}<text class="xs">.{{order.xs1}}</text></view>
       </view>
     </view>
     <view class='footer flexBox'>
-      <view class='price'><text>￥</text>{{order.price}}</view>
+      <view class='price'><text class='fh'>￥</text>{{order.zs2}}<text class="xs">.{{order.xs2}}</text></view>
       <view class='btn' bindtap="payFunc">提交订单</view>
     </view>
-
-
- 
-   <view style="margin-bottom:90rpx;"></view>
-  <view bindtap="payFunc">立即支付</view>
-
 </view>

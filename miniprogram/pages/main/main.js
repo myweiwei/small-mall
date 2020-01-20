@@ -43,7 +43,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (data) {
-        console.log(data.data.data);
         me.setData({
           products: data.data.data
         })

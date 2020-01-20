@@ -4,7 +4,8 @@ Page({
     active: 0,
     list:[],
     id:'',
-    payStatus:''
+    payStatus:'',
+    userId:'',
   },
 
   goOrderDetail:function(event)
@@ -14,27 +15,66 @@ Page({
         url: '/pages/mine/order/orderdetail/orderdetail?orderNo=' + orderNo
       })
   },
-  deleteOrder: function(event){
-    console.log("123");
-    var me = this;
-    var orderNo = event.currentTarget.dataset.id;
-    wx.request({
-      url: app.baseUrl + '/order',
-      data: {
-        userId: 288,
-        orderNo: orderNo
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      method: 'DELETE',
+  deleteOrder: function (event) {
+    let me = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该订单',
       success(res) {
-        wx.hideLoading();
-        me.getData();
+        if (res.confirm) {
+          var orderNo = event.currentTarget.dataset.id;
+          wx.request({
+            url: app.baseUrl + '/order',
+            data: {
+              userId: 288,
+              orderNo: orderNo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+            method: 'DELETE',
+            success(res) {
+              me.getData();
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },
-
+  getUser: function () {
+    var me = this;
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //通过wx.login内置函数，得到临时code码
+          wx.request({
+            url: me.data.baseUrl + '/openIdSessionKey',
+            method: "get",
+            data: {
+              code: res.code
+            },
+            success: function (data) {
+              console.log(data.data.data);
+              me.setData({
+                userId: data.data.data
+              })
+              // wx.nextTick(() =>{
+              //   me.getPayStatus(me.data.id);
+              // })
+            },
+            error: function (err) {
+              console.log(err);
+              console.log(err);
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
+  },
   onChange(event)
   {
     var that = this;
@@ -122,14 +162,13 @@ Page({
     wx.request({
       url: app.baseUrl + '/orderList',
       data:{
-        userId:288,
+        userId:that.data.userId,
         status:payStatus
       },
       method:'GET',
       success(res) {
         wx.hideLoading();
         for (let i = 0; i < res.data.data.length;i++){
-          console.log(app.getPrice(res.data.data[i].price).zs)
           res.data.data[i].zs = app.getPrice(res.data.data[i].price).zs;
           res.data.data[i].xs = app.getPrice(res.data.data[i].price).xs;
         }
@@ -146,6 +185,6 @@ Page({
   },
   onShow: function (){
     let that=this;
-    that.getPayStatus(that.data.id);
+    that.getUser();
   }
 })

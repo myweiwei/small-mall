@@ -36,15 +36,15 @@
     "list": [
       {
         "pagePath": "pages/main/main",
-        "iconPath": "images/nav/my-off.png",
-        "selectedIconPath": "images/nav/my-on.png",
-        "text": "我的"
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/nav/home-off.png",
-        "selectedIconPath": "images/nav/home-on.png"
+        "text": "商品",
+        "iconPath": "images/nav/shop-off.png",
+        "selectedIconPath": "images/nav/shop-on.png"
       },
       {
         "pagePath": "pages/car/car",

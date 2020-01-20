@@ -370,7 +370,8 @@ Page({
     }
   },
   preOrder: function(e){
-    if(e.currentTarget.dataset.total>=30){
+    console.log(app.getPrice(e.currentTarget.dataset).zs);
+    if (app.getPrice(e.currentTarget.dataset.total).zs>=30){
       wx.navigateTo({
         url: '/pages/mine/order/preorder/preorder'
       });
