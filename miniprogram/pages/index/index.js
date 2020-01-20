@@ -150,6 +150,37 @@ Page({
       })
     }
   },
+  buyNow:function(){
+    var me = this;
+    var requestParam = {userId:me.data.userId,
+                        productId: me.data.activeChoose,
+                        isPreOrder:1,
+                        number:me.data.num};
+    //先请求一个预下单接口，如果都符合购买条件，在跳转到预下单页面中
+    wx.request({
+      url: app.baseUrl + '/order',
+      data: requestParam,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if(res.data.status == -1){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+        else{
+          wx.navigateTo({
+            url: '/pages/mine/order/preorder/preorder?buyMethod=' + 1 + "&productId=" + me.data.activeChoose + "&number=" + me.data.num  
+          });
+        }
+      }
+    });
+     
+  },
   // 加入购物车
   addCar:function(){
     let me=this;

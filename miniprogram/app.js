@@ -1,6 +1,7 @@
 //app.js
 App({
   baseUrl: 'http://5dfc2c594e951.freetunnel.cc',
+  lowerBuyLimit:3000, //购买下限，30元起
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')

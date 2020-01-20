@@ -5,8 +5,12 @@ Page({
     addressDate:[],
     chooseAddress:{},
     order:{},
-    chooseId:'',
-    showLoad:false
+    chooseId:'',//地址选中的ID
+    showLoad:false,
+
+    buyMethod:0,//购买方式，0是加入购物车，1是直接购买，直接购买情况需要productId和number
+    productId:0,
+    number:0
   },
   toAddress:function(e){
     wx.navigateTo({
@@ -75,9 +79,18 @@ Page({
   },
   getData:function(){
     let me = this;
+    var requestParam;
+    console.log(me.data.buyMethod);
+    if(me.data.buyMethod != "" && me.data.buyMethod == 1){
+      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id,productId:me.data.productId,number:me.data.number}
+    }
+    else{
+      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id}
+    }
+    console.log(requestParam);
     wx.request({
       url: app.baseUrl + '/order',
-      data: { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id},
+      data: requestParam,
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -102,10 +115,20 @@ Page({
   },
   onLoad: function (options) {
     let me = this;
-    console.log(options.chooseId);
+   
     me.setData({
-      chooseId: options.chooseId
+      chooseId: options.chooseId,
     })
+    console.log("buyMethod:........." + options.buyMethod);
+    console.log("number:........." + options.number);
+    console.log("productId:........." + options.productId);
+    if(options.buyMethod != "" && options.productId != "" && options.number != ""){
+      me.setData({
+        buyMethod: options.buyMethod,
+        productId: options.productId,
+        number:options.number
+      })
+    }
     me.getUser();
   },
   payFunc:function(){

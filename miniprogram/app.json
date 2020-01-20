@@ -1,25 +1,25 @@
 {
   "pages": [
+    "pages/mine/order/order",
+    "pages/mine/order/orderdetail/orderdetail",
+    "pages/main/main",
+    "pages/index/index",
     "pages/mine/mine",
     "pages/cook/cookdetail/cookdetail",
     "pages/cook/cooklist/cooklist",
     "pages/cook/cook",
-    "pages/main/main",
-   
-    "pages/index/index",
+    
     "pages/comment/comment",
-   
     "pages/mine/message/message",
-    "pages/mine/order/order",
+    
     "pages/mine/order/preorder/preorder",
-    "pages/mine/order/orderdetail/orderdetail",
+   
     "pages/mine/order/preorder/chooseAdd/chooseAdd",
     "pages/mine/order/preorder/paySuccess/paySuccess",
     "pages/mine/address/address",
     "pages/mine/address/addAddress/addAddress",
     "pages/mine/address/editAddress/editAddress",
     "pages/car/car"
-    
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

@@ -185,6 +185,39 @@ Page({
   },
   onShow: function (){
     let that=this;
-    that.getUser();
+    that.getPayStatus(that.data.id);
+  },
+  payOrder:function(event){
+    console.log(event.currentTarget.dataset.id);
+    var that = this;
+    wx.request({
+      url: app.baseUrl + '/payOrder',
+      data: {
+        userId: 288,
+        orderNo: event.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'POST',
+      success(res) {
+        var obj = JSON.parse(res.data.data);
+        wx.requestPayment(
+          {
+            timeStamp: obj.timeStamp,
+            nonceStr: obj.nonceStr,
+            package: obj.package,
+            signType: obj.signType,
+            paySign: obj.paySign,
+            success: function (res) {
+              console.log(res.data);
+            },
+            fail: function (res) {
+              console.log(res);
+            },
+            complete: function (res) { }
+          })
+      }
+    })
   }
 })
