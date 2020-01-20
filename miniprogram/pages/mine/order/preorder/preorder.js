@@ -73,17 +73,7 @@ Page({
           addressDate: res.data.data,
           chooseAddress: v!=undefined ? v : res.data.data[0]
         })
-        console.log(me.data.chooseAddress);
-        if (!me.data.chooseAddress || me.data.chooseAddress==undefined){
-          wx.showToast({
-            title: '请先添加地址',
-            icon: 'none',
-            duration: 3000
-          })
-        }
-        else{
-          me.getData();
-        }
+        me.getData();
       }
     });
   },
@@ -91,10 +81,20 @@ Page({
     let me = this;
     var requestParam;
     if (me.data.buyMethod != "" && me.data.buyMethod == 1) {
-      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id, productId: me.data.productId, number: me.data.number }
+      requestParam = { userId: me.data.userId, isPreOrder: 1, productId: me.data.productId, number: me.data.number }
     }
     else {
-      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id }
+      requestParam = { userId: me.data.userId, isPreOrder: 1, }
+    }
+    if (me.data.chooseAddress && me.data.chooseAddress != undefined){
+      requestParam = Object.assign(requestParam, { addressId: me.data.chooseAddress.id, province: me.data.chooseAddress.province})
+    }
+    else {
+      wx.showToast({
+        title: '请添加收货地址',
+        icon: 'none',
+        duration: 2000
+      })
     }
     wx.request({
       url: app.baseUrl + '/order',
