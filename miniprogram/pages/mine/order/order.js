@@ -4,8 +4,8 @@ Page({
     active: 0,
     list:[],
     id:'',
-    payStatus:'',
     userId:'',
+    payStatus:''
   },
 
   goOrderDetail:function(event)
@@ -16,6 +16,7 @@ Page({
       })
   },
   deleteOrder: function (event) {
+    console.log(1);
     let me = this;
     wx.showModal({
       title: '提示',
@@ -26,7 +27,7 @@ Page({
           wx.request({
             url: app.baseUrl + '/order',
             data: {
-              userId: 288,
+              userId: me.data.userId,
               orderNo: orderNo
             },
             header: {
@@ -34,7 +35,7 @@ Page({
             },
             method: 'DELETE',
             success(res) {
-              me.getData();
+              me.getUser(me.data.payStatus);
             }
           })
         } else if (res.cancel) {
@@ -43,29 +44,28 @@ Page({
       }
     })
   },
-  getUser: function () {
+  getUser: function (payStatus) {
     var me = this;
+    wx.showLoading({
+      title: '加载中',
+    }),
     wx.login({
       success(res) {
         if (res.code) {
           //通过wx.login内置函数，得到临时code码
           wx.request({
-            url: me.data.baseUrl + '/openIdSessionKey',
+            url: app.baseUrl + '/openIdSessionKey',
             method: "get",
             data: {
               code: res.code
             },
             success: function (data) {
-              console.log(data.data.data);
               me.setData({
                 userId: data.data.data
               })
-              // wx.nextTick(() =>{
-              //   me.getPayStatus(me.data.id);
-              // })
+              me.getData(payStatus, data.data.data);
             },
             error: function (err) {
-              console.log(err);
               console.log(err);
             }
           })
@@ -78,65 +78,43 @@ Page({
   onChange(event)
   {
     var that = this;
-    var tabName = event.detail.name;
-    var payStatus;
-    console.log(tabName);
-    switch(tabName)
+    switch (event.detail.name)
     {
       case 1:
-        payStatus = 0;//0未付款
-        that.setData({
-          id:'unPayClick'
-        })
+        that.payStatus = 0;//0未付款
         break;
       case 2:
-        payStatus = 1;//1已付款的，等待发货和收货
-        that.setData({
-          id: 'send'
-        })
+        that.payStatus = 1;//1已付款的，等待发货和收货
         break;
       case 3:
-        payStatus = 3;//3已签收，订单完成
-        that.setData({
-          id: 'say'
-        })
+        that.payStatus = 3;//3已签收，订单完成
         break;
       case 4:
-        payStatus = -4;//-4订单已取消
-        that.setData({
-          id: 'cancel'
-        })
+        that.payStatus = -4;//-4订单已取消
         break;
       default:
-        payStatus = "";
-        that.setData({
-          id: 'myOrder'
-        })
+        that.payStatus = "";
         //全部，不传
         break;
     }
-    that.getData(payStatus);
+    that.getUser(that.payStatus);
   },
   getPayStatus(id){
     let me=this;
-    console.log(id);
     switch (id) {
       case 'unPayClick':
         me.setData({ 
-          active: 1 ,
-          payStatus:0
+          active: 1 
         });//0未付款
         break;
       case 'send':
         me.setData({ 
-          active: 2,
-          payStatus: 1 
+          active: 2
         });//1已付款的，等待发货和收货
         break;
       case 'say':
         me.setDatame.setData({
-          active: 3,
-          payStatus: 3
+          active: 3
         });//3已签收，订单完成
         break;
       case 'myOrder':
@@ -148,31 +126,28 @@ Page({
         break;
       case 'cancel':
         //全部订单不用传
-        me.setData({ active: 4 });
+        me.setData({ 
+          active: 4
+        });
         break;
     }
-    console.log(me.data.payStatus);
-    me.getData(me.data.payStatus);
   },
-  getData: function (payStatus){
+  getData: function (payStatus,userId){
     let that=this;
-    wx.showLoading({
-      title: '加载中',
-    }),
     wx.request({
       url: app.baseUrl + '/orderList',
       data:{
-        userId:that.data.userId,
+        userId: userId,
         status:payStatus
       },
       method:'GET',
       success(res) {
-        wx.hideLoading();
         for (let i = 0; i < res.data.data.length;i++){
           res.data.data[i].zs = app.getPrice(res.data.data[i].price).zs;
           res.data.data[i].xs = app.getPrice(res.data.data[i].price).xs;
         }
         that.setData({ list: res.data.data });
+        wx.hideLoading();
       }
     })
   },
@@ -188,12 +163,11 @@ Page({
     that.getPayStatus(that.data.id);
   },
   payOrder:function(event){
-    console.log(event.currentTarget.dataset.id);
     var that = this;
     wx.request({
       url: app.baseUrl + '/payOrder',
       data: {
-        userId: 288,
+        userId: that.data.userId,
         orderNo: event.currentTarget.dataset.id
       },
       header: {
