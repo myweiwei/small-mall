@@ -370,7 +370,6 @@ Page({
     }
   },
   preOrder: function(e){
-    console.log(e.currentTarget.dataset.total);
     if(e.currentTarget.dataset.total>=app.lowerBuyLimit){
       wx.navigateTo({
         url: '/pages/mine/order/preorder/preorder'

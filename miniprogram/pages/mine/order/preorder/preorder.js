@@ -96,6 +96,17 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
+        console.log(res.data.data);
+        for (let i = 0; i < res.data.data.orderItem.length;i++){
+          res.data.data.orderItem[i].zs = app.getPrice(res.data.data.orderItem[i].totalPrice).zs;
+          res.data.data.orderItem[i].xs = app.getPrice(res.data.data.orderItem[i].totalPrice).xs;
+        }
+        res.data.data.zs = app.getPrice(res.data.data.price).zs;
+        res.data.data.xs = app.getPrice(res.data.data.price).xs;
+        res.data.data.zs1 = app.getPrice(res.data.data.expressPrice).zs;
+        res.data.data.xs1 = app.getPrice(res.data.data.expressPrice).xs;
+        res.data.data.zs2 = app.getPrice(res.data.data.price).zs;
+        res.data.data.xs2 = app.getPrice(res.data.data.price).xs;
         me.setData({
           order:res.data.data
         })
