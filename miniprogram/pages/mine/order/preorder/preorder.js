@@ -73,13 +73,24 @@ Page({
           addressDate: res.data.data,
           chooseAddress: v!=undefined ? v : res.data.data[0]
         })
-        me.getData();
+        console.log(me.data.chooseAddress);
+        if (!me.data.chooseAddress || me.data.chooseAddress==undefined){
+          wx.showToast({
+            title: '请先添加地址',
+            icon: 'none',
+            duration: 3000
+          })
+        }
+        else{
+          me.getData();
+        }
       }
     });
   },
   getData:function(){
     let me = this;
     var requestParam;
+<<<<<<< HEAD
     console.log(me.data.buyMethod);
     if(me.data.buyMethod != "" && me.data.buyMethod == 1){
       requestParam = {
@@ -89,11 +100,14 @@ Page({
         addressId: me.data.chooseAddress.id,
         productId:me.data.productId,
         number:me.data.number}
+=======
+    if (me.data.buyMethod != "" && me.data.buyMethod == 1) {
+      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id, productId: me.data.productId, number: me.data.number }
+>>>>>>> 67ba216161e6e551216c0648012771bb511a8c86
     }
-    else{
-      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id}
+    else {
+      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id }
     }
-    console.log(requestParam);
     wx.request({
       url: app.baseUrl + '/order',
       data: requestParam,

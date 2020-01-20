@@ -9,7 +9,7 @@
                 <text class="wait-pay-text" wx:if="{{item.orderStatus == 1}}">等待收货</text>
                 <view wx:if="{{item.orderStatus == 3}}" style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
                 <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已完成</text>
-                <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+                <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png" data-id="{{item.orderNo}}" catchtap="deleteOrder"></image>
               </view>
                 <view wx:if="{{item.orderStatus == -4}}" style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
                 <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已取消</text>
@@ -45,7 +45,7 @@
       </view>
     </van-tab>
     <van-tab title="待付款">
-     <view class="order-item" wx:for="{{list}}" wx:key="key" >
+     <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
         <view class="top">
           <image class="top-icon" src="../../../images/logo.png"></image>
           <text class="wait-pay-text">等待付款</text>
@@ -71,7 +71,7 @@
       </view> 
     </van-tab>
     <van-tab title="待收货">
-      <view class="order-item" wx:for="{{list}}" wx:key="key" >
+      <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
         <view class="top">
           <image class="top-icon" src="../../../images/logo.png"></image>
           <text class="wait-pay-text">等待收货</text>
@@ -97,12 +97,12 @@
       </view>
     </van-tab>
     <van-tab title="已完成">
-      <view class="order-item" wx:for="{{list}}" wx:key="key" >
+      <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
         <view class="top">
           <image class="top-icon" src="../../../images/logo.png"></image>
           <view style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
             <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已完成</text>
-            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png" data-id="{{item.orderNo}}" catchtap="deleteOrder"></image>
           </view>
         </view>
 
@@ -130,12 +130,12 @@
       </view>
     </van-tab>
     <van-tab title="已取消">
-      <view class="order-item" wx:for="{{list}}" wx:key="key" >
+      <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
         <view class="top">
           <image class="top-icon" src="../../../images/logo.png"></image>
           <view style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
             <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已取消</text>
-            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png"></image>
+            <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png" data-id="{{item.orderNo}}" catchtap="deleteOrder"></image>
           </view>
         </view>
 
