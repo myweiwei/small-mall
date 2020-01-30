@@ -7,6 +7,7 @@
               <image class="top-icon" src="../../../images/logo.png"></image>
                 <text class="wait-pay-text" wx:if="{{item.orderStatus == 0}}">等待付款</text>
                 <text class="wait-pay-text" wx:if="{{item.orderStatus == 1}}">等待收货</text>
+                <text class="wait-pay-text" wx:if="{{item.orderStatus == 2}}">等待收货</text>
                 <view wx:if="{{item.orderStatus == 3}}" style="display:flex; align-items: center; margin-right:50rpx; margin-top:10rpx;">
                 <text class="wait-pay-text" style="color:#000; margin-right:15rpx; margin-top:0px;">已完成</text>
                 <image class="deleteOrder-icon" src="../../../images/order/deleteOrder5.png" data-id="{{item.orderNo}}" catchtap="deleteOrder"></image>
@@ -25,7 +26,7 @@
               <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images" wx:key="key" >
                 <view class='imageList'>
                   <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
-                  <view class="product-name">{{images.productItemName}}</view>
+                  <view class="product-name">{{images.productSpec}}</view>
                 </view>  
               </block>
               <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
@@ -34,7 +35,8 @@
               </view>
             </view>
             <view class="pay-button"  wx:if="{{item.orderStatus == 0}}" catchtap="payOrder" data-id="{{item.orderNo}}">立即支付</view>
-            <view class="pay-button"  wx:if="{{item.orderStatus == 1}}" style="color:#000; border:0.1rpx solid rgb(146,126,128);" >查看物流</view>
+            <view class="pay-button"  wx:if="{{item.orderStatus == 1}}" style="color:#000; border:0.1rpx solid rgb(146,126,128);" >查看详情</view>
+             <view class="pay-button"  wx:if="{{item.orderStatus == 2}}" style="color:#000; border:0.1rpx solid rgb(146,126,128);" >查看详情</view>
             <view wx:if="{{item.orderStatus == 3}}" style="display:flex; flex-direction:row;">
               <view class="pay-button" style=" margin-right:30rpx; color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>
               <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
@@ -44,6 +46,10 @@
             </view>
       </view>
     </van-tab>
+
+
+
+
     <van-tab title="待付款">
      <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
         <view class="top">
@@ -59,7 +65,7 @@
           <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images" wx:key="key" >
             <view class='imageList'>
               <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
-              <view class="product-name">{{images.productItemName}}</view>
+              <view class="product-name">{{images.productSpec}}</view>
             </view>  
           </block>
           <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
@@ -67,9 +73,11 @@
             <view class="count" wx:if='{{item.totalNumber >= 2}}'>共{{item.totalNumber}}件</view>
           </view>
         </view>
-        <view class="pay-button">立即支付</view>
+        <view class="pay-button" catchtap="payOrder" data-id="{{item.orderNo}}">立即支付</view>
       </view> 
     </van-tab>
+
+    
     <van-tab title="待收货">
       <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
         <view class="top">
@@ -85,7 +93,7 @@
           <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images" wx:key="key" >
             <view class='imageList'>
               <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
-              <view class="product-name">{{images.productItemName}}</view>
+              <view class="product-name">{{images.productSpec}}</view>
             </view>  
           </block>
           <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
@@ -115,7 +123,7 @@
           <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images" wx:key="key" >
             <view class='imageList'>
               <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
-              <view class="product-name">{{images.productItemName}}</view>
+              <view class="product-name">{{images.productSpec}}</view>
             </view>  
           </block>
           <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">
@@ -148,7 +156,7 @@
           <block wx:if='{{item.totalNumber == 1}}' wx:for="{{item.orderSimpleVO}}" wx:for-item="images" wx:key="key" >
             <view class='imageList'>
               <image class="middle-image-size" src="http://{{images.imageURL}}"></image>
-              <view class="product-name">{{images.productItemName}}</view>
+              <view class="product-name">{{images.productSpec}}</view>
             </view>  
           </block>
           <view class="{{item.totalNumber >= 3?'money-count1':'money-count'}}">

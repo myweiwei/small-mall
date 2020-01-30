@@ -22,18 +22,34 @@
           </van-count-down>
       </view>
       <view>
-        <view class="pay-button-top">立即支付</view>
+        <view class="pay-button-top" bindtap="payOrder">立即支付</view>
       </view>
     </view>
+
+      <view class="buy-status" wx:if="{{obj.orderStatus == 3}}">
+        <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
+        <view>订单已完成</view>
+      </view>
+
+
      <view class="buy-status" wx:if="{{obj.orderStatus == -4}}">
-      订单已取消
+
+        <image src="../../../../images/cancel_order_icon.png" class="wait-receive_icon"></image>
+        <view>订单已取消</view>
+
      </view>
       <view class="buy-status" wx:if="{{obj.orderStatus == 1}}">
-      商家正在配货
+      <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
+      <view>商家正在配货</view>
      </view>
+
       <view class="buy-status" wx:if="{{obj.orderStatus == 2}}">
-      商家已发货
-     </view>
+      <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
+      <view>商家已发货</view>
+      <view wx:if="{{obj.orderStatus == 2 && obj.isSameCity == 0}}">顺丰运单号：{{obj.expressNo}}</view>
+
+      
+    </view>
 
 
     <view class="address">
@@ -79,7 +95,7 @@
     </view>
      <view class="money-detail-item">
       <text class="order-detail-left-color">运费：</text>
-      <text>+￥0.00</text>
+      <text>+￥{{obj.expressPrice / 100}}</text>
     </view>
      <view class="money-detail-item">
       <text></text>
@@ -97,13 +113,21 @@
     <view class="pay-button" bindtap="payOrder">立即支付</view>
   </view> 
 
+   <view class="buttons border-top" wx:if="{{obj.orderStatus == 2}}">
+    <view class="pay-button" bindtap="finishOrder">确认收货</view>
+  </view> 
+
+   <view class="buttons border-top" wx:if="{{obj.orderStatus == 3}}">
+    <view class="cancel-button" bindtap="deleteOrder">删除订单</view>
+    <view class="pay-button">再次购买</view>
+  </view>
+
   <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
     <view class="cancel-button" bindtap="deleteOrder">删除订单</view>
     <view class="pay-button">再次购买</view>
   </view> 
 
-    <view class="buttons border-top" wx:if="{{obj.orderStatus == 1}}">
-    <view class="cancel-button" bindtap="cancelOrder">查看物流</view>
+    <!-- <view class="buttons border-top" wx:if="{{obj.orderStatus == 1}}">
     <view class="pay-button">再次购买</view>
-  </view> 
+  </view>  -->
 </view>

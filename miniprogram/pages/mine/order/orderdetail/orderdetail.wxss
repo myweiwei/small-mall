@@ -37,6 +37,11 @@
   height: 36rpx;
   margin-right: 20rpx;
 }
+.wait-receive_icon{
+  width: 80rpx;
+  height: 80rpx;
+
+}
 .item {
   margin-top: 15rpx;
   color: #FFF;
@@ -122,7 +127,7 @@
   padding-top: 10rpx;
   width: 100%;
   border-radius: 19rpx;
-  min-height: 270rpx;
+  min-height: 250rpx;
   background: #FFF;
   display: flex;
   flex-direction: column;

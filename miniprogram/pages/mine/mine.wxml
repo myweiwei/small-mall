@@ -20,7 +20,7 @@
     <view class="order-info-item"  id="say" bindtap="orderClick">
       <view class="iconfont icon-daipingjia"></view>
       <text class='num' wx:if="{{receive > 0}}">{{receive}}</text>
-      <text class="order-info-text">待评价</text>
+      <text class="order-info-text">已完成</text>
     </view>
     <view class="order-info-item"  id="myOrder" bindtap="orderClick">
       <view class="iconfont icon-wodedingdan"></view>
@@ -30,7 +30,7 @@
 
   <!--其他乱七八糟-->
   <view class="other-service">
-    <view class="item border-top" catchtap="addressListener">
+    <view class="item" catchtap="addressListener">
       <image class="images" src="../../images/mine/address.png"> </image>
       <text class="text">收货地址</text>
     </view>

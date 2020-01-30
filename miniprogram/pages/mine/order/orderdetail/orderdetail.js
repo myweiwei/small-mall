@@ -2,10 +2,12 @@ const app = getApp();
 var orderNo;
 Page({ 
   data: {
+    userId:0,
     active: 0,
     obj:{},
     time:0, //倒计时剩余时间
-    timeData: {}//onChange方法取time的时间，给timeData用
+    timeData:{},//onChange方法取time的时间，给timeData用
+    orderNo:""
   },
 
   onChange(e) {
@@ -34,52 +36,97 @@ Page({
   onLoad: function (options) {
       var that = this;
       orderNo = options.orderNo;
-      wx.request({
-        url: app.baseUrl + '/order',
-        data:{
-          orderNo:orderNo
-        },
-        method:'GET',
+      that.setData({
+        orderNo: orderNo
+      });
+      wx.login({
         success(res) {
-          getData(res,that);
-          console.log(res.data.data + "----------------------");
+          if (res.code) {
+            //通过wx.login内置函数，得到临时code码
+            wx.request({
+              url: app.baseUrl + '/openIdSessionKey',
+              method: "get",
+              data: {
+                code: res.code
+              },
+              success: function (data) {
+                that.setData({
+                  userId: data.data.data,
+                  showLoad: false
+                });
+               
+                wx.request({
+                  url: app.baseUrl + '/order',
+                  data:{
+                    orderNo:orderNo
+                  },
+                  method:'GET',
+                  success(res) {
+                    getData(res,that);
+                    console.log(res.data.data + "----------------------");
+                  }
+                });
+              },
+              error: function (err) {
+                console.log(err);
+              }
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
         }
-      })
+      });
+     
   },
   cancelOrder: function(){
     var that = this;
-    wx.request({
-      url: app.baseUrl + '/cancelOrder',
-      data: {
-        userId: 288,
-        orderNo: orderNo
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      method: 'POST',
+
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该订单',
       success(res) {
-        wx.request({
-          url: app.baseUrl + '/order',
-          data: {
-            orderNo: orderNo
-          },
-          method: 'GET',
-          success(res) {
-            wx.navigateTo({
-              url: '/pages/mine/order/order'
-            })
-          }
-        })
+        if (res.confirm) {
+          var orderNo = that.data.orderNo;
+          wx.request({
+            url: app.baseUrl + '/cancelOrder',
+            data: {
+              userId: that.data.userId,
+              orderNo: orderNo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+            method: 'POST',
+            success(res) {
+              wx.request({
+                url: app.baseUrl + '/order',
+                data: {
+                  orderNo: orderNo
+                },
+                method: 'GET',
+                success(res) {
+                  wx.navigateTo({
+                    url: '/pages/mine/order/order'
+                  })
+                }
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
+
+
+   
   },
   deleteOrder: function(){
     var that = this;
     wx.request({
       url: app.baseUrl + '/order',
       data: {
-        userId: 288,
+        userId: that.data.userId,
         orderNo: orderNo
       },
       header: {
@@ -105,7 +152,7 @@ Page({
     wx.request({
       url: app.baseUrl + '/payOrder',
       data: {
-        userId: 288,
+        userId: that.data.userId,
         orderNo: orderNo
       },
       header: {
@@ -122,13 +169,56 @@ Page({
             signType: obj.signType,
             paySign: obj.paySign,
             success: function (res) {
-              console.log(res.data);
+              wx.request({
+                url: app.baseUrl + '/order',
+                data: {
+                  orderNo: orderNo
+                },
+                method: 'GET',
+                success(res) {
+                  getData(res, that);
+                }
+              })
             },
             fail: function (res) {
               console.log(res);
             },
             complete: function (res) { }
           })
+      }
+    })
+  },
+  finishOrder:function(){
+    wx.showModal({
+      title: '提示',
+      content: '是否确认收到货物？',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.baseUrl + '/finishOrder',
+            data: {
+              orderNo: orderNo
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+            method: 'POST',
+            success(res) {
+              wx.request({
+                url: app.baseUrl + '/order',
+                data: {
+                  orderNo: orderNo
+                },
+                method: 'GET',
+                success(res) {
+                  getData(res, that);
+                }
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   }
@@ -138,7 +228,7 @@ function getData(res,that) {
   var order = res.data.data;
   that.setData({ time: order.waitPayTime });
 
-  var a = (order.price / 100).toFixed(2).split('.');
+  var a = ((order.price + order.expressPrice) / 100).toFixed(2).split('.');
   order.zs = a[0];
   order.xs = a[1];
 

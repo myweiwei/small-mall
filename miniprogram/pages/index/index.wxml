@@ -24,7 +24,7 @@
                   <view class='price_count'><view class="money"><text class='fh'>￥</text>{{items.zs}}<text class="xs">.{{items.xs}}</text></view></view>
                   <view class='price_info'>/{{items.unit}}</view>
                 </view>
-                <view class='choose greenBox' bindtap='showshadow' data-item='{{items}}'>买点尝尝</view>
+                <view class='choose greenBox' bindtap='showshadow' data-item='{{items}}'>选规格</view>
               </view>
             </view>
           </view>

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userId:'',
     unPay:"",
     pay:"",
     receive:""
@@ -25,7 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-
+  
   },
 
   /**
@@ -39,21 +40,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var me = this;
-    wx.request({
-      url: app.baseUrl + '/statisticQuantity',
-      data: { userId:288 },
-      method: 'GET',
-      success: function (res) {
-        console.log(res.data.data);
-        me.setData({
-          unPay: res.data.data.unPay,
-          pay: res.data.data.pay,
-          receive: res.data.data.receive
-        });
-      }
-    });
-    
+    let me = this;
+    this.getUser();
   },
 
   /**
@@ -95,5 +83,53 @@ Page({
     wx.navigateTo({
       url:'/pages/cook/cook'
     })
-  }
+  },
+  getUser: function () {
+    var me = this;
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //通过wx.login内置函数，得到临时code码
+          wx.request({
+            url: app.baseUrl + '/openIdSessionKey',
+            method: "get",
+            data: {
+              code: res.code
+            },
+            success: function (data) {
+              console.log("userId=....." + data.data.data);
+              me.setData({
+                userId: data.data.data
+              })
+
+              //
+              wx.request({
+                url: app.baseUrl + '/statisticQuantity',
+                data: { userId:me.data.userId },
+                method: 'GET',
+                success: function (res) {
+                  console.log("onshow() reuslt = " + res.data.data);
+                  if(res.data.data != "" && res.data.data != null){
+                    me.setData({
+                      unPay: res.data.data.unPay,
+                      pay: res.data.data.pay,
+                      receive: res.data.data.receive
+                    });
+                  }
+                 
+                }
+              });
+
+
+            },
+            error: function (err) {
+              console.log(err);
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
+  },
 })

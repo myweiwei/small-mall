@@ -164,6 +164,7 @@ Page({
   },
   payOrder:function(event){
     var that = this;
+    console.log(event.currentTarget.dataset.id);
     wx.request({
       url: app.baseUrl + '/payOrder',
       data: {
@@ -184,7 +185,17 @@ Page({
             signType: obj.signType,
             paySign: obj.paySign,
             success: function (res) {
-              console.log(res.data);
+              wx.request({
+                url: app.baseUrl + '/order',
+                data:{
+                  orderNo:orderNo
+                },
+                method:'GET',
+                success(res) {
+                  getData(payStatus,userId);
+                  getData(res,that);
+                }
+              });
             },
             fail: function (res) {
               console.log(res);

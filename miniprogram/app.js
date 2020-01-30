@@ -1,6 +1,6 @@
 //app.js
 App({
-  baseUrl: 'http://5dfc2c594e951.freetunnel.cc',
+  baseUrl: 'http://localhost:8888',
   lowerBuyLimit:3000, //购买下限，30元起
   onLaunch: function () {
     if (!wx.cloud) {

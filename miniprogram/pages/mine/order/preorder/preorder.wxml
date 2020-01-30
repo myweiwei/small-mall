@@ -4,6 +4,7 @@
 <view class="boxContainer">
     <view class='top flexBox' data-id='{{chooseAddress.id}}' bindtap='toAddress'>
       <view class="address">
+        <view wx:if='{{chooseAddress.defaults != 1}}'>请添加收货地址</view>
         <view class='province'><text class='default-icon' wx:if='{{chooseAddress.defaults==1}}'>默认</text>{{chooseAddress.province}}</view> 
         <view class='neighbourhood'>{{chooseAddress.neighbourhood}}</view>
         <view class='name'>{{chooseAddress.name}} {{chooseAddress.phone}}</view>
@@ -11,7 +12,7 @@
       <view class='icon'><van-icon name="arrow" /></view>
     </view>
     <view class='cen'>
-      <scroll-view scroll-y='true' scroll-with-animation='true'  style='max-height:550rpx;'>
+      <scroll-view scroll-y='true' scroll-with-animation='true'  style='max-height:580rpx;'>
         <view wx:for='{{order.orderItem}}' wx:key='{{item.productId}}' class='orderBox flexBox'>
           <view class='img'><image src='http://{{item.productImage}}'/></view>
           <view class='info'>
@@ -34,7 +35,7 @@
       </view>
       <view class='flexBox'>
         <text>运费（总重:{{order.totalWeight}}kg）</text>
-        <view class='yunfei'><text class='fh'>-￥</text>{{order.zs1}}<text class="xs">.{{order.xs1}}</text></view>
+        <view class='yunfei'><text class='fh'>+￥</text>{{order.zs1}}<text class="xs">.{{order.xs1}}</text></view>
       </view>
     </view>
     <view class='footer flexBox'>

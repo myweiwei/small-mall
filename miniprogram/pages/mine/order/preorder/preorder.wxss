@@ -76,6 +76,7 @@
 }
 .orderBox .img {
   width:140rpx;
+  margin-right: 20rpx;
 }
 .orderBox .info {
   flex:1;

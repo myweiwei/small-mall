@@ -35,7 +35,7 @@
             <image class="product-image" src="http://{{item.picture}}"></image>
             <view class="product-name">{{item.name}} <text class="yuan yuan-color">￥</text>
             <text class="yuan-color">{{item.price}}</text><text class="yuan">/{{item.unit}}</text></view>
-            <view class="product-keywords">{{item.searchKey}}</view>
+            <view class="product-keywords">{{item.introduce}}</view>
           </view>
          
           </block>

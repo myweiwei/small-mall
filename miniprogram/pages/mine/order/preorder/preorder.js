@@ -80,24 +80,8 @@ Page({
   getData:function(){
     let me = this;
     var requestParam;
-<<<<<<< HEAD
-    console.log(me.data.buyMethod);
-    if(me.data.buyMethod != "" && me.data.buyMethod == 1){
-      requestParam = {
-        userId: me.data.userId, 
-        province: me.data.chooseAddress.province, 
-        isPreOrder: 1,
-        addressId: me.data.chooseAddress.id,
-        productId:me.data.productId,
-        number:me.data.number}
-=======
     if (me.data.buyMethod != "" && me.data.buyMethod == 1) {
-<<<<<<< HEAD
-      requestParam = { userId: me.data.userId, province: me.data.chooseAddress.province, isPreOrder: 1, addressId: me.data.chooseAddress.id, productId: me.data.productId, number: me.data.number }
->>>>>>> 67ba216161e6e551216c0648012771bb511a8c86
-=======
       requestParam = { userId: me.data.userId, isPreOrder: 1, productId: me.data.productId, number: me.data.number }
->>>>>>> f4d5aecd9ccc8e8f5d9f30ba54f0425941a3209b
     }
     else {
       requestParam = { userId: me.data.userId, isPreOrder: 1, }
@@ -122,15 +106,15 @@ Page({
       success: function (res) {
         console.log(res.data.data);
         for (let i = 0; i < res.data.data.orderItem.length;i++){
-          res.data.data.orderItem[i].zs = app.getPrice(res.data.data.orderItem[i].totalPrice).zs;
-          res.data.data.orderItem[i].xs = app.getPrice(res.data.data.orderItem[i].totalPrice).xs;
+          res.data.data.orderItem[i].zs = app.getPrice(res.data.data.orderItem[i].currentUnitPrice).zs;
+          res.data.data.orderItem[i].xs = app.getPrice(res.data.data.orderItem[i].currentUnitPrice).xs;
         }
         res.data.data.zs = app.getPrice(res.data.data.price).zs;
         res.data.data.xs = app.getPrice(res.data.data.price).xs;
         res.data.data.zs1 = app.getPrice(res.data.data.expressPrice).zs;
         res.data.data.xs1 = app.getPrice(res.data.data.expressPrice).xs;
-        res.data.data.zs2 = app.getPrice(res.data.data.price).zs;
-        res.data.data.xs2 = app.getPrice(res.data.data.price).xs;
+        res.data.data.zs2 = app.getPrice(res.data.data.totalPrice).zs;
+        res.data.data.xs2 = app.getPrice(res.data.data.totalPrice).xs;
         me.setData({
           order:res.data.data
         })
@@ -157,14 +141,34 @@ Page({
   },
   payFunc:function(){
     let me=this;
-    wx.request({
-      url:app.baseUrl+'/order',
-      data: {
+    var requestParam;
+    //直接购买
+    if (me.data.buyMethod != "" && me.data.buyMethod == 1) {
+      requestParam = {
         userId: me.data.userId, 
         province: me.data.chooseAddress.province, 
         isPreOrder: 0, 
-        addressId: me.data.chooseAddress.id
-      },
+        addressId: me.data.chooseAddress.id,
+        productId: me.data.productId, 
+        number: me.data.number
+      }
+    }
+    //购物车模式
+    else {
+      requestParam = requestParam = {
+        userId: me.data.userId, 
+        province: me.data.chooseAddress.province, 
+        isPreOrder: 0, 
+        addressId: me.data.chooseAddress.id,
+      }
+    }
+    if (me.data.chooseAddress && me.data.chooseAddress != undefined){
+      requestParam = Object.assign(requestParam, { addressId: me.data.chooseAddress.id, province: me.data.chooseAddress.province})
+    }
+
+    wx.request({
+      url:app.baseUrl+'/order',
+      data: requestParam,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
