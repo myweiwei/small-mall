@@ -6,7 +6,10 @@ Page({
     userId:'',
     show:true,
     chooseId:'',
-    showLoad:false
+    showLoad:false,
+    buyMethod:0,
+    productId:'',
+    number:0
   },
   addAddressListener: function () {
     wx.navigateTo({
@@ -16,7 +19,7 @@ Page({
   toEdit: function (e) {
     let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId
+      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
     })
   },
   getUser: function () {
@@ -57,7 +60,10 @@ Page({
   onLoad: function (options) {
     let me=this;
     me.setData({
-      chooseId: options.id
+      chooseId: options.id,
+      buyMethod: options.buyMethod,
+      productId: options.productId,
+      number: options.number
     })
   },
   getData:function(){

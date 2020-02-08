@@ -13,8 +13,9 @@ Page({
     number:0
   },
   toAddress:function(e){
+    let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/address?id=' + e.target.dataset.id
+      url: '/pages/mine/address/address?id=' + e.target.dataset.id + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
     });
   },
   getUser: function () {
@@ -123,7 +124,6 @@ Page({
   },
   onLoad: function (options) {
     let me = this;
-   
     me.setData({
       chooseId: options.chooseId,
     })
