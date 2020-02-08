@@ -59,6 +59,7 @@ Page({
    */
   onLoad: function (options) {
     let me=this;
+    console.log(options);
     me.setData({
       chooseId: options.id,
       buyMethod: options.buyMethod,
@@ -87,7 +88,7 @@ Page({
     let me=this;
     if (me.data.chooseId != undefined){
       wx.navigateTo({
-        url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id
+        url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
       })
     }
   },
@@ -125,7 +126,7 @@ Page({
     }
     else {
       wx.reLaunch({
-        url: '/pages/mine/order/preorder/preorder'
+        url: '/pages/mine/order/preorder/preorder?buyMethod=' + me.data.buyMethod +'&number=' + me.data.number + '&productId=' + me.data.productId
       })
     }
     

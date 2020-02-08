@@ -15,7 +15,8 @@ Page({
   toAddress:function(e){
     let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/address?id=' + e.target.dataset.id + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
+      url: '/pages/mine/address/address?id=' + e.target.dataset.id + "&buyMethod=" + me.data.buyMethod + "&number=" + me.data.number+ "&productId=" + me.data.productId
+
     });
   },
   getUser: function () {
@@ -105,7 +106,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
       },
       success: function (res) {
-        console.log(res.data.data);
         for (let i = 0; i < res.data.data.orderItem.length;i++){
           res.data.data.orderItem[i].zs = app.getPrice(res.data.data.orderItem[i].currentUnitPrice).zs;
           res.data.data.orderItem[i].xs = app.getPrice(res.data.data.orderItem[i].currentUnitPrice).xs;
