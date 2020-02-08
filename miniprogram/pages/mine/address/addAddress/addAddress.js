@@ -4051,7 +4051,10 @@ Page({
     neighbourhood: '',
     phone: '',
     name: '',
-    defaults:true
+    defaults:true,
+    buyMethod: 0,
+    productId: '',
+    number: 0
   },
   onChangeIpt(event) {
     let me=this;
@@ -4115,7 +4118,7 @@ Page({
         });
         wx.hideLoading();
         wx.navigateTo({
-          url: '/pages/mine/address/address'
+          url: '/pages/mine/address/address?buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
         })
       },
       error: function (err) {
@@ -4190,6 +4193,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let me = this;
+    me.setData({
+      buyMethod: options.buyMethod,
+      productId: options.productId,
+      number: options.number
+    })
   },
 
   /**

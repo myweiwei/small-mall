@@ -4194,7 +4194,7 @@ Page({
         });
         wx.hideLoading();
         wx.navigateTo({
-          url: '/pages/mine/order/preorder/preorder?chooseId=' + me.data.editList.id + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
+          url: '/pages/mine/order/preorder/preorder?chooseId=' + me.data.editList.id + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
         })
       },
       error: function (err) {

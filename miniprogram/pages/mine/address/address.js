@@ -12,14 +12,15 @@ Page({
     number:0
   },
   addAddressListener: function () {
+    let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/addAddress/addAddress'
+      url: '/pages/mine/address/addAddress/addAddress?buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
     })
   },
   toEdit: function (e) {
     let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
+      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
     })
   },
   getUser: function () {
@@ -88,7 +89,7 @@ Page({
     let me=this;
     if (me.data.chooseId != undefined){
       wx.navigateTo({
-        url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
+        url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
       })
     }
   },
