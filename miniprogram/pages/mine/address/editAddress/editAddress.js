@@ -4050,6 +4050,9 @@ Page({
     showPop:false,
     phone:'',
     chooseId:'',
+    buyMethod: 0,
+    productId: '',
+    number: 0
   },
   onChangeIpt(event) {
     let me=this;
@@ -4191,7 +4194,7 @@ Page({
         });
         wx.hideLoading();
         wx.navigateTo({
-          url: '/pages/mine/order/preorder/preorder?chooseId=' + me.data.editList.id
+          url: '/pages/mine/order/preorder/preorder?chooseId=' + me.data.editList.id + '& buyMethod=' + me.data.buyMethod + '& number=' + me.data.number + '& productId=' + me.data.productId
         })
       },
       error: function (err) {
@@ -4280,7 +4283,10 @@ Page({
     me.setData({
       chooseId: options.chooseId,
       editList: JSON.parse(options.item),
-      phone: JSON.parse(options.item).phone
+      phone: JSON.parse(options.item).phone,
+      buyMethod: options.buyMethod,
+      productId: options.productId,
+      number: options.number
     })
   },
 
