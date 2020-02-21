@@ -232,6 +232,11 @@ function getData(res,that) {
   order.zs = a[0];
   order.xs = a[1];
 
+   var addresses = order.namePhoneAddress.split(";");
+   order.name = addresses[0];
+   order.phone = addresses[1];
+   order.province = addresses[2];
+   order.neighbourhood = addresses[3];
 
   var orderDetail = res.data.data.orderItem;
   for (let i = 0; i < orderDetail.length; i++) {
@@ -239,6 +244,8 @@ function getData(res,that) {
     var b = (totalPrice / 100).toFixed(2).split('.');
     orderDetail[i].zs = b[0];
     orderDetail[i].xs = b[1];
+
+   
   }
 
   that.setData({ obj: res.data.data });

@@ -59,7 +59,7 @@
   line-height: 40rpx;
 }
 .productList .price_info {
-  font-size: 20rpx;
+  font-size: 25rpx;
   color:#646464;
 }
 .productList image,.choose .choose_image{

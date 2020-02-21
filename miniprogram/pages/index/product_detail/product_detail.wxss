@@ -1,0 +1,11 @@
+.my-container{
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+} 
+.swiper{
+  height: 2200rpx;
+}
+.swiper-item-images{
+  width: 100%;
+}

@@ -58,8 +58,8 @@
       </view>
 
       <view>
-        <text decode="{{true}}" class="address-name">{{obj.address.name}} &ensp; {{obj.address.phone}}</text> 
-        <view class="address-detail">地址：{{obj.address.province}}{{obj.address.neighbourhood}}</view>
+        <text decode="{{true}}" class="address-name">{{obj.name}} &ensp; {{obj.phone}}</text> 
+        <view class="address-detail">地址：{{obj.province}}{{obj.neighbourhood}}</view>
       </view>
     </view>
   </view>

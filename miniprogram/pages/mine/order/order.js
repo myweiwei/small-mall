@@ -113,7 +113,7 @@ Page({
         });//1已付款的，等待发货和收货
         break;
       case 'say':
-        me.setDatame.setData({
+        me.setData({
           active: 3
         });//3已签收，订单完成
         break;
@@ -160,6 +160,7 @@ Page({
   },
   onShow: function (){
     let that=this;
+    console.log(that.data.id);
     that.getPayStatus(that.data.id);
   },
   payOrder:function(event){

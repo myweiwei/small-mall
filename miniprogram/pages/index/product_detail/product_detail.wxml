@@ -1,0 +1,22 @@
+<view class="my-container">
+  <swiper indicator-dots="{{indicatorDots}}" 
+          autoplay="{{autoplay}}" 
+          circular="{{circular}}" 
+          vertical="{{vertical}}" 
+          interval="{{interval}}" 
+          duration="{{duration}}" 
+          previous-margin="{{previousMargin}}rpx" 
+          next-margin="{{nextMargin}}rpx"
+          class="swiper">
+    
+      <block wx:for='{{images}}' wx:key='index'>
+        <swiper-item>
+          <image src='{{item}}' mode="aspectFill" class='swiper-item-images'  />
+        </swiper-item>
+      </block>
+  </swiper>
+
+  <view>
+    
+  </view>
+</view>

@@ -1,20 +1,17 @@
 {
   "pages": [
+    "pages/index/product_detail/product_detail",
+    "pages/index/index",
+    "pages/main/main",
     "pages/mine/mine",
     "pages/mine/order/order",
     "pages/mine/order/orderdetail/orderdetail",
-    "pages/main/main",
-    "pages/index/index",
-    
     "pages/cook/cookdetail/cookdetail",
     "pages/cook/cooklist/cooklist",
     "pages/cook/cook",
-    
     "pages/comment/comment",
     "pages/mine/message/message",
-    
     "pages/mine/order/preorder/preorder",
-   
     "pages/mine/order/preorder/chooseAdd/chooseAdd",
     "pages/mine/order/preorder/paySuccess/paySuccess",
     "pages/mine/address/address",
@@ -35,12 +32,6 @@
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
-      {
-        "pagePath": "pages/main/main",
-        "iconPath": "images/nav/home-off.png",
-        "selectedIconPath": "images/nav/home-on.png",
-        "text": "首页"
-      },
       {
         "pagePath": "pages/index/index",
         "text": "商品",

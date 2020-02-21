@@ -39,8 +39,9 @@
   margin-left: 30rpx;
 }
 .step-image{
-  width: 96%;
+  width: 80%;
   height: 400rpx;
+  margin-left: 40rpx;
   margin-top: 20rpx;
   margin-bottom: 10rpx;
 }
@@ -48,5 +49,8 @@
 .myTtitle{
   margin-top:35rpx;
   font-weight:bold;
+}
+.cook-content{
+  margin-left: 40rpx;
 }
 

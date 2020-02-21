@@ -30,6 +30,8 @@
   position: absolute;
 }
 .product-name{
+  width: 100%;
+  text-align: center;
   font-size: 22rpx;
   color:#000;
   position: absolute;

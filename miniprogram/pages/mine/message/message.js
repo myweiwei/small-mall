@@ -7,7 +7,7 @@ Page({
 
   onClick:function(){
     wx.requestSubscribeMessage({
-      tmplIds: ['ip3gxMy-kzwM9pzEmGl3t-BMJBSlPeiH1Z-8JJHzCsQ'],
+      tmplIds: ['mVHjKCyWlfb3obrCfJz_UuQMI_BmdD1wi4CM_tq2xWU'],
       success (res) { 
 
       }
