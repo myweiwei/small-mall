@@ -97,7 +97,6 @@ Page({
               code: res.code
             },
             success: function (data) {
-              console.log("userId=....." + data.data.data);
               me.setData({
                 userId: data.data.data
               })

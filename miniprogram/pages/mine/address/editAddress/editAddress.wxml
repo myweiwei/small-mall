@@ -63,7 +63,7 @@
   </van-popup>
   <view class='footer flexBox'>
       <view class='btn' bindtap="delAddr">删除</view>
-      <view class='btn' bindtap="saveAddr" wx:if='{{chooseId=="undefined"}}'>保存</view>
-      <view class='btn' bindtap="saveAddr1" wx:if='{{chooseId!="undefined"}}'>保存并使用</view>
+      <view class='btn' bindtap="saveAddr1" wx:if='{{fromPage=="preorder"}}'>保存并使用</view>
+      <view class='btn' bindtap="saveAddr" wx:else>保存</view>
   </view>
 </view>

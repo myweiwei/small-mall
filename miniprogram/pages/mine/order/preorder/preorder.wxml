@@ -4,7 +4,7 @@
 <view class="boxContainer">
     <view class='top flexBox' data-id='{{chooseAddress.id}}' bindtap='toAddress'>
       <view class="address">
-        <view wx:if='{{chooseAddress.defaults != 1}}'>请添加收货地址</view>
+        <view wx:if='{{!chooseAddress.id}}'>请添加收货地址</view>
         <view class='province'><text class='default-icon' wx:if='{{chooseAddress.defaults==1}}'>默认</text>{{chooseAddress.province}}</view> 
         <view class='neighbourhood'>{{chooseAddress.neighbourhood}}</view>
         <view class='name'>{{chooseAddress.name}} {{chooseAddress.phone}}</view>

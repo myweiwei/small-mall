@@ -4052,7 +4052,8 @@ Page({
     chooseId:'',
     buyMethod: 0,
     productId: '',
-    number: 0
+    number: 0,
+    fromPage:''
   },
   onChangeIpt(event) {
     let me=this;
@@ -4123,9 +4124,10 @@ Page({
           icon: 'success'
         });
         wx.hideLoading();
-        wx.navigateTo({
-          url: '/pages/mine/address/address'
-        })
+        let pages = getCurrentPages();
+        wx.navigateBack({
+          delta: 1
+        });
       },
       error: function (err) {
         console.log(err);
@@ -4193,9 +4195,18 @@ Page({
           icon: 'success'
         });
         wx.hideLoading();
-        wx.navigateTo({
-          url: '/pages/mine/order/preorder/preorder?chooseId=' + me.data.editList.id + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
-        })
+        var pagesArr = getCurrentPages();
+        if (pagesArr[pagesArr.length - 3].route== "pages/mine/order/preorder/preorder") {
+          pagesArr[pagesArr.length - 3].setData({
+            id: me.data.editList.id,
+            buyMethod: me.data.buyMethod,
+            number: me.data.number,
+            productId: me.data.productId
+          });
+          wx.navigateBack({
+            delta: 2
+          });
+        }
       },
       error: function (err) {
         console.log(err);
@@ -4222,9 +4233,22 @@ Page({
                 icon: 'success'
               });
               wx.hideLoading();
-              wx.navigateTo({
-                url: '/pages/mine/address/address'
-              })
+              var pagesArr = getCurrentPages();
+              if(me.data.fromPage=="preorder"){
+                if (pagesArr[pagesArr.length - 2].route == "pages/mine/address/address") {
+                  pagesArr[pagesArr.length - 2].setData({
+                    fromPage: me.data.fromPage
+                  });
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }
+              } 
+              else {
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
             },
             error: function (err) {
               console.log(err);
@@ -4286,7 +4310,8 @@ Page({
       phone: JSON.parse(options.item).phone,
       buyMethod: options.buyMethod,
       productId: options.productId,
-      number: options.number
+      number: options.number,
+      fromPage:options.fromPage
     })
   },
 
