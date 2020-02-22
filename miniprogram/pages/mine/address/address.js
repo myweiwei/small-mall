@@ -9,18 +9,19 @@ Page({
     showLoad:false,
     buyMethod:0,
     productId:'',
-    number:0
+    number:0,
+    fromPage:''
   },
   addAddressListener: function () {
     let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/addAddress/addAddress?buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
+      url: '/pages/mine/address/addAddress/addAddress?buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId + '&fromPage=' + me.data.fromPage
     })
   },
   toEdit: function (e) {
     let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
+      url: '/pages/mine/address/editAddress/editAddress?item=' + JSON.stringify(e.target.dataset.item) + '&chooseId=' + me.data.chooseId + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId+'&fromPage=' + me.data.fromPage
     })
   },
   getUser: function () {
@@ -60,12 +61,12 @@ Page({
    */
   onLoad: function (options) {
     let me=this;
-    console.log(options);
     me.setData({
       chooseId: options.id,
       buyMethod: options.buyMethod,
       productId: options.productId,
-      number: options.number
+      number: options.number,
+      fromPage:options.fromPage
     })
   },
   getData:function(){
@@ -87,10 +88,19 @@ Page({
   },
   toOrder:function(e){
     let me=this;
-    if (me.data.chooseId != undefined){
-      wx.navigateTo({
-        url: '/pages/mine/order/preorder/preorder?chooseId=' + e.currentTarget.dataset.id + '&buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
-      })
+    if (me.data.fromPage == "preorder"){
+      var pagesArr = getCurrentPages();
+      if (pagesArr[pagesArr.length - 2].route == "pages/mine/order/preorder/preorder") {
+        pagesArr[pagesArr.length - 2].setData({
+          id: e.currentTarget.dataset.id,
+          buyMethod: me.data.buyMethod,
+          number: me.data.number,
+          productId: me.data.productId
+        });
+        wx.navigateBack({
+          delta: 1
+        });
+      }
     }
   },
   /**
@@ -105,6 +115,15 @@ Page({
    */
   onShow: function () {
     let me=this;
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.fromPage) {
+      this.setData({
+        fromPage: currPage.data.fromPage
+      })
+    }
+    var pagesArr = getCurrentPages();
+    console.log(pagesArr);
     me.getUser();
   },
 
@@ -120,17 +139,6 @@ Page({
    */
   onUnload: function () {
     let me=this;
-    if(me.data.chooseId==undefined){
-      wx.reLaunch({
-        url: '/pages/mine/mine'
-      })
-    }
-    else {
-      wx.reLaunch({
-        url: '/pages/mine/order/preorder/preorder?buyMethod=' + me.data.buyMethod +'&number=' + me.data.number + '&productId=' + me.data.productId
-      })
-    }
-    
   },
 
   /**

@@ -7,7 +7,6 @@ Page({
     order:{},
     chooseId:'',//地址选中的ID
     showLoad:false,
-
     buyMethod:0,//购买方式，0是加入购物车，1是直接购买，直接购买情况需要productId和number
     productId:0,
     number:0
@@ -15,7 +14,7 @@ Page({
   toAddress:function(e){
     let me=this;
     wx.navigateTo({
-      url: '/pages/mine/address/address?id=' + e.target.dataset.id + "&buyMethod=" + me.data.buyMethod + "&number=" + me.data.number+ "&productId=" + me.data.productId
+      url: '/pages/mine/address/address?id=' + e.target.dataset.id + "&buyMethod=" + me.data.buyMethod + "&number=" + me.data.number + "&productId=" + me.data.productId + "&fromPage=preorder" 
 
     });
   },
@@ -71,10 +70,20 @@ Page({
         else {
           v = res.data.data.find((value) => value.id == me.data.chooseId);
         }
-        me.setData({
-          addressDate: res.data.data,
-          chooseAddress: v!=undefined ? v : res.data.data[0]
-        })
+        if (res.data.data.length){
+          me.setData({
+            addressDate: res.data.data,
+            chooseAddress: v != undefined ? v : res.data.data[0],
+            chooseId: v != undefined ? v.id : res.data.data[0].id,
+          })
+        }
+        else {
+          me.setData({
+            addressDate: [],
+            chooseAddress: {},
+            chooseId: '',
+          })
+        }
         me.getData();
       }
     });
@@ -82,13 +91,13 @@ Page({
   getData:function(){
     let me = this;
     var requestParam;
-    if (me.data.buyMethod != "" && me.data.buyMethod == 1) {
+    if (me.data.buyMethod!=0) {
       requestParam = { userId: me.data.userId, isPreOrder: 1, productId: me.data.productId, number: me.data.number }
     }
     else {
       requestParam = { userId: me.data.userId, isPreOrder: 1, }
     }
-    if (me.data.chooseAddress && me.data.chooseAddress != undefined){
+    if (me.data.chooseAddress.province&&me.data.chooseAddress.province!=undefined){
       requestParam = Object.assign(requestParam, { addressId: me.data.chooseAddress.id, province: me.data.chooseAddress.province})
     }
     else {
@@ -122,14 +131,27 @@ Page({
       }
     });
   },
+  onShow:function(){
+    let me=this;
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.id) {
+      this.setData({
+        buyMethod: currPage.data.buyMethod,
+        productId: currPage.data.productId,
+        number: currPage.data.number,
+        chooseId: currPage.data.id,
+      })
+    }
+    me.getUser();
+  },
   onLoad: function (options) {
     let me = this;
-    me.setData({
-      chooseId: options.chooseId,
-    })
-    console.log("buyMethod:........." + options.buyMethod);
-    console.log("number:........." + options.number);
-    console.log("productId:........." + options.productId);
+    if(options.chooseId){
+      me.setData({
+        chooseId: options.chooseId,
+      })
+    }
     if(options.buyMethod != "" && options.productId != "" && options.number != ""){
       me.setData({
         buyMethod: options.buyMethod,
@@ -137,7 +159,6 @@ Page({
         number:options.number
       })
     }
-    me.getUser();
   },
   payFunc:function(){
     let me=this;
@@ -165,7 +186,6 @@ Page({
     if (me.data.chooseAddress && me.data.chooseAddress != undefined){
       requestParam = Object.assign(requestParam, { addressId: me.data.chooseAddress.id, province: me.data.chooseAddress.province})
     }
-
     wx.request({
       url:app.baseUrl+'/order',
       data: requestParam,
@@ -187,7 +207,6 @@ Page({
               })
             },
             fail: function (res) {
-              console.log(res);
               wx.navigateTo({
                 url: '/pages/mine/order/order'
               });

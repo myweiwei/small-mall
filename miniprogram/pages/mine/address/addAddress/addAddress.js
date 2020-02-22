@@ -4054,7 +4054,8 @@ Page({
     defaults:true,
     buyMethod: 0,
     productId: '',
-    number: 0
+    number: 0,
+    fromPage:''
   },
   onChangeIpt(event) {
     let me=this;
@@ -4117,9 +4118,32 @@ Page({
           icon: 'success'
         });
         wx.hideLoading();
-        wx.navigateTo({
-          url: '/pages/mine/address/address?buyMethod=' + me.data.buyMethod + '&number=' + me.data.number + '&productId=' + me.data.productId
-        })
+       var pagesArr = getCurrentPages();
+       if(me.data.fromPage=='preorder'){
+         if (pagesArr[pagesArr.length - 3].route == "pages/mine/order/preorder/preorder") {
+           pagesArr[pagesArr.length - 3].setData({
+             id: data.data.data,
+             buyMethod: me.data.buyMethod,
+             number: me.data.number,
+             productId: me.data.productId
+           });
+           wx.navigateBack({
+             delta: 2
+           });
+         }
+        }
+        else {
+         if (pagesArr[pagesArr.length - 2].route == "pages/mine/address/address")         {
+           pagesArr[pagesArr.length - 2].setData({
+             buyMethod: me.data.buyMethod,
+             number: me.data.number,
+             productId: me.data.productId
+           });
+           wx.navigateBack({
+             delta: 1
+           });
+         }
+        }
       },
       error: function (err) {
         console.log(err);
@@ -4197,7 +4221,8 @@ Page({
     me.setData({
       buyMethod: options.buyMethod,
       productId: options.productId,
-      number: options.number
+      number: options.number,
+      fromPage: options.fromPage
     })
   },
 

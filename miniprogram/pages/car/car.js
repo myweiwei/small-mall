@@ -313,7 +313,6 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success(res) {
-          console.log(res.data);
           for (var i = 0; i < res.data.data.cartProductVOList.length;i++){
             res.data.data.cartProductVOList[i].checkFlag=false;
             res.data.data.cartProductVOList[i].zs = app.getPrice(res.data.data.cartProductVOList[i].price).zs;
@@ -372,7 +371,7 @@ Page({
   preOrder: function(e){
     if(e.currentTarget.dataset.total>=app.lowerBuyLimit){
       wx.navigateTo({
-        url: '/pages/mine/order/preorder/preorder'
+        url: '/pages/mine/order/preorder/preorder?buyMethod=0'
       });
     }
     else {
