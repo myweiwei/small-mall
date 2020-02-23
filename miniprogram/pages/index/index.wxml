@@ -4,13 +4,13 @@
 </view>
 <view class='boxContainer' style='height:100%'>
     <scroll-view scroll-y='true' class='nav'>
-      <view wx:for='{{list}}'  wx:key='{{item.id}}'data-id='{{"a"+item.id}}'
+      <view wx:for='{{list}}'  wx:key='id'data-id='{{"a"+item.id}}'
   class='navList {{currentIndex==index?"active greenColor":""}}' bindtap="listClick" data-index='{{index}}'>{{item.name}}</view>
     </scroll-view>
     <scroll-view scroll-y='true' scroll-into-view='{{activeList}}'scroll-with-animation='true' bindscroll='scrollFunc' class='content' style='height:100%;'>
-        <view class="fishList" wx:for='{{list}}' id='{{"a"+item.id}}' wx:key='{{item.id}}'>
+        <view class="fishList" wx:for='{{list}}' id='{{"a"+item.id}}' wx:key='id'>
           <view class='titleBox greenBox'>{{item.name}}</view>
-          <view wx:for='{{item.products}}' wx:for-item="items" wx:key='{{items.id}}' class='productList'>
+          <view wx:for='{{item.products}}' wx:for-item="items" wx:key='id' class='productList'>
             <image src='http://{{items.picture}}'></image>
             <view class='info'>
               <view class='name'>{{items.name}}</view>
@@ -47,7 +47,7 @@
           </view>
           <view class='title'>产品</view>
           <scroll-view scroll-y='true' style='height:60%;'>
-            <text wx:for='{{chooseData}}' wx:key='{{item.id}}' bindtap="changeChoose" data-item='{{item}}'>
+            <text wx:for='{{chooseData}}' wx:key='id' bindtap="changeChoose" data-item='{{item}}'>
               <text class='choose_data {{activeChoose==item.id?"activeC":""}}'>{{item.spec}}</text>
             </text> 
             <view class='flexBox countBox'>

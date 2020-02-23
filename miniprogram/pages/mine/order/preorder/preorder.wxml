@@ -13,7 +13,7 @@
     </view>
     <view class='cen'>
       <scroll-view scroll-y='true' scroll-with-animation='true'  style='max-height:580rpx;'>
-        <view wx:for='{{order.orderItem}}' wx:key='{{item.productId}}' class='orderBox flexBox'>
+        <view wx:for='{{order.orderItem}}' wx:key='productId' class='orderBox flexBox'>
           <view class='img'><image src='http://{{item.productImage}}'/></view>
           <view class='info'>
             <view>{{item.productName}}</view>

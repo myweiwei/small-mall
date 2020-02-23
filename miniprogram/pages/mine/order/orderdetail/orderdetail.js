@@ -65,11 +65,9 @@ Page({
                 });
               },
               error: function (err) {
-                console.log(err);
               }
             })
           } else {
-            console.log('登录失败！' + res.errMsg)
           }
         }
       });
@@ -179,7 +177,6 @@ Page({
               })
             },
             fail: function (res) {
-              console.log(res);
             },
             complete: function (res) { }
           })
@@ -215,7 +212,6 @@ Page({
             }
           })
         } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
