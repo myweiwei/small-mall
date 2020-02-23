@@ -202,7 +202,7 @@ Page({
               wx.request({
                 url: app.baseUrl + '/order',
                 data:{
-                  orderNo:orderNo
+                  orderNo: event.currentTarget.dataset.id
                 },
                 method:'GET',
                 success(res) {

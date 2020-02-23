@@ -32,10 +32,12 @@
 }
 .btn text{
   padding:0 25rpx;
-  border:2rpx solid rgb(97, 92, 92);
-  border-radius:10rpx;
-  font-size:35rpx;
   height:80rpx;
   line-height: 80rpx;
+  border: 2rpx solid red;
+  border-radius: 50rpx;
+  color: red;
+  font-weight: 200;
+  font-size: 30rpx;
   text-align: center;
 }
