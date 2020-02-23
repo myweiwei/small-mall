@@ -46,8 +46,8 @@
       <image class="images" src="../../images/mine/tel.png"> </image>
       <text class="text">联系方式</text>
     </view>
-    <view class="item border-top">
-      <image class="images" src="../../images/mine/about.png"> </image>
+    <view class="item border-top" bindtap="aboutus">
+      <image class="images" src="../../images/mine/about.png" > </image>
       <text class="text">关于我们</text>
     </view>
   </view>

@@ -15,6 +15,7 @@
     "pages/mine/order/preorder/chooseAdd/chooseAdd",
     "pages/mine/order/preorder/paySuccess/paySuccess",
     "pages/mine/address/address",
+    "pages/mine/aboutus/aboutus",
     "pages/mine/address/addAddress/addAddress",
     "pages/mine/address/editAddress/editAddress",
     "pages/car/car"

@@ -84,6 +84,11 @@ Page({
       url:'/pages/cook/cook'
     })
   },
+  aboutus:function(){
+    wx.navigateTo({
+      url: '/pages/mine/aboutus/aboutus',
+    })
+  },
   getUser: function () {
     var me = this;
     wx.login({

@@ -1,0 +1,104 @@
+
+.my-container {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background:#fff;
+    display: flex;
+    flex-direction: column;
+}
+.nullAddress {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+  background:#fff;
+}
+.add-address-btn{
+  display: inline-block;
+  width:85rpx;
+  height: 55rpx;
+  text-align: center;
+  line-height: 55rpx;
+  background:rgb(223, 80,80);
+  font-size: 28rpx;
+  color: #fff;
+  border-radius:5px;
+}
+.address-item {
+  padding:20rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.address-item.flexBox {
+  justify-content: flex-start;
+}
+.name-phone{
+  padding-left: 15rpx;
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  font-weight:700;
+}
+.name-phone .name {
+  width:200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.default-icon{
+  display: inline-block;
+  text-align: center;
+  background:#f50704;
+  padding:5rpx 10rpx;
+  font-size: 25rpx;
+  margin-left:20rpx;
+  color: #fff;
+  border-radius:5px;
+}
+.nullAddress .add_address {
+  padding:15rpx 50rpx;
+  border:1rpx solid #bcbcbc;
+  border-radius:50rpx;
+  font-size:30rpx;
+}
+.nullAddress .info {
+  color:#8d8b8b;
+  height:100rpx;
+  line-height: 100rpx;
+}
+.address-detail {
+  padding-left: 15rpx;
+  display: flex;
+  font-size: 30rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  justify-content:space-between;
+}
+.address-detail  .detail_top{
+  font-size:28rpx;
+  color:#000;
+  width:85%;
+}
+
+
+
+
+
+
+
+.add-address{
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(223, 80,80);
+  left:50%;
+  transform: translateX(-50%);
+  color:#fff;
+}
+.chooseImg {
+  width:40rpx;
+  height:40rpx;
+}
