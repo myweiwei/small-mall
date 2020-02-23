@@ -64,11 +64,9 @@ Page({
               me.getData(payStatus, data.data.data);
             },
             error: function (err) {
-              console.log(err);
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       }
     });
@@ -196,7 +194,6 @@ Page({
               });
             },
             fail: function (res) {
-              console.log(res);
             },
             complete: function (res) { }
           })

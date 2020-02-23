@@ -8,7 +8,6 @@ Page({
 
   },
   toOrder:function(){
-    console.log(1);
     wx.redirectTo({
       url: '/pages/mine/order/order',
     })

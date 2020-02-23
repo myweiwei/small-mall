@@ -42,11 +42,9 @@ Page({
               wx.hideLoading();
             },
             error: function (err) {
-              console.log(err);
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       }
     });

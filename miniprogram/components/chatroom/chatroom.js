@@ -56,8 +56,6 @@ Component({
 
         const { data: initList } = await db.collection(collection).where(this.mergeCommonCriteria()).orderBy('sendTimeTS', 'desc').get()
 
-        console.log('init query chats', initList)
-
         this.setData({
           chats: initList.reverse(),
           scrollTop: 10000,
@@ -275,7 +273,6 @@ Component({
 
     scrollToBottom(force) {
       if (force) {
-        console.log('force scroll to bottom')
         this.setData(SETDATA_SCROLL_TO_BOTTOM)
         return
       }
@@ -283,7 +280,6 @@ Component({
       this.createSelectorQuery().select('.body').boundingClientRect(bodyRect => {
         this.createSelectorQuery().select(`.body`).scrollOffset(scroll => {
           if (scroll.scrollTop + bodyRect.height * 3 > scroll.scrollHeight) {
-            console.log('should scroll to bottom')
             this.setData(SETDATA_SCROLL_TO_BOTTOM)
           }
         }).exec()
