@@ -4130,7 +4130,6 @@ Page({
         });
       },
       error: function (err) {
-        console.log(err);
       }
     })
   },
@@ -4209,7 +4208,6 @@ Page({
         }
       },
       error: function (err) {
-        console.log(err);
       }
     })
   },
@@ -4251,11 +4249,9 @@ Page({
               }
             },
             error: function (err) {
-              console.log(err);
             }
           })
         } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
@@ -4293,7 +4289,6 @@ Page({
     for(let i=0;i<data.detail.values.length;i++){
       str += data.detail.values[i].name;
     }
-    console.log(str);
     me.setData({
       [province]:str,
       show:false

@@ -73,7 +73,6 @@ Page({
         me.getCarData();
       },
       error: function (err) {
-        console.log(err);
       }
     })
   },
@@ -97,11 +96,9 @@ Page({
               })
             },
             error: function (err) {
-              console.log(err);
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       }
     });
@@ -126,7 +123,6 @@ Page({
           })
         },
         error: function (err) {
-          console.log(err);
         }
       })
     }
@@ -145,7 +141,6 @@ Page({
           })
         },
         error: function (err) {
-          console.log(err);
         }
       })
     }
@@ -208,7 +203,6 @@ Page({
           })
         },
         error: function (err) {
-          console.log(err);
         }
       })
     }
@@ -226,7 +220,6 @@ Page({
           })
         },
         error: function (err) {
-          console.log(err);
         }
       })
     }
@@ -288,7 +281,6 @@ Page({
         })
       },
       error: function (err) {
-        console.log(err);
       }
     })
   },
@@ -328,7 +320,6 @@ Page({
           wx.hideLoading();
         },
         error: function (err) {
-          console.log(err);
         }
       })
   },
@@ -363,7 +354,6 @@ Page({
           })
         },
         error: function (err) {
-          console.log(err);
         }
       })
     }

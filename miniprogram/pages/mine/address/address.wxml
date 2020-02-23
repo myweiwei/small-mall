@@ -8,7 +8,7 @@
     <view class='add_address' bindtap="addAddressListener">新建地址</view>
   </view>
   <scroll-view wx:if='{{mydata.length>0&&show==false}}' scroll-y='true' style='height:90%'>
-    <view class="address-item border-top flexBox" wx:for='{{mydata}}' wx:key='{{item.id}}'>
+    <view class="address-item border-top flexBox" wx:for='{{mydata}}' wx:key='id'>
       <view wx:if='{{chooseId==item.id}}'>
         <image src='../../../images/right.png' class='chooseImg'></image>
       </view>

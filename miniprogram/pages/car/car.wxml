@@ -8,7 +8,7 @@
     <text wx:if='{{editFlag}}' bindtap='saveFunc'>完成</text>
   </view>
   <scroll-view scroll-y='true' style='height:95%;margin-bottom:80rpx;box-sizing:border-box'>
-      <view class='flexBox carList'  wx:for='{{carData.cartProductVOList}}' wx:key='{{item.id}}'>
+      <view class='flexBox carList'  wx:for='{{carData.cartProductVOList}}' wx:key='id'>
       <checkbox-group bindchange="checkboxChange" data-id='{{item.productId}}' wx:if='{{!editFlag}}'>
         <label class="checkbox">
           <checkbox value="{{item.productId}}" checked="{{item.productChecked}}" data-id='{{item.productId}}'/>

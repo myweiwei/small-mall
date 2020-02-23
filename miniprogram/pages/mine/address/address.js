@@ -47,11 +47,9 @@ Page({
               me.getData();
             },
             error: function (err) {
-              console.log(err);
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       }
     });
@@ -122,8 +120,6 @@ Page({
         fromPage: currPage.data.fromPage
       })
     }
-    var pagesArr = getCurrentPages();
-    console.log(pagesArr);
     me.getUser();
   },
 

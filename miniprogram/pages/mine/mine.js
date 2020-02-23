@@ -79,7 +79,6 @@ Page({
 
   },
   goCook:function(){
-    console.log("go cook page");
     wx.navigateTo({
       url:'/pages/cook/cook'
     })
@@ -112,7 +111,6 @@ Page({
                 data: { userId:me.data.userId },
                 method: 'GET',
                 success: function (res) {
-                  console.log("onshow() reuslt = " + res.data.data);
                   if(res.data.data != "" && res.data.data != null){
                     me.setData({
                       unPay: res.data.data.unPay,
@@ -127,13 +125,15 @@ Page({
 
             },
             error: function (err) {
-              console.log(err);
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       }
     });
+  },
+  onShow: function () {
+    let me = this;
+    me.getUser();
   },
 })
