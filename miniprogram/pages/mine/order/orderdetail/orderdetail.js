@@ -21,7 +21,6 @@ Page({
         },
         method: 'GET',
         success(res) {
-          console.log("订单支付时间超时，重新请求数据刷新页面" + res.data.data);
           getData(res, that);
         }
       })
@@ -30,7 +29,6 @@ Page({
     this.setData({
       timeData: e.detail
     });
-    console.log(e.detail);
   },
 
   onLoad: function (options) {
@@ -63,7 +61,6 @@ Page({
                   method:'GET',
                   success(res) {
                     getData(res,that);
-                    console.log(res.data.data + "----------------------");
                   }
                 });
               },
@@ -80,7 +77,6 @@ Page({
   },
   cancelOrder: function(){
     var that = this;
-
     wx.showModal({
       title: '提示',
       content: '是否删除该订单',
@@ -105,15 +101,17 @@ Page({
                 },
                 method: 'GET',
                 success(res) {
-                  wx.navigateTo({
-                    url: '/pages/mine/order/order'
-                  })
+                  var pagesArr = getCurrentPages();
+                  if (pagesArr[pagesArr.length - 2].route == "pages/mine/order/order") {
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  }
                 }
               })
             }
           })
         } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
@@ -244,10 +242,6 @@ function getData(res,that) {
     var b = (totalPrice / 100).toFixed(2).split('.');
     orderDetail[i].zs = b[0];
     orderDetail[i].xs = b[1];
-
-   
   }
-
   that.setData({ obj: res.data.data });
-  console.log(res.data.data);
 }
