@@ -20,7 +20,18 @@
   align-items: center;
   flex-direction: column;
 }
-
+.buy-status1 {
+  width: 100%;
+  height: 250rpx;
+  position: relative;
+  text-align: center;
+}
+.buy-status1 .buy-container {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
 .order-status{
   width: 100%;
   height: 200rpx;

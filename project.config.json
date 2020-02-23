@@ -112,6 +112,12 @@
 					"name": "pages/mine/mine",
 					"pathName": "pages/mine/mine",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/order/order",
+					"pathName": "pages/mine/order/order",
+					"scene": null
 				}
 			]
 		}

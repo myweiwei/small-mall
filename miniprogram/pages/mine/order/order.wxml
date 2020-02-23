@@ -2,7 +2,7 @@
   <van-tabs active="{{ active }}" bind:change="onChange" 
   swipeable='true' swipe-threshold='5' sticky>
     <van-tab title="全部订单">
-      <view wx:for="{{list}}"  class="order-item" data-id="{{item.orderNo}}" bindtap="goOrderDetail" wx:key="key">
+      <view wx:for="{{list}}" class="order-item" data-id="{{item.orderNo}}" bindtap="goOrderDetail" wx:key="key">
             <view class="top">
               <image class="top-icon" src="../../../images/logo.png"></image>
                 <text class="wait-pay-text" wx:if="{{item.orderStatus == 0}}">等待付款</text>
@@ -45,6 +45,12 @@
               <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
             </view>
       </view>
+      <view class='noData' wx:if='{{list.length==0}}'>
+        <view class='noData_content'>
+          <image src='../../../images/wushuju.png'></image>
+          <view class='noDataText'>您还没有相关订单</view>
+        </view>
+      </view>
     </van-tab>
 
 
@@ -75,6 +81,12 @@
         </view>
         <view class="pay-button" catchtap="payOrder" data-id="{{item.orderNo}}">立即支付</view>
       </view> 
+      <view class='noData' wx:if='{{list.length==0}}'>
+        <view class='noData_content'>
+          <image src='../../../images/wushuju.png'></image>
+          <view class='noDataText'>您还没有相关订单</view>
+        </view>
+      </view>
     </van-tab>
 
     
@@ -102,6 +114,12 @@
           </view>
         </view>
         <view class="pay-button" style="color:#000; border:0.1rpx solid rgb(146,126,128);">查看物流</view>
+      </view>
+      <view class='noData' wx:if='{{list.length==0}}'>
+        <view class='noData_content'>
+          <image src='../../../images/wushuju.png'></image>
+          <view class='noDataText'>您还没有相关订单</view>
+        </view>
       </view>
     </van-tab>
     <van-tab title="已完成">
@@ -136,6 +154,12 @@
           <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
         </view>
       </view>
+      <view class='noData' wx:if='{{list.length==0}}'>
+        <view class='noData_content'>
+          <image src='../../../images/wushuju.png'></image>
+          <view class='noDataText'>您还没有相关订单</view>
+        </view>
+      </view>
     </van-tab>
     <van-tab title="已取消">
       <view class="order-item" wx:for="{{list}}" wx:key="key" data-id="{{item.orderNo}}" bindtap="goOrderDetail">
@@ -166,6 +190,12 @@
         </view>
         <view style="display:flex; flex-direction:row-reverse;">
           <view class="pay-button" style="margin-left:0rpx;">再次购买</view>
+        </view>
+      </view>
+      <view class='noData' wx:if='{{list.length==0}}'>
+        <view class='noData_content'>
+          <image src='../../../images/wushuju.png'></image>
+          <view class='noDataText'>您还没有相关订单</view>
         </view>
       </view>
     </van-tab>
