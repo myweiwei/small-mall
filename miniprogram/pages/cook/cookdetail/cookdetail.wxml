@@ -16,7 +16,7 @@
   <view class="step">
       <view wx:for="{{cook.stepFormat}}" wx:key="key">
         <view class="myTtitle">步骤{{index + 1}}</view>
-         <image class="step-image" src="http://{{item.value}}"></image>
+         <image class="step-image" src="http://{{item.value}}" mode="aspectFit"></image>
         <view class="cook-content">{{item.k}}</view>
        
       </view>
