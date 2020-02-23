@@ -205,7 +205,7 @@ Page({
               })
             },
             fail: function (res) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/mine/order/order'
               });
              },

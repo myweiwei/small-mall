@@ -7,31 +7,31 @@
     <text bindtap='editFunc' wx:if='{{!editFlag}}'>编辑</text>
     <text wx:if='{{editFlag}}' bindtap='saveFunc'>完成</text>
   </view>
-  <scroll-view scroll-y='true' style='height:95%;margin-bottom:80rpx;box-sizing:border-box'>
-      <view class='flexBox carList'  wx:for='{{carData.cartProductVOList}}' wx:key='id'>
-      <checkbox-group bindchange="checkboxChange" data-id='{{item.productId}}' wx:if='{{!editFlag}}'>
-        <label class="checkbox">
-          <checkbox value="{{item.productId}}" checked="{{item.productChecked}}" data-id='{{item.productId}}'/>
-        </label>
-      </checkbox-group>
-      <checkbox-group bindchange="checkboxChange1" data-id='{{item.productId}}' wx:if='{{editFlag}}'>
-        <label class="checkbox">
-          <checkbox checked="{{item.checkFlag}}" data-id='{{item.productId}}' value="{{item.productId}}" />
-        </label>
-      </checkbox-group>
-        <image src='http://{{item.productPicture}}'></image>
-        <view class='info'>
-          <view class='name'>{{item.productName}}</view>
-          <view class='guige'>{{item.spec}}</view>
-          <view class='price'><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
-          <view class='goods'>
-    　　　　　 <view bindtap='jia' class='{{item.number==1?"gray jian":"jian"}}' data-item='{{item}}' data-operate='-1'>-</view>
-    　　　　　 <input name='num' data-item='{{item}}' bindtap="showPopup" type='text' disabled="true" value='{{item.number}}'/>
-    　　　　　 <view bindtap='jia' class='jia'  data-item='{{item}}' data-operate='1'>+</view>
-    　　　 </view>
+    <scroll-view scroll-y='true' style='height:95%;padding-bottom:160rpx;box-sizing:border-box'>
+        <view class='flexBox carList'  wx:for='{{carData.cartProductVOList}}' wx:key='id'>
+        <checkbox-group bindchange="checkboxChange" data-id='{{item.productId}}' wx:if='{{!editFlag}}'>
+          <label class="checkbox">
+            <checkbox value="{{item.productId}}" checked="{{item.productChecked}}" data-id='{{item.productId}}'/>
+          </label>
+        </checkbox-group>
+        <checkbox-group bindchange="checkboxChange1" data-id='{{item.productId}}' wx:if='{{editFlag}}'>
+          <label class="checkbox">
+            <checkbox checked="{{item.checkFlag}}" data-id='{{item.productId}}' value="{{item.productId}}" />
+          </label>
+        </checkbox-group>
+          <image src='http://{{item.productPicture}}'></image>
+          <view class='info'>
+            <view class='name'>{{item.productName}}</view>
+            <view class='guige'>{{item.spec}}</view>
+            <view class='price'><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text></view>
+            <view class='goods'>
+      　　　　　 <view bindtap='jia' class='{{item.number==1?"gray jian":"jian"}}' data-item='{{item}}' data-operate='-1'>-</view>
+      　　　　　 <input name='num' data-item='{{item}}' bindtap="showPopup" type='text' disabled="true" value='{{item.number}}'/>
+      　　　　　 <view bindtap='jia' class='jia'  data-item='{{item}}' data-operate='1'>+</view>
+      　　　 </view>
+          </view>
         </view>
-      </view>
-  </scroll-view>
+    </scroll-view>
   <view class='footFix flexBox' wx:if='{{!editFlag}}'>
     <view class='flexBox'>
       <view>
@@ -59,18 +59,28 @@
       <view class='footBtn_btn1' bindtap="delFunc">删除</view>
     </view>
   </view>
- <van-popup show="{{ show }}" class='pop' custom-style="height: 28%;width:90%;text-align:center" round bind:close="onClose">
-  <view class='container_pop'>
-    <view class='pop_title'>修改购买数量</view>
-    <view class='pop_step'>
-        <van-stepper value="{{ number }}" bind:change="onChange"  input-width="250rpx" button-size="60rpx"/>
+  <van-dialog
+    use-slot
+    title="修改购买数量"
+    show="{{ show }}"
+    show-cancel-button
+    data-id='{{id}}'
+    confirm-button-open-type="addCar"
+    bind:close="onClose"
+    bind:getuserinfo="getUserInfo"
+  >
+    <view class='dialog'>
+      <van-stepper value="{{ number }}" bind:change="onChange"  input-width="250rpx" button-size="60rpx"/>
     </view>
-  </view>
-  <view class='footer flexBox'>
-    <view  bindtap="onClose"class='qx'>取消</view>
-    <view class='sq' bindtap="addCar" data-id='{{id}}' >确定</view>
-  </view>
- </van-popup>
+  </van-dialog>
+  <!-- <van-dialog show="{{show}}" title="修改购买数量" show-cancel-button>
+  aaa
+       <van-stepper value="{{ number }}" bind:change="onChange"  input-width="250rpx" button-size="60rpx"/> -->
+      <!-- <view class='footer flexBox'>
+        <view  bindtap="onClose"class='qx'>取消</view>
+        <view class='sq' bindtap="addCar"  >确定</view>
+      </view> 
+  </van-dialog> -->
 </view>
 <view class='boxContainer1' wx:if='{{carData.cartProductVOList.length==0&&show1==false}}'>
 <image src='../../images/gouwuchekong.png'></image>

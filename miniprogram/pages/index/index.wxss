@@ -42,6 +42,13 @@
 .productList .stockFlex {
   justify-content: flex-start;
 }
+.productList .shortInfo {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 .productList .shortInfo,.productList .stock{
   font-size:25rpx;
   margin-top:5rpx;
@@ -50,6 +57,7 @@
 .productList .price{
   justify-content: flex-start;
   align-items: baseline;
+  margin-top:10rpx;
 }
 .productList .price_count {
   color: #d81e06;
@@ -71,6 +79,9 @@
 .productList .info{
   flex:1;
   box-sizing: border-box;
+}
+.productList .info .greenBox {
+  padding:10rpx 20rpx;
 }
 .productList .choose {
   font-size:25rpx;
@@ -180,7 +191,7 @@
 }
 .choosen .btnList {
   position: fixed;
-  bottom:0;
+  bottom:10rpx;
   width:90%;
 }
 .choosen .add_car,.choosen .buy_now {
@@ -208,11 +219,16 @@
 .goodCount{
   flex:1;
   justify-content: flex-end!important;
+
 }
 .goodCount .jian,.goodCount .jia{
   width:60rpx;
   text-align: center;
   font-weight:700;
+  font-size:60rpx;
+}
+.goodCount .jia {
+  font-size: 50rpx;
 }
 .goodCount .noCount{
   color:#ccc;
@@ -220,6 +236,7 @@
 .goodCount .choose_count {
   width:50rpx;
   height:40rpx;
+  font-size:40rpx;
   text-align: center;
 }
 .countBox .countTitle {

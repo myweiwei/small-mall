@@ -10,15 +10,16 @@ Page({
 
   goOrderDetail:function(event)
   {
-      var orderNo = event.currentTarget.dataset.id;
-      wx.navigateTo({
-        url: '/pages/mine/order/orderdetail/orderdetail?orderNo=' + orderNo
-      })
+    let me=this;
+    var orderNo = event.currentTarget.dataset.id;
+    wx.navigateTo({ 
+      url: '/pages/mine/order/orderdetail/orderdetail?orderNo=' + orderNo + '&payStatus='+me.data.payStatus
+    })
   },
   deleteOrder: function (event) {
     let me = this;
     wx.showModal({
-      title: '提示',
+      title: '',
       content: '是否删除该订单',
       success(res) {
         if (res.confirm) {
@@ -61,7 +62,7 @@ Page({
               me.setData({
                 userId: data.data.data
               })
-              me.getData(payStatus, data.data.data);
+              me.getData(me.data.payStatus, data.data.data);
             },
             error: function (err) {
             }
@@ -77,19 +78,29 @@ Page({
     switch (event.detail.name)
     {
       case 1:
-        that.payStatus = 0;//0未付款
+        that.setData({
+          payStatus:0
+        })
         break;
       case 2:
-        that.payStatus = 1;//1已付款的，等待发货和收货
+        that.setData({
+          payStatus: 1
+        });//1已付款的，等待发货和收货
         break;
       case 3:
-        that.payStatus = 3;//3已签收，订单完成
+        that.setData({
+          payStatus: 3
+        });//3已签收，订单完成
         break;
       case 4:
-        that.payStatus = -4;//-4订单已取消
+        that.setData({
+          payStatus: -4
+        });//-4订单已取消
         break;
       default:
-        that.payStatus = "";
+        that.setData({
+          payStatus:''
+        })
         //全部，不传
         break;
     }
@@ -157,7 +168,14 @@ Page({
   onShow: function (){
     let that=this;
     that.getPayStatus(that.data.id);
-    that.getUser('');
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.payStatus) {
+      that.setData({
+        payStatus: currPage.data.payStatus
+      })
+      that.getUser(currPage.data.payStatus);
+    }
   },
   payOrder:function(event){
     var that = this;
@@ -188,8 +206,7 @@ Page({
                 },
                 method:'GET',
                 success(res) {
-                  getData(payStatus,userId);
-                  getData(res,that);
+                  that.getData(that.data.payStatus,that.data.userId);
                 }
               });
             },
