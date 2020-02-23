@@ -121,4 +121,24 @@
   width:100%;
   height:100%;
 }
+.noData {
+  width: 100%;
+  height: 100%;
+  position:relative;
+}
+.noData_content {
+  position: absolute;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.noData image {
+  width:300rpx;
+  height: 200rpx;
+}
+.noDataText {
+  color: #8d8b8b;
+  height: 100rpx;
+  line-height: 100rpx;
+}
   

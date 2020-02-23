@@ -7,7 +7,8 @@ Page({
     obj:{},
     time:0, //倒计时剩余时间
     timeData:{},//onChange方法取time的时间，给timeData用
-    orderNo:""
+    orderNo:"",
+    payStatus:''
   },
 
   onChange(e) {
@@ -34,8 +35,10 @@ Page({
   onLoad: function (options) {
       var that = this;
       orderNo = options.orderNo;
+      
       that.setData({
-        orderNo: orderNo
+        orderNo: orderNo,
+        payStatus: options.payStatus
       });
       wx.login({
         success(res) {
@@ -76,7 +79,7 @@ Page({
   cancelOrder: function(){
     var that = this;
     wx.showModal({
-      title: '提示',
+      title: '',
       content: '是否删除该订单',
       success(res) {
         if (res.confirm) {
@@ -100,7 +103,11 @@ Page({
                 method: 'GET',
                 success(res) {
                   var pagesArr = getCurrentPages();
+                  console.log(pagesArr);
                   if (pagesArr[pagesArr.length - 2].route == "pages/mine/order/order") {
+                    pagesArr[pagesArr.length - 2].setData({
+                      payStatus: that.data.payStatus
+                    });
                     wx.navigateBack({
                       delta: 1
                     });
@@ -185,7 +192,7 @@ Page({
   },
   finishOrder:function(){
     wx.showModal({
-      title: '提示',
+      title: '',
       content: '是否确认收到货物？',
       success(res) {
         if (res.confirm) {

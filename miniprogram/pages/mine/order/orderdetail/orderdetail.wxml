@@ -26,17 +26,19 @@
       </view>
     </view>
 
-      <view class="buy-status" wx:if="{{obj.orderStatus == 3}}">
-        <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
-        <view>订单已完成</view>
+      <view class="buy-status1" wx:if="{{obj.orderStatus == 3}}">
+        <view class='buy-container'>
+          <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
+          <view>订单已完成</view>
+        </view>
       </view>
 
 
-     <view class="buy-status" wx:if="{{obj.orderStatus == -4}}">
-
+     <view class="buy-status1" wx:if="{{obj.orderStatus == -4}}">
+      <view class='buy-container'>
         <image src="../../../../images/cancel_order_icon.png" class="wait-receive_icon"></image>
         <view>订单已取消</view>
-
+      </view>
      </view>
       <view class="buy-status" wx:if="{{obj.orderStatus == 1}}">
       <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
