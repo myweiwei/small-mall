@@ -73,14 +73,6 @@
       <van-stepper value="{{ number }}" bind:change="onChange"  input-width="250rpx" button-size="60rpx"/>
     </view>
   </van-dialog>
-  <!-- <van-dialog show="{{show}}" title="修改购买数量" show-cancel-button>
-  aaa
-       <van-stepper value="{{ number }}" bind:change="onChange"  input-width="250rpx" button-size="60rpx"/> -->
-      <!-- <view class='footer flexBox'>
-        <view  bindtap="onClose"class='qx'>取消</view>
-        <view class='sq' bindtap="addCar"  >确定</view>
-      </view> 
-  </van-dialog> -->
 </view>
 <view class='boxContainer1' wx:if='{{carData.cartProductVOList.length==0&&show1==false}}'>
 <image src='../../images/gouwuchekong.png'></image>
