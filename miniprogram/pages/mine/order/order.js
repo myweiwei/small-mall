@@ -16,7 +16,6 @@ Page({
       })
   },
   deleteOrder: function (event) {
-    console.log(1);
     let me = this;
     wx.showModal({
       title: '提示',
@@ -39,7 +38,6 @@ Page({
             }
           })
         } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
@@ -160,12 +158,11 @@ Page({
   },
   onShow: function (){
     let that=this;
-    console.log(that.data.id);
     that.getPayStatus(that.data.id);
+    that.getUser('');
   },
   payOrder:function(event){
     var that = this;
-    console.log(event.currentTarget.dataset.id);
     wx.request({
       url: app.baseUrl + '/payOrder',
       data: {
