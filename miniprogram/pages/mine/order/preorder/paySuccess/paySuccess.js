@@ -1,11 +1,14 @@
 // pages/mine/order/preorder/paySuccess/paySuccess.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    totalPrice:0,
+    zs:0,
+    xs:0
   },
   toOrder:function(){
     wx.redirectTo({
@@ -26,7 +29,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let me=this;
+    me.setData({
+      zs: app.getPrice(options.totalPrice).zs,
+      xs: app.getPrice(options.totalPrice).xs
+    })
+   
   },
 
   /**
