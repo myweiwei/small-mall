@@ -8,9 +8,6 @@ Page({
     products:[],
     // Banner数据
     images: [
-      "http://shop.lileiit.com/banner5.png",
-      "http://shop.lileiit.com/banner3.png",
-      "http://img.zcool.cn/community/01e03b58047e96a84a0e282b09e8fc.jpg",
       "http://pic.90sjimg.com/back_pic/00/00/69/40/d678a42886e0232aaea0d6e69e9b1945.jpg",
       "http://img.zcool.cn/community/0132dd55800bc700000059ffbe83e9.jpg@1280w_1l_2o_100sh.jpg",
       "http://img.zcool.cn/community/0154755a2df102a80120ba3828b5af.jpg@1280w_1l_2o_100sh.jpg",

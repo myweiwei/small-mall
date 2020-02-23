@@ -16,7 +16,12 @@
       </block>
   </swiper>
 
-  <view>
-    
-  </view>
+
+    <view>￥755</view>
+    <view>商品介绍介绍介绍...商品介绍介绍介绍...</view>  <view>分享</view>
+    <view>销量：255</view>
+
+    <view>
+        <text></text>
+    </view>
 </view>

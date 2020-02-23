@@ -1,9 +1,7 @@
 {
   "usingComponents": {
-    "van-button":"@vant/weapp/button",
-    "van-popup":"@vant/weapp/popup",
-    "van-field": "@vant/weapp/field/index",
-    "van-loading": "@vant/weapp/loading/index"
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "navigationBarTitleText": "全部商品"
 }

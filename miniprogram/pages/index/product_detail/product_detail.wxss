@@ -4,7 +4,7 @@
   background-color: #FFF;
 } 
 .swiper{
-  height: 2200rpx;
+  height: 500rpx;
 }
 .swiper-item-images{
   width: 100%;
