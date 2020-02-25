@@ -201,7 +201,7 @@ Page({
             paySign: res.data.data.payParam.paySign,
             success: function (res) {
               wx.redirectTo({
-                url: '/pages/mine/order/preorder/paySuccess/paySuccess'
+                url: '/pages/mine/order/preorder/paySuccess/paySuccess?totalPrice=' + me.data.order.totalPrice
               })
             },
             fail: function (res) {

@@ -4,7 +4,7 @@
       <image src='../../../../../images/ziyuan.png'></image>
       <view>
           <view class='line'>支付方式:<text class='red'>微信支付</text></view>
-          <view class='line'>订单金额:<text class='red'>￥82</text></view>
+          <view class='line'>订单金额:<text class='red'><text class='fh'>￥</text>{{zs}}<text class="xs">.{{xs}}</text></text></view>
       </view>
     </view>
     <view class='btn flexBox'>
