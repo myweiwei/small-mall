@@ -5,17 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    products:[],
+    product:{},//商品详情页的数据
     // Banner数据
-    images: [
-      "http://pic.90sjimg.com/back_pic/00/00/69/40/d678a42886e0232aaea0d6e69e9b1945.jpg",
-      "http://img.zcool.cn/community/0132dd55800bc700000059ffbe83e9.jpg@1280w_1l_2o_100sh.jpg",
-      "http://img.zcool.cn/community/0154755a2df102a80120ba3828b5af.jpg@1280w_1l_2o_100sh.jpg",
-      "http://pic.90sjimg.com/back_pic/00/00/69/40/bf4f8e2ab7e05dc3c7cc2a7f7e9c2fe7.jpg",
-      "http://img.zcool.cn/community/01a2a2594943d3a8012193a328e0fd.jpg@1280w_1l_2o_100sh.jpg"
-    ],
+    images: [],
     // 是否显示面板指示点
-    indicatorDots: false,
+    indicatorDots: true,
     // 滑动方向是否为纵向
     vertical: false,
     // 自动切换
@@ -23,7 +17,7 @@ Page({
     // 采用衔接滑动
     circular: true,
     // 自动切换时间间隔2s
-    interval: 2000,
+    interval: 6000,
     // 滑动动画时长0.5s
     duration: 500,
     // 前边距，可用于露出前一项的一小部分，接受 px 和 rpx 值
@@ -32,6 +26,26 @@ Page({
     nextMargin: 0
   },
   onShow:function(){
-   
+    var me = this;
+    wx.request({
+      url: app.baseUrl + '/product',
+      method: "get",
+      data: {
+        id:47
+      },
+      success: function (data) {
+        var data = data.data.data;
+        var images = data.images.split(";");
+        for(var i = 0; i < images.length; i++){
+          images[i] = "http://" + images[i];
+          console.log(images[i]);
+        }
+
+        me.setData({
+          product:data,
+          images:images
+        })
+      }
+    })
   }
 });

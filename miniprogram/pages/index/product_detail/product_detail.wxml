@@ -1,4 +1,5 @@
 <view class="my-container">
+<!--banner方向-->
   <swiper indicator-dots="{{indicatorDots}}" 
           autoplay="{{autoplay}}" 
           circular="{{circular}}" 
@@ -15,13 +16,60 @@
         </swiper-item>
       </block>
   </swiper>
+<!--价格和分享-->
+    <view class="price-share">
+      <block wx:for="{{product.productItem}}" wx:for-index="idx">
+        <view class="price">￥{{item.price / 100}}/{{item.unit}}</view>
+      </block>
+     <view class='share'>
+        <image src='/images/share.png'></image>
+        <text>分享</text>
+        <button open-type='share'></button>
+      </view>
 
-
-    <view>￥755</view>
-    <view>商品介绍介绍介绍...商品介绍介绍介绍...</view>  <view>分享</view>
-    <view>销量：255</view>
-
-    <view>
-        <text></text>
     </view>
+
+<!--介绍-->
+    <view class="introduce">
+      <text>{{product.name}}</text>
+      <view>{{product.introduce}}</view>
+    </view>
+<!--    
+ <van-popup show="{{chooseSize}}" position="bottom" custom-style="height: 70%;" round bind:close="hideModal" >
+      <view  class='choosen' style='height:100%'>
+        <view class="container-box" style='height:80%'>
+          <view class='flexBox choose'>
+            <image src='http://{{chooseImageUrl}}' title='"http://"+{{chooseImageUrl}}' wx:if='{{chooseImageUrl.length}}' class='choose_image'></image>
+            <image src='../../images/noData.png' wx:else='!{{chooseImageUrl.length}}' class='choose_image'></image>
+            <view>
+              <view class='choose_name'>{{chooseName}}</view>
+              <view class='choose_price'><text class='fh'>￥</text>{{chooseZs}}<text class="xs">.{{chooseXs}}</text>
+                <text class='unit'>/  {{chooseUnit}}</text>
+              </view>
+              <view class='choose_weight'>重量:{{chooseWeight?chooseWeight:"0"}}KG</view>
+          </view>
+          <image src='../../images/close.png' class='close' bindtap='hideModal'></image>
+          </view>
+          <view class='title'>产品</view>
+          <scroll-view scroll-y='true' style='height:60%;'>
+            <text wx:for='{{chooseData}}' wx:key='id' bindtap="changeChoose" data-item='{{item}}'>
+              <text class='choose_data {{activeChoose==item.id?"activeC":""}}'>{{item.spec}}</text>
+            </text> 
+            <view class='flexBox countBox'>
+              <view class='countTitle'>数量</view>  
+              <view class='flexBox goodCount'><view  bindtap='jian' class='jian {{num<=1?"noCount":""}}'  data-num='{{num}}'>-</view><view><input name='num' class='choose_count' type='text' bindinput='iptChange' value='{{num}}'/></view><view  bindtap='jia' class='jia' data-num='{{num}}'>+</view></view>
+            </view>
+          </scroll-view>
+          
+        </view>
+      </view>
+    </van-popup> -->
+
+<view style="position: relative;">
+    <view class='flexBox btnList'>
+      <button bindtap='addCar' class='add_car'>加入购物车</button>
+      <button bindtap='buyNow' class='buy_now'>立即购买</button>
+    </view>
+</view>
+
 </view>

@@ -9,3 +9,72 @@
 .swiper-item-images{
   width: 100%;
 }
+.share { 
+  height: 120rpx;
+  width: 120rpx;
+  position: fixed;
+  bottom: 600rpx;
+  right: 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  z-index: 10;
+} 
+.share image {
+  height: 40rpx;
+  width: 40rpx;
+}
+.share text {
+  margin-top: 2rpx;
+  font-weight: bold;
+  color:rgb(151, 151, 151);
+}
+
+.share button {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  z-index: 99;
+}
+
+
+
+
+.price{
+  font-size: 40rpx;
+  color: red;
+}
+.introduce{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.choosen .btnList {
+  position: fixed;
+  bottom:10rpx;
+  width:90%;
+}
+.choosen .add_car,.choosen .buy_now {
+  font-weight: 200;
+  margin:0;
+  border-radius: 0rpx;
+  font-size:30rpx;
+  font-family: 'Microsoft YaHei';
+  width:50%;
+  height:80rpx;
+  line-height: 50rpx;
+  background: #d81e06;
+  color:#fff;
+  box-sizing: border-box;
+  bottom:0;
+  left:0rpx;
+}
+.choosen .buy_now {
+  background: orange;
+  right:0rpx;
+}
