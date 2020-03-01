@@ -9,6 +9,9 @@
 .swiper-item-images{
   width: 100%;
 }
+.price-share {
+  padding:0 10rpx;
+}
 .share { 
   height: 120rpx;
   width: 120rpx;
