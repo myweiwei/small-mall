@@ -12,17 +12,16 @@
 .share { 
   height: 120rpx;
   width: 120rpx;
-  position: fixed;
-  bottom: 600rpx;
   right: 0rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 24rpx;
-  background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   z-index: 10;
+  box-sizing: border-box;
+  position: relative;
 } 
 .share image {
   height: 40rpx;
@@ -41,19 +40,82 @@
   opacity: 0.1;
   z-index: 99;
 }
-
-
-
-
 .price{
   font-size: 40rpx;
   color: red;
 }
+.price .unit  {
+  font-size:25rpx;
+}
 .introduce{
   margin-left: 20rpx;
   margin-right: 20rpx;
+  margin-top:20rpx;
+}
+.introduce .name {
+  font-weight:700;
+  margin:20rpx 0;
 }
 
+.choosen .container-box {
+  padding:35rpx;
+}
+.choose{
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.choose .choose_image {
+  width:150rpx;
+  height:150rpx;
+}
+.choose .choose_price {
+  font-size: 35rpx;
+  color:#d81e06;
+  font-weight:700;
+}
+.choose .choose_name {
+  margin-bottom:35rpx;
+}
+.choose .choose_price .fh,.choose .choose_price .unit {
+  font-size:25rpx;
+}
+.choose .choose_price .unit {
+  color:#646464;
+  font-weight:500;
+}
+.choose .choose_weight{
+  font-size:25rpx;
+  color: #646464;
+}
+.choosen .title {
+  height:80rpx;
+  line-height: 80rpx;
+  font-size:25rpx;
+  color:#515151;
+}
+.choosen .choose_data {
+  display: inline-block;
+  padding:0rpx 30rpx;
+  background:#f7f4f4;
+  color:#515151;
+  font-size:25rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  border-radius:60rpx;
+  margin:15rpx;
+}
+.choosen .activeC {
+  color:rgb(218, 30, 5);
+  border:1px solid #d81e06;
+  background: rgba(218, 30, 5,0.1);
+}
+.choosen .close {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 40rpx;
+}
 .choosen .btnList {
   position: fixed;
   bottom:10rpx;
@@ -77,4 +139,51 @@
 .choosen .buy_now {
   background: orange;
   right:0rpx;
+}
+.goodCount{
+  flex:1;
+  justify-content: flex-end!important;
+
+}
+.goodCount .jian,.goodCount .jia{
+  width:60rpx;
+  text-align: center;
+  font-weight:700;
+  font-size:60rpx;
+}
+.goodCount .jia {
+  font-size: 50rpx;
+}
+.goodCount .noCount{
+  color:#ccc;
+}
+.goodCount .choose_count {
+  width:50rpx;
+  height:40rpx;
+  font-size:40rpx;
+  text-align: center;
+}
+.btnList {
+  position:fixed;
+  bottom:0;
+  width:100%;
+}
+.btnList .add_car,.btnList .buy_now {
+  font-weight: 200;
+  margin: 0;
+  border-radius: 0rpx;
+  font-size: 30rpx;
+  font-family: 'Microsoft YaHei';
+  height: 100rpx;
+  line-height: 70rpx;
+  background: #d81e06;
+  color: #fff;
+  box-sizing: border-box;
+  width:50%;
+}
+.btnList .buy_now {
+  background: orange;
+}
+.bottom_btn {
+  position:fixed;
 }
