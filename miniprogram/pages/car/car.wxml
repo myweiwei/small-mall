@@ -65,7 +65,7 @@
     show="{{ show }}"
     show-cancel-button
     data-id='{{id}}'
-    confirm-button-open-type="addCar"
+    bind:confirm='addCar'
     bind:close="onClose"
     bind:getuserinfo="getUserInfo"
   >
