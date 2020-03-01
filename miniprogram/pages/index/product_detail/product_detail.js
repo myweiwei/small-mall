@@ -25,16 +25,18 @@ Page({
     // 后边距，可用于露出后一项的一小部分，接受 px 和 rpx 值
     nextMargin: 0
   },
-  onShow:function(){
+  onLoad:function(options){
+    console.log(options.productId);
     var me = this;
     wx.request({
       url: app.baseUrl + '/product',
       method: "get",
       data: {
-        id:47
+        id:options.productId
       },
       success: function (data) {
         var data = data.data.data;
+        console.log(data);
         var images = data.images.split(";");
         for(var i = 0; i < images.length; i++){
           images[i] = "http://" + images[i];
