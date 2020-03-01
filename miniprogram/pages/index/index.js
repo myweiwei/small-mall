@@ -216,7 +216,6 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data.data);
         for (let i = 0; i < res.data.data.length; i++) {
           for (var j = 0; j < res.data.data[i].products.length;j++){
             res.data.data[i].products[j].zs = app.getPrice(res.data.data[i].products[j].price).zs;
@@ -281,7 +280,6 @@ Page({
   },
   goProductDetail: function(e){
     var productid = e.currentTarget.dataset.itemid;
-    console.log(productid);
     wx.navigateTo({
       url: '../../pages/index/product_detail/product_detail?productId=' + productid
     })
