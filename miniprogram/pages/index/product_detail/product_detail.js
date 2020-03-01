@@ -72,7 +72,7 @@ Page({
         dataType: "json",
         data: {
           userId: me.data.userId,
-          productId: me.data.productId,
+          productId: me.data.activeChoose,
           number: me.data.num
         },
         success(res) {
@@ -91,7 +91,7 @@ Page({
     else {
       var requestParam = {
         userId: me.data.userId,
-        productId: me.data.productId,
+        productId: me.data.activeChoose,
         isPreOrder: 1,
         number: me.data.num
       };
