@@ -23,22 +23,19 @@
   <view class="price-share flexBox">
   
     <block wx:for="{{product.productItem}}" wx:key='item' wx:for-index="idx">
-      <view class="price"><text class='unit'>￥</text>{{item.price / 100}}/<text class='unit'>{{item.unit}}</text></view>
+      <view class="price"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text><text class='unit'>/{{item.unit}}</text></view>
     </block>
-
-      
-     <view bindtap="goCook" id="{{product.id}}" style="text-align:center; margin-right:20rpx;">
-      <image src="../../../images/cook.png" class="goHome"></image>
-      <view>烹饪</view>
-    </view>
-  
-
-    <view class='share'>
-      <image src='/images/share.png' open-type='share'></image>
-      <text open-type='share'>分享</text>
-      <button open-type='share'></button>
-    </view>
-   
+      <view class='flexBox'>
+        <view bindtap="goCook" id="{{product.id}}" class='cook'>
+          <image src="../../../images/cook.png" class="goHome"></image>
+          <view class='title'>烹饪</view>
+        </view>
+        <view class='share'>
+          <image src='/images/share.png' open-type='share'></image>
+          <text open-type='share'>分享</text>
+          <button open-type='share'></button>
+        </view>
+      </view>
   </view>
   <!--介绍-->
   <view class="introduce">
@@ -58,7 +55,7 @@
         <view class='flexBox choose'>
           <image src='http://{{chooseImageUrl}}' title='"http://"+{{chooseImageUrl}}' wx:if='{{chooseImageUrl.length}}' class='choose_image'></image>
           <image src='../../../images/noData.png' wx:else='!{{chooseImageUrl.length}}' class='choose_image'></image>
-          <view>
+          <view style='margin-left:20rpx'>
             <view class='choose_name'>{{chooseName}}</view>
             <view class='choose_price'><text class='fh'>￥</text>{{chooseZs}}<text class="xs">.{{chooseXs}}</text>
               <text class='unit'>/  {{chooseUnit}}</text>

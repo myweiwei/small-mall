@@ -41,9 +41,13 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
-      success: function (data) {
+      success: function (res) {
+        for (let i = 0; i < res.data.data.length; i++) {
+            res.data.data[i].zs = app.getPrice(res.data.data[i].price).zs;
+            res.data.data[i].xs = app.getPrice(res.data.data[i].price).xs;
+        }
         me.setData({
-          products: data.data.data
+          products: res.data.data
         })
       }
     });

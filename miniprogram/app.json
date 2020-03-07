@@ -36,8 +36,8 @@
       {
         "pagePath": "pages/main/main",
         "text": "店长推荐",
-        "iconPath": "images/nav/shop-off.png",
-        "selectedIconPath": "images/nav/shop-on.png"
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png"
       },
       {
         "pagePath": "pages/index/index",

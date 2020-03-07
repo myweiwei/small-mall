@@ -8,7 +8,8 @@ Page({
     time:0, //倒计时剩余时间
     timeData:{},//onChange方法取time的时间，给timeData用
     orderNo:"",
-    payStatus:''
+    payStatus:'',
+    showLoad:true
   },
 
   onChange(e) {
@@ -227,7 +228,10 @@ Page({
 
 function getData(res,that) {
   var order = res.data.data;
-  that.setData({ time: order.waitPayTime });
+  that.setData({ 
+    time: order.waitPayTime,
+    showLoad:true
+  });
 
   var a = ((order.price + order.expressPrice) / 100).toFixed(2).split('.');
   order.zs = a[0];
@@ -246,5 +250,5 @@ function getData(res,that) {
     orderDetail[i].zs = b[0];
     orderDetail[i].xs = b[1];
   }
-  that.setData({ obj: res.data.data });
+  that.setData({ obj: res.data.data, showLoad: false });
 }

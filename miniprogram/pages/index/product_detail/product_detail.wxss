@@ -17,6 +17,7 @@
 .goHome{
   width: 50rpx;
   height: 50rpx;
+  margin-top:-7rpx;
 }
 .share { 
   height: 120rpx;
@@ -51,7 +52,8 @@
 }
 .price{
   font-size: 40rpx;
-  color: red;
+  color: #d81e06;
+  font-weight:700;
 }
 .price .unit  {
   font-size:25rpx;
@@ -75,6 +77,7 @@
 .choose .choose_image {
   width:150rpx;
   height:150rpx;
+  border-radius:10rpx;
 }
 .choose .choose_price {
   font-size: 35rpx;
@@ -194,4 +197,14 @@
 }
 .bottom_btn {
   position:fixed;
+}
+.cook {
+  text-align:center; 
+  margin-right:20rpx;
+}
+.cook .title {
+  font-size:23rpx;
+  font-weight: bold;
+  color:rgb(151, 151, 151);
+  margin-top:-13rpx;
 }

@@ -58,7 +58,7 @@
   <van-popup show="{{show}}" position="bottom" custom-style="height: 50%;" round bind:close="onClose" >
     <view style='margin-top:10rpx;'>
       <van-area  bind:confirm='confirmFunc'
-      bind:cancel='onClose' area-list="{{ areaList }}"  value="110101" />
+      bind:cancel='onClose' area-list="{{ areaList }}"  />
     </view>
   </van-popup>
   <view class='footer flexBox'>
