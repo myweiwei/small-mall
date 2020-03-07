@@ -21,7 +21,7 @@
 }
 .share { 
   height: 120rpx;
-  width: 120rpx;
+  width: 60rpx;
   right: 0rpx;
   display: flex;
   flex-direction: column;
@@ -46,9 +46,11 @@
 .share button {
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 50%;
   opacity: 0.1;
   z-index: 99;
+  padding:0px;
+  
 }
 .price{
   font-size: 40rpx;
@@ -200,7 +202,8 @@
 }
 .cook {
   text-align:center; 
-  margin-right:20rpx;
+  margin-right:30rpx;
+
 }
 .cook .title {
   font-size:23rpx;
