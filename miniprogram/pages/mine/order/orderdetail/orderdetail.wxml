@@ -1,7 +1,7 @@
 
 <view class="boxContainer">
   <view class="head">
-    <!-- <view class="buy-status" wx:if="{{obj.orderStatus == 0}}">
+    <view class="buy-status" wx:if="{{obj.orderStatus == 0}}">
       <view class="wait-pay">
         <image class="wait-pay-icon" src="../../../../images/waitPay.png"></image>
         <view style="font-weight:bold; font-size:36rpx;">等待付款</view>
@@ -24,7 +24,7 @@
       <view>
         <view class="pay-button-top" bindtap="payOrder">立即支付</view>
       </view>
-    </view> -->
+    </view>
 
       <view class="buy-status1" wx:if="{{obj.orderStatus == 3}}">
         <view class='buy-container'>
@@ -40,7 +40,7 @@
         <view>订单已取消</view>
       </view>
      </view>
-      <view class="buy-status" style='position:relative' wx:if="{{obj.orderStatus ==0}}">
+      <view class="buy-status" style='position:relative' wx:if="{{obj.orderStatus == 1}}">
         <view  class='peihuo'>
           <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
           <view>商家正在配货</view>
