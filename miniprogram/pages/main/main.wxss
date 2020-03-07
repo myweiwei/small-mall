@@ -68,5 +68,5 @@
 }
 .yuan-color{
   font-weight: bold;
-  color: red;
+  color: #d81e06;
 }

@@ -1,6 +1,6 @@
+
 <view class="boxContainer">
   <view class="head">
-
     <view class="buy-status" wx:if="{{obj.orderStatus == 0}}">
       <view class="wait-pay">
         <image class="wait-pay-icon" src="../../../../images/waitPay.png"></image>
@@ -40,9 +40,11 @@
         <view>订单已取消</view>
       </view>
      </view>
-      <view class="buy-status" wx:if="{{obj.orderStatus == 1}}">
-      <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
-      <view>商家正在配货</view>
+      <view class="buy-status" style='position:relative' wx:if="{{obj.orderStatus == 1}}">
+        <view>
+          <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
+          <view>商家正在配货</view>
+        </view>
      </view>
 
       <view class="buy-status" wx:if="{{obj.orderStatus == 2}}">
@@ -65,8 +67,6 @@
       </view>
     </view>
   </view>
-
-  
   <view class="product-detail">
     <block wx:for="{{obj.orderItem}}" wx:key="key">
       <view class="product-item">
@@ -79,9 +79,6 @@
       </view>
     </block>
   </view>
-
-
-
   <view class="order-detail">
     <view><text class="order-detail-left-color">订单编号：</text><text>{{obj.orderNo}}</text></view>
     <view><text class="order-detail-left-color">下单时间：</text><text>{{obj.orderDate}}</text></view>
@@ -128,7 +125,9 @@
     <view class="cancel-button" bindtap="deleteOrder">删除订单</view>
     <view class="pay-button">再次购买</view>
   </view> 
-
+  <view  class='spinner' wx:if='{{showLoad}}'>
+    <van-loading type="spinner"/>
+  </view>
     <!-- <view class="buttons border-top" wx:if="{{obj.orderStatus == 1}}">
     <view class="pay-button">再次购买</view>
   </view>  -->

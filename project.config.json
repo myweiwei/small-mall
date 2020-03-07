@@ -111,18 +111,33 @@
 					"id": -1,
 					"name": "pages/mine/mine",
 					"pathName": "pages/mine/mine",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/mine/order/order",
 					"pathName": "pages/mine/order/order",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/mine/order/preorder/paySuccess/paySuccess",
 					"pathName": "pages/mine/order/preorder/paySuccess/paySuccess",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/address/addAddress/addAddress",
+					"pathName": "pages/mine/address/addAddress/addAddress",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/order/orderdetail/orderdetail",
+					"pathName": "pages/mine/order/orderdetail/orderdetail",
 					"scene": null
 				}
 			]

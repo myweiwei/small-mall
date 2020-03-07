@@ -113,7 +113,7 @@ Page({
           }
           else {
             wx.navigateTo({
-              url: '/pages/mine/order/preorder/preorder?buyMethod=' + 1 + "&productId=" + me.data.productId + "&number=" + me.data.num
+              url: '/pages/mine/order/preorder/preorder?buyMethod=' + 1 + "&productId=" + me.data.activeChoose + "&number=" + me.data.num
             });
           }
         }
@@ -200,7 +200,6 @@ Page({
   },
   goCook:function(options){
     var catalogId = options.currentTarget.id;
-    console.log(catalogId);
     wx.navigateTo({
       url: '/pages/cook/cooklist/cooklist?productId=' + catalogId
     })
@@ -222,10 +221,13 @@ Page({
       },
       success: function (data) {
         var data = data.data.data;
-        console.log(data);
         var images = data.images.split(";");
         for (var i = 0; i < images.length; i++) {
           images[i] = "http://" + images[i];
+        }
+        for (let j = 0; j < data.productItem.length;j++){
+          data.productItem[j].zs = app.getPrice(data.productItem[j].price).zs;
+          data.productItem[j].xs = app.getPrice(data.productItem[j].price).xs;
         }
         me.setData({
           product: data,

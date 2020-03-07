@@ -4196,8 +4196,10 @@ Page({
   onClose:function(){
     let me = this;
     me.setData({
-      show: false
+      show: false,
+      province:''
     })
+    
   },
   confirmFunc:function(data){
     let str='';

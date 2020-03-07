@@ -290,3 +290,6 @@ page {
 .red {
   color:red
 }
+.van-picker-column__item {
+  color:#aaa;
+}
