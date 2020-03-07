@@ -26,14 +26,16 @@
       <view class="price"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text><text class='unit'>/{{item.unit}}</text></view>
     </block>
       <view class='flexBox'>
-        <view bindtap="goCook" id="{{product.id}}" class='cook'>
+        <view catchtap="goCook" id="{{product.id}}" class='cook'>
           <image src="../../../images/cook.png" class="goHome"></image>
           <view class='title'>烹饪</view>
         </view>
-        <view class='share'>
-          <image src='/images/share.png' open-type='share'></image>
-          <text open-type='share'>分享</text>
-          <button open-type='share'></button>
+        <view style='width:50rpx;overflow:hidden'>
+          <view class='share'>
+            <image src='/images/share.png' open-type='share'></image>
+            <text open-type='share'>分享</text>
+            <button open-type='share'></button>
+          </view>
         </view>
       </view>
   </view>

@@ -41,7 +41,7 @@
       </view>
      </view>
       <view class="buy-status" style='position:relative' wx:if="{{obj.orderStatus == 1}}">
-        <view>
+        <view  class='peihuo'>
           <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
           <view>商家正在配货</view>
         </view>
