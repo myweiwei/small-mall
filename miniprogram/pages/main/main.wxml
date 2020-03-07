@@ -1,5 +1,12 @@
 
 <view class="my-container">
+ 
+    <van-notice-bar
+      mode="closeable"
+      text="新鲜美味海鱼，价格实惠，货品新鲜。同城当日下单次日送达，快来选购吧！"
+      color="red"
+    />
+
   <swiper indicator-dots="{{indicatorDots}}" 
           autoplay="{{autoplay}}" 
           circular="{{circular}}" 
@@ -12,7 +19,7 @@
       
       <block wx:for='{{images}}' wx:key='index'>
         <swiper-item>
-          <image src='{{item}}' mode="widthFix" class='swiper-item-images'  />
+          <image src='{{item}}' mode="scaleToFill" class='swiper-item-images'  />
         </swiper-item>
       </block>
 
@@ -31,7 +38,7 @@
       <view class="products-parent">
 
         <block wx:for="{{products}}" wx:key="key" data-id="{{item.id}}"> 
-          <view class="products-child">
+          <view class="products-child"  catchtap="goProductDetail" data-itemid="{{item.id}}">
             <image class="product-image" src="http://{{item.picture}}"></image>
             <view class="product-name">{{item.name}} <text class="yuan yuan-color">￥</text>
             <text class="yuan-color">{{item.price}}</text><text class="yuan">/{{item.unit}}</text></view>

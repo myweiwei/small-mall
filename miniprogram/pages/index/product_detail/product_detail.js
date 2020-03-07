@@ -193,6 +193,18 @@ Page({
       })
     }
   },
+  goHome:function(){
+    wx.navigateBack({
+      url: '/pages/index/index'
+    })
+  },
+  goCook:function(options){
+    var catalogId = options.currentTarget.id;
+    console.log(catalogId);
+    wx.navigateTo({
+      url: '/pages/cook/cooklist/cooklist?productId=' + catalogId
+    })
+  },
   onLoad:function(options){
     var me = this;
     me.setData({
@@ -210,6 +222,7 @@ Page({
       },
       success: function (data) {
         var data = data.data.data;
+        console.log(data);
         var images = data.images.split(";");
         for (var i = 0; i < images.length; i++) {
           images[i] = "http://" + images[i];

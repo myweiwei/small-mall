@@ -15,26 +15,43 @@
     
       <block wx:for='{{images}}' wx:key='index'>
         <swiper-item>
-          <image src='{{item}}' mode="aspectFill" class='swiper-item-images'  />
+          <image src='{{item}}' mode="scaleToFill" class='swiper-item-images'  />
         </swiper-item>
       </block>
   </swiper>
   <!--价格和分享-->
   <view class="price-share flexBox">
+  
     <block wx:for="{{product.productItem}}" wx:key='item' wx:for-index="idx">
       <view class="price"><text class='unit'>￥</text>{{item.price / 100}}/<text class='unit'>{{item.unit}}</text></view>
     </block>
+
+      
+     <view bindtap="goCook" id="{{product.id}}" style="text-align:center; margin-right:20rpx;">
+      <image src="../../../images/cook.png" class="goHome"></image>
+      <view>烹饪</view>
+    </view>
+  
+
     <view class='share'>
       <image src='/images/share.png' open-type='share'></image>
       <text open-type='share'>分享</text>
       <button open-type='share'></button>
     </view>
+   
   </view>
   <!--介绍-->
   <view class="introduce">
     <text class='name'>{{product.name}}</text>
     <view>{{product.introduce}}</view>
   </view>
+
+
+
+
+
+
+
   <van-popup show="{{chooseSize}}" position="bottom" custom-style="height: 70%;width:100%;" round bind:close="hideModal" >
     <view  class='choosen' style='height:100%'>
       <view class="container-box" style='height:80%'>

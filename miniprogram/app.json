@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/index/index",
     "pages/index/product_detail/product_detail",
-    "pages/main/main",
     "pages/mine/mine",
     "pages/mine/order/order",
     "pages/mine/order/orderdetail/orderdetail",
@@ -34,8 +34,14 @@
     "backgroundColor": "#fff",
     "list": [
       {
+        "pagePath": "pages/main/main",
+        "text": "店长推荐",
+        "iconPath": "images/nav/shop-off.png",
+        "selectedIconPath": "images/nav/shop-on.png"
+      },
+      {
         "pagePath": "pages/index/index",
-        "text": "商品",
+        "text": "全部商品",
         "iconPath": "images/nav/shop-off.png",
         "selectedIconPath": "images/nav/shop-on.png"
       },

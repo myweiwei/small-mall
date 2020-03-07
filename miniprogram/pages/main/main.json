@@ -3,5 +3,8 @@
   "navigationBarTitleText": "我的",
   "navigationBarTextStyle": "black",
   "backgroundColor": "#000000",
-  "backgroundTextStyle": "dark"
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "van-notice-bar": "/@vant/weapp/notice-bar/index"
+  }
 }
