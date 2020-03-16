@@ -150,7 +150,7 @@
           </view>
         </view>
         <view style="display:flex; flex-direction:row;">
-          <view class="pay-button" style=" margin-right:30rpx; color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view>
+          <!-- <view class="pay-button" style=" margin-right:30rpx; color:#000; border:0.1rpx solid rgb(146,126,128); ">评价晒单</view> -->
           <!-- <view class="pay-button" style="margin-left:0rpx;">再次购买</view> -->
           <view class="pay-button" style="color:#000; border:0.1rpx solid rgb(146,126,128);">订单详情</view>
         </view>
