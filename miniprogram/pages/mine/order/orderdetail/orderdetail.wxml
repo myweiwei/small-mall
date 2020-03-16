@@ -118,12 +118,12 @@
 
    <view class="buttons border-top" wx:if="{{obj.orderStatus == 3}}">
     <view class="cancel-button" bindtap="deleteOrder">删除订单</view>
-    <view class="pay-button">再次购买</view>
+    <!-- <view class="pay-button">再次购买</view> -->
   </view>
 
   <view class="buttons border-top" wx:if="{{obj.orderStatus == -4}}">
     <view class="cancel-button" bindtap="deleteOrder">删除订单</view>
-    <view class="pay-button">再次购买</view>
+    <!-- <view class="pay-button">再次购买</view> -->
   </view> 
   <view  class='spinner' wx:if='{{showLoad}}'>
     <van-loading type="spinner"/>

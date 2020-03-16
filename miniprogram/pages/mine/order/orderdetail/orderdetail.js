@@ -81,7 +81,7 @@ Page({
     var that = this;
     wx.showModal({
       title: '',
-      content: '是否删除该订单',
+      content: '是否取消该订单',
       success(res) {
         if (res.confirm) {
           var orderNo = that.data.orderNo;
@@ -104,7 +104,6 @@ Page({
                 method: 'GET',
                 success(res) {
                   var pagesArr = getCurrentPages();
-                  console.log(pagesArr);
                   if (pagesArr[pagesArr.length - 2].route == "pages/mine/order/order") {
                     pagesArr[pagesArr.length - 2].setData({
                       payStatus: that.data.payStatus
@@ -145,7 +144,14 @@ Page({
           },
           method: 'GET',
           success(res) {
-            getData(res, that);
+            wx.showToast({
+              title: "删除成功",
+              icon: 'none',
+              duration: 2000
+            })
+            wx.navigateBack({
+              delta:1
+            })
           }
         })
       }
