@@ -170,12 +170,10 @@ Page({
     that.getPayStatus(that.data.id);
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1]; //当前页面
-    if (currPage.data.payStatus) {
-      that.setData({
-        payStatus: currPage.data.payStatus
-      })
-      that.getUser(currPage.data.payStatus);
-    }
+    that.setData({
+      payStatus: currPage.data.payStatus ? currPage.data.payStatus:""
+    })
+    that.getUser(currPage.data.payStatus);
   },
   payOrder:function(event){
     var that = this;

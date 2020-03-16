@@ -1,6 +1,6 @@
 //app.js
 App({
-  baseUrl: 'http://localhost:8888',
+  baseUrl: 'https://lileiit.com',
   
   lowerBuyLimit:3000, //购买下限，30元起
   onLaunch: function () {
