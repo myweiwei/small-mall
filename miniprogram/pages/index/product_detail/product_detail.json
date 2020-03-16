@@ -5,5 +5,5 @@
     "van-popup": "@vant/weapp/popup",
     "van-loading": "@vant/weapp/loading/index"
   },
-  "navigationBarTitleText": "全部商品"
+  "navigationBarTitleText": "商品详情"
 }

@@ -38,7 +38,7 @@
 }
 .products-child{
   width: calc(calc(100% / 2) - 30rpx);
-  height:420rpx;
+  height:450rpx;
   margin-left: 20rpx;
   margin-top: 20rpx;
   box-sizing: border-box;
@@ -54,19 +54,22 @@
   border-top-right-radius: 5px;
 }
 .product-name{
-  font-size: 26rpx;
-  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  margin-bottom: 2rpx;
   margin-left: 10rpx;
 }
 .product-keywords{
   margin-left: 10rpx;
   font-size: 25rpx;
   line-height: 32rpx;
+  color: #646464;
 }
 .yuan{
-  font-size: 20rpx;
+  color: #646464;
+  font-size: 23rpx;
 }
 .yuan-color{
   font-weight: bold;
   color: #d81e06;
+
 }

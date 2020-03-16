@@ -34,7 +34,7 @@
         <view class='yunfei'><text class='fh'>￥</text>{{order.zs}}<text class="xs">.{{order.xs}}</text></view>
       </view>
       <view class='flexBox'>
-        <text>运费（总重:{{order.totalWeight}}kg）</text>
+        <text>满130免费配送（总重:{{order.totalWeight}}kg）</text>
         <view class='yunfei'><text class='fh'>+￥</text>{{order.zs1}}<text class="xs">.{{order.xs1}}</text></view>
       </view>
     </view>

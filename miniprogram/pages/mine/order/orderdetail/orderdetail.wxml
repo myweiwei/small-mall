@@ -28,7 +28,7 @@
 
       <view class="buy-status1" wx:if="{{obj.orderStatus == 3}}">
         <view class='buy-container'>
-          <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
+          <image src="../../../../images/order_finish.png" class="wait-receive_icon"></image>
           <view>订单已完成</view>
         </view>
       </view>
@@ -47,13 +47,13 @@
         </view>
      </view>
 
-      <view class="buy-status" wx:if="{{obj.orderStatus == 2}}">
-      <image src="../../../../images/wait_receive.png" class="wait-receive_icon"></image>
-      <view>商家已发货</view>
-      <view wx:if="{{obj.orderStatus == 2 && obj.isSameCity == 0}}">顺丰运单号：{{obj.expressNo}}</view>
-
-      
-    </view>
+      <view class="buy-status1" wx:if="{{obj.orderStatus == 2}}">
+        <view class='buy-container'>
+          <image src="../../../../images/send_box.png" class="wait-receive_icon" ></image>
+          <view>商家已发货</view>
+          <view wx:if="{{obj.orderStatus == 2 && obj.isSameCity == 0}}">顺丰运单号：{{obj.expressNo}}</view>
+        </view>
+      </view>
 
 
     <view class="address">

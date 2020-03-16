@@ -285,22 +285,6 @@ Page({
     })
   },
   /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var me = this;
-    if(1)
-    {
-      // wx.hideTabBar(); 
-      this.setData({status:0});
-      me.getTableData();
-    }
-    else{
-      this.setData({status:1});
-    }
-  },
-
-  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

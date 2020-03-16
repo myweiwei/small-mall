@@ -4,9 +4,9 @@
     "van-popup": "@vant/weapp/popup",
     "van-loading": "@vant/weapp/loading/index"
   },
-  "navigationBarBackgroundColor": "#E45050",
-  "navigationBarTitleText": "收货地址",
-  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTitleText": "关于我们",
+  "navigationBarTextStyle": "black",
   "backgroundColor": "#000000",
   "backgroundTextStyle": "dark"
 }

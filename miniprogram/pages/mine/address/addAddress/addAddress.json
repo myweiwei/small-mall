@@ -6,5 +6,6 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-switch": "@vant/weapp/switch/index",
     "van-loading": "@vant/weapp/loading/index"
-  }
+  },
+  "navigationBarTitleText": "新增收货地址"
 }
