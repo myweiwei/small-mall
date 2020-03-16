@@ -192,7 +192,14 @@ Page({
     }
     if (me.data.chooseAddress && me.data.chooseAddress != undefined){
       requestParam = Object.assign(requestParam, { addressId: me.data.chooseAddress.id, province: me.data.chooseAddress.province})
+      
     }
+  
+    if(requestParam.addressId == undefined){
+      delete requestParam.addressId;
+    }
+
+    console.log(requestParam);
     wx.request({
       url:app.baseUrl+'/order',
       data: requestParam,
@@ -201,6 +208,15 @@ Page({
       },
       method: 'POST',
       success(res) {
+        console.log(res.data);
+        if(res.data.status == -1){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 2000
+          })
+          return;
+        }
         wx.requestPayment(
           {
             timeStamp: res.data.data.payParam.timeStamp,

@@ -1,15 +1,15 @@
 {
   "pages": [
-    "pages/main/main",
     "pages/index/index",
-    "pages/index/product_detail/product_detail",
+    "pages/main/main",
     "pages/mine/mine",
+    "pages/index/product_detail/product_detail",
     "pages/mine/order/order",
     "pages/mine/order/orderdetail/orderdetail",
     "pages/cook/cookdetail/cookdetail",
     "pages/cook/cooklist/cooklist",
     "pages/cook/cook",
-    "pages/comment/comment",
+   
     "pages/mine/message/message",
     "pages/mine/order/preorder/preorder",
     "pages/mine/order/preorder/chooseAdd/chooseAdd",
@@ -28,7 +28,7 @@
     "backgroundTextStyle": "light"
   },
   "tabBar": {
-    "color": "#6e6d6b",
+    "color": "#000",
     "selectedColor": "#e64340",
     "borderStyle": "white",
     "backgroundColor": "#fff",
@@ -36,8 +36,8 @@
       {
         "pagePath": "pages/main/main",
         "text": "店长推荐",
-        "iconPath": "images/nav/home-off.png",
-        "selectedIconPath": "images/nav/home-on.png"
+        "iconPath": "images/nav/icon_home.png",
+        "selectedIconPath": "images/nav/icon_home_select.png"
       },
       {
         "pagePath": "pages/index/index",
@@ -53,8 +53,8 @@
       },
       {
         "pagePath": "pages/mine/mine",
-        "iconPath": "images/nav/my-off.png",
-        "selectedIconPath": "images/nav/my-on.png",
+        "iconPath": "images/nav/mine-off.png",
+        "selectedIconPath": "images/nav/mine-on.png",
         "text": "我的"
       }
     ]

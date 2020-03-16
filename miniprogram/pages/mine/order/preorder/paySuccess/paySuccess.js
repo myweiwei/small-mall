@@ -17,7 +17,7 @@ Page({
   },
   tell:function(){
     wx.requestSubscribeMessage({
-      tmplIds: ['mVHjKCyWlfb3obrCfJz_UuQMI_BmdD1wi4CM_tq2xWU'],
+      tmplIds: ['Qald-X-SYPJ6yCpixJKtsrnyBtSjC9yjb0QzCBLG8PI'],
       success(res) {
         wx.redirectTo({
           url: '/pages/mine/order/order',

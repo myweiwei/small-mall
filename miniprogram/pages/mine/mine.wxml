@@ -42,9 +42,9 @@
       <image class="images" src="../../images/mine/say.png"> </image>
       <text class="text">意见反馈</text>
     </view>
-    <view class="item border-top">
+    <view class="item border-top" bindtap="goPhone">
       <image class="images" src="../../images/mine/tel.png"> </image>
-      <text class="text">联系方式</text>
+      <text class="text">联系商家</text>
     </view>
     <view class="item border-top" bindtap="aboutus">
       <image class="images" src="../../images/mine/about.png" > </image>

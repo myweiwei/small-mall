@@ -83,6 +83,11 @@ Page({
       url:'/pages/cook/cook'
     })
   },
+  goPhone:function(){
+      wx.makePhoneCall({
+        phoneNumber: '16619962166',
+      })
+  },
   aboutus:function(){
     wx.navigateTo({
       url: '/pages/mine/aboutus/aboutus',

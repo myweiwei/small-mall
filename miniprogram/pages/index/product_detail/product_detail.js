@@ -207,7 +207,8 @@ Page({
   onLoad:function(options){
     var me = this;
     me.setData({
-      productId: options.productId
+      productId: options.productId,
+      showLoad:true
     });
     me.getUser();
   },
@@ -220,6 +221,10 @@ Page({
         id: me.data.productId
       },
       success: function (data) {
+        me.setData({
+          showLoad:false
+        });
+
         var data = data.data.data;
         var images = data.images.split(";");
         for (var i = 0; i < images.length; i++) {

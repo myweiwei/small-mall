@@ -25,12 +25,12 @@
     <block wx:for="{{product.productItem}}" wx:key='item' wx:for-index="idx">
       <view class="price"><text class='fh'>￥</text>{{item.zs}}<text class="xs">.{{item.xs}}</text><text class='unit'>/{{item.unit}}</text></view>
     </block>
-      <view class='flexBox'>
+      <view class='flexBox' style="margin-right:25rpx;">
         <view catchtap="goCook" id="{{product.id}}" class='cook'>
           <image src="../../../images/cook.png" class="goHome"></image>
           <view class='title'>烹饪</view>
         </view>
-        <view style='width:50rpx;overflow:hidden'>
+        <view style='width:50rpx; overflow:hidden;'>
           <view class='share'>
             <image src='/images/share.png' open-type='share'></image>
             <text open-type='share'>分享</text>
@@ -42,7 +42,7 @@
   <!--介绍-->
   <view class="introduce">
     <text class='name'>{{product.name}}</text>
-    <view>{{product.introduce}}</view>
+    <view class="color:#525252;">{{product.introduce}}</view>
   </view>
 
 
